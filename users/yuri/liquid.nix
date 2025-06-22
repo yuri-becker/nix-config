@@ -1,7 +1,7 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
-    ./presets/local-hosts.nix
     ./presets/darwin.nix
+    ./presets/local-hosts.nix
     ./toolchains/mobile-dev.nix
     ./toolchains/python.nix
     ./toolchains/rust.nix

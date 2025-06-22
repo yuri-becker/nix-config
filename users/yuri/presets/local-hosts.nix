@@ -3,6 +3,7 @@
   fonts.fontconfig.enable = true;
   imports = [
     ./common.nix
+    ../applications/feishin.nix
     ../applications/kitty.nix
     ../applications/vesktop.nix
     ../applications/wakatime.nix
