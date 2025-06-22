@@ -1,0 +1,7 @@
+keys:
+  - &yuri_at_liquid age1z2pt33cpdvat6t498sqw3a6gfnvcdnk8xphk8euf9t4zjzzteuvq7uwxyw
+creation_rules:
+  - path_regex: ^users/yuri/.*/[^/]+\.secrets.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *yuri_at_liquid
