@@ -1,7 +1,15 @@
 keys:
   - &yuri_at_liquid age1z2pt33cpdvat6t498sqw3a6gfnvcdnk8xphk8euf9t4zjzzteuvq7uwxyw
+  - &yuri_at_mantis age1y4pplvjn22fdxtmtf2m6t5fpfrgp495q2sumvt8tlx0fwm2qc9hqh5l3ma
+  - &mantis age1lynl2fyd6jput050myqj8fghn7kgxys79ugklpe4v5w7tx49sa3qcj5ynd
 creation_rules:
-  - path_regex: ^users/yuri/.*/[^/]+\.secrets.(yaml|json|env|ini)$
+  - path_regex: ^users/yuri/(.*/)?[^/]*secrets.yaml$
     key_groups:
       - age:
           - *yuri_at_liquid
+          - *yuri_at_mantis
+  - path_regex: ^hosts/mantis/(.*/)?[^/]*secrets.yaml$
+    key_groups:
+      - age:
+          - *yuri_at_liquid
+          - *mantis

@@ -12,8 +12,6 @@
         inherit (fzf) src;
       }
     ];
-    functions.cat = "${pkgs.bat}/bin/bat --plain --pager never $argv";
-    functions.ls = "${pkgs.lsd}/bin/lsd $argv";
     shellAbbrs = {
       h = "history";
       l = "ls -lFh";
@@ -24,8 +22,6 @@
       rm = "rm -i";
       rimraf = "rm -rf";
       t = "tail -f";
-      ns =
-        "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
     };
   };
 

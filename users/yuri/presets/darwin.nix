@@ -1,5 +1,5 @@
 # Common file for Mac systems
-{ config, lib, pkgs, ... }: {
+{ config, pkgs, ... }: {
   programs.fish = {
     shellAbbrs.rebuild = "sudo darwin-rebuild switch --flake .";
     shellInit = "fish_add_path /opt/homebrew/bin";
@@ -10,5 +10,4 @@
     extraConfig = "UseKeychain yes";
   };
   sops.age.keyFile = "${config.home.homeDirectory}/Library/Application Support/sops/age/keys.txt";
-
 }

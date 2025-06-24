@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./presets/darwin.nix
     ./presets/local-hosts.nix

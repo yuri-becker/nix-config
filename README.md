@@ -6,7 +6,7 @@
   <h1 align="center"><strong>Nix Config</strong></h1>
 
   <p align="center">
-    Currently only manages one machine, but more will come. 
+    For now, config for my notebook (liquid) and my home server (mantis).
   </p>
 </div>
 <br/>

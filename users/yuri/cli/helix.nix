@@ -1,7 +1,13 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [ marksman yaml-language-server ];
+  home.packages = with pkgs; [
+    marksman
+    nixd
+    nixfmt-rfc-style
+    yaml-language-server
+  ];
   programs.helix = {
     enable = true;
+    defaultEditor = true;
     themes.catppuccin_mocha_transparent = {
       inherits = "catppuccin_mocha";
       "ui.background" = { };
@@ -25,7 +31,7 @@
       language = [{
         name = "nix";
         auto-format = true;
-        formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
+        formatter.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
         language-servers = [ "nixd" ];
       }];
     };
