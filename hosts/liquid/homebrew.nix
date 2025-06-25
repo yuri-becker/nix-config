@@ -7,28 +7,25 @@
       cleanup = "zap";
     };
     casks = [
-      "affinity-designer@1"
-      "balenaetcher"
-      "beeper"
+      "affinity-designer@1" # not in nixpkgs
+      "balenaetcher" # not in nixpkgs (but in nur)
+      "beeper" # nixpkgs doesnt have darwin
       "burp-suite"
-      "freecad"
+      "freecad" # nixpkgs doenst have darwin
       "jordanbaird-ice"
       "languagetool"
       "monero-wallet"
       "nextcloud"
       "obs"
-      "obsidian"
-      "onlyoffice"
-      "orion"
+      "obsidian" # Wanna get rid of anyway
+      "onlyoffice" # nixpkgs doesnt have darwin
+      "orion" # not in nixpkgs
       "playcover-community"
-      "prusaslicer"
+      "prusaslicer" # webkitgtk marked as broken
       "raspberry-pi-imager"
-      "raycast"
-      "sony-ps-remote-play"
-      "vlc"
-      "whisky"
+      "sony-ps-remote-play" # not in nixpkgs (but in nur)
       "whoozle-android-file-transfer"
-      "yubico-authenticator"
+      "yubico-authenticator" # not in nixpkgs
     ];
   };
 }

@@ -18,6 +18,7 @@
     nmap
     openscad
     transmission_4-qt
+    whisky
     woodpecker-cli
   ];
   programs.mpv.enable = true;

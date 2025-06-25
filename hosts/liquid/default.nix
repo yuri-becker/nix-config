@@ -31,6 +31,7 @@
     config.allowUnfreePredicate = pkg:
       builtins.elem (lib.getName pkg) [
         "google-chrome"
+        "raycast"
         "shottr"
         "the-unarchiver"
       ];
