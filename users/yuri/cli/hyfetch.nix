@@ -1,4 +1,5 @@
-{ ... }: {
+{ pkgs, ... }:
+{
   programs.hyfetch = {
     enable = true;
     settings = {
@@ -10,4 +11,5 @@
       backend = "fastfetch";
     };
   };
+  home.packages = with pkgs; [ fastfetch ];
 }
