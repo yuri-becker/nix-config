@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   homebrew = {
     enable = true;
     onActivation = {
@@ -26,6 +27,7 @@
       "sony-ps-remote-play" # not in nixpkgs (but in nur)
       "whoozle-android-file-transfer"
       "yubico-authenticator" # not in nixpkgs
+      "xppen-pentablet" # not in nixpkgs
     ];
   };
 }

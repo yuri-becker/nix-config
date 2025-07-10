@@ -1,2 +1,8 @@
 # Module for Python development
-{ ... }: { programs.pyenv.enable = true; }
+{ pkgs, ... }:
+{
+  programs.pyenv.enable = true;
+  home.packages = with pkgs; [
+    jetbrains.pycharm-community-bin
+  ];
+}

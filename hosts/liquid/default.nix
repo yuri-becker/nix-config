@@ -1,4 +1,5 @@
-{ specialArgs, lib, ... }: {
+{ specialArgs, lib, ... }:
+{
   imports = [
     ./prefs.nix
     ./homebrew.nix
@@ -15,11 +16,11 @@
     }
   ];
   system = {
-    configurationRevision =
-      specialArgs.self.rev or specialArgs.self.dirtyRev or null;
+    configurationRevision = specialArgs.self.rev or specialArgs.self.dirtyRev or null;
     stateVersion = 6;
   };
   nix = {
+    enable = true;
     settings.experimental-features = "nix-command flakes";
     optimise.automatic = true;
     extraOptions = ''
@@ -28,7 +29,8 @@
   };
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
-    config.allowUnfreePredicate = pkg:
+    config.allowUnfreePredicate =
+      pkg:
       builtins.elem (lib.getName pkg) [
         "google-chrome"
         "raycast"
