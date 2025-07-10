@@ -3,6 +3,7 @@
   imports = [
     ./presets/darwin.nix
     ./presets/local-hosts.nix
+    ./toolchains/ansible.nix
     ./toolchains/mobile-dev.nix
     ./toolchains/python.nix
     ./toolchains/rust.nix

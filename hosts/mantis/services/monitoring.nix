@@ -30,6 +30,14 @@ in
             ];
           }
         ];
+        relabel_configs = [
+          {
+            source_labels = [ "__address_" ];
+            regex = ".*";
+            target_label = "instance";
+            replacement = "mantis";
+          }
+        ];
       }
       {
         job_name = "caddy";
