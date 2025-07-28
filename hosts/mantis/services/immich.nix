@@ -7,6 +7,7 @@ in
   sops.secrets."immich/smtp/from".sopsFile = sopsFile;
   sops.secrets."immich/smtp/username".sopsFile = sopsFile;
   sops.secrets."immich/smtp/password".sopsFile = sopsFile;
+  sops.secrets."immich/external-domain".sopsFile = sopsFile;
   sops.templates."immich.json" = {
     owner = config.services.immich.user;
     content = lib.generators.toJSON { } {
@@ -20,7 +21,7 @@ in
         transport.username = config.sops.placeholder."immich/smtp/username";
         transport.password = config.sops.placeholder."immich/smtp/password";
       };
-      server.externalDomain = "https://${domain}";
+      server.externalDomain = config.sops.placeholder."immich/external-domain";
       server.publicUsers = false;
       storageTemplate.enabled = false;
       machineLearning.clip.enabled = false;

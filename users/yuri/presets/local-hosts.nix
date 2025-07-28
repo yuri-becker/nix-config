@@ -6,6 +6,7 @@
     ./common.nix
     ../cli/gitui.nix
     ../cli/just.nix
+    ../cli/lazygit.nix
     ../cli/nix-search-tv.nix
     ../applications/feishin.nix
     ../applications/kitty.nix
@@ -41,6 +42,12 @@
     matchBlocks."github.com" = {
       user = "git";
       identityFile = "${config.home.homeDirectory}/.ssh/id_github";
+    };
+    matchBlocks."ocelot" = {
+      hostname = "192.168.0.10";
+      user = "root";
+      port = 20141;
+      identityFile = "${config.home.homeDirectory}/.ssh/id_ocelot";
     };
   };
 }
