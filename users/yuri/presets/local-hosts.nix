@@ -4,7 +4,7 @@
   fonts.fontconfig.enable = true;
   imports = [
     ./common.nix
-    ../cli/gitui.nix
+    ../cli/bitwarden.nix
     ../cli/just.nix
     ../cli/lazygit.nix
     ../cli/nix-search-tv.nix

@@ -3,16 +3,20 @@
   imports = [
     ./prefs.nix
     ./homebrew.nix
+    ./notunes.nix
     ./beekeeper.nix
     specialArgs.sops-nix.darwinModules.sops
     specialArgs.home-manager.darwinModules.home-manager
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.users.yuri = import ../../users/yuri/liquid.nix;
+      home-manager.users.yuri.imports = [ ../../users/yuri/liquid.nix ];
       home-manager.sharedModules = [
         specialArgs.sops-nix.homeManagerModule
       ];
+      home-manager.extraSpecialArgs = {
+        hostname = "liquid";
+      };
     }
   ];
   system = {
@@ -34,6 +38,7 @@
       builtins.elem (lib.getName pkg) [
         "google-chrome"
         "raycast"
+        "rust-rover"
         "shottr"
         "the-unarchiver"
       ];

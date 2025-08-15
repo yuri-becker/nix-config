@@ -25,4 +25,6 @@
       gui.screenMode = "half";
     };
   };
+
+  programs.fish.shellAbbrs.lg = "lazygit";
 }

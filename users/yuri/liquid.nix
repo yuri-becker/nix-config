@@ -22,6 +22,7 @@
     whisky
     woodpecker-cli
   ];
+  programs.home-manager.enable = true;
   programs.mpv.enable = true;
   programs.yt-dlp.enable = true;
 }

@@ -8,6 +8,7 @@
     rustc
     rustfmt
     sea-orm-cli
+    jetbrains.rust-rover
   ];
 
   programs.fish.shellAbbrs = {
