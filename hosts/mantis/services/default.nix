@@ -9,5 +9,6 @@
     ./homer.nix
     ./immich.nix
     ./monitoring.nix
+    ./pinchflat.nix
   ];
 }

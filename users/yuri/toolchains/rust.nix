@@ -1,12 +1,9 @@
 # Module for Rust Development
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    cargo
     cargo-shuttle
     cargo-watch
-    clippy
-    rustc
-    rustfmt
+    rustup
     sea-orm-cli
     jetbrains.rust-rover
   ];

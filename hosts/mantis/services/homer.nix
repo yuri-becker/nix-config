@@ -56,6 +56,11 @@
               logo = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/mainsail.png";
               url = "http://otacon.local";
             }
+            {
+              name = "Pinchflat";
+              logo = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pinchflat.png";
+              url = "https://yt.home.arpa";
+            }
           ];
         }
       ];

@@ -5,6 +5,7 @@
     serviceConfig = {
       Label = "noTunes";
       Program = "/System/Volumes/Data/Applications/noTunes.app";
+      ProgramArguments = [ ];
     };
   };
 }

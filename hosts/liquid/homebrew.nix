@@ -28,6 +28,7 @@
       "prusaslicer" # webkitgtk marked as broken
       "raspberry-pi-imager"
       "sony-ps-remote-play" # not in nixpkgs (but in nur)
+      "teamspeak-client@beta" # nixpkgs doenst have darwin
       "whoozle-android-file-transfer"
       "xppen-pentablet" # not in nixpkgs
     ];
