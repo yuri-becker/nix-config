@@ -16,4 +16,12 @@
   services.borgmatic.configurations.mantis.source_directories = [
     config.services.homebox.settings.HBOX_STORAGE_DATA
   ];
+
+  homer.links = [
+    {
+      name = "Homebox";
+      logo = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/homebox.png";
+      url = "https://inventory.home.arpa";
+    }
+  ];
 }

@@ -51,7 +51,14 @@ in
       }
     ];
   };
+  networking.firewall.allowedUDPPorts = [ 53 ];
   services.caddy.virtualHosts."dns.home.arpa".extraConfig =
     "reverse_proxy :${toString config.services.adguardhome.port}";
-  networking.firewall.allowedUDPPorts = [ 53 ];
+  homer.links = [
+    {
+      name = "Adguard Home";
+      logo = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/adguard-home.png";
+      url = "https://dns.home.arpa";
+    }
+  ];
 }

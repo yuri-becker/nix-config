@@ -10,4 +10,11 @@
   services.borgmatic.configurations.mantis.source_directories = [
     "/var/lib/${config.services.audiobookshelf.dataDir}"
   ];
+  homer.links = [
+    {
+      name = "Audiobookshelf";
+      logo = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/audiobookshelf.png";
+      url = "https://audiobooks.home.arpa";
+    }
+  ];
 }

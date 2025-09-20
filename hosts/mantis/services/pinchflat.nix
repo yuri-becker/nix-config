@@ -1,6 +1,7 @@
 { lib, config, ... }:
 let
   domain = "yt.home.arpa";
+  navidromeDomain = "asmr.home.arpa";
   sopsFile = ./pinchflat.secrets.yaml;
 in
 {
@@ -17,17 +18,43 @@ in
   };
   services.caddy.virtualHosts."${domain}".extraConfig =
     "reverse_proxy :${toString config.services.pinchflat.port}";
-  services.borgmatic.configurations.mantis.source_directories = [
-    config.services.pinchflat.mediaDir
-  ];
 
-  services.minidlna = {
+  services.navidrome = {
     enable = true;
-    openFirewall = true;
+    openFirewall = false;
     settings = {
-      media_dir = [ "A,${config.services.pinchflat.mediaDir}" ];
-      friendly_name = "ASMR Stash";
-      notify_interval = 30;
+      EnableInsightsCollector = false;
+      MusicFolder = config.services.pinchflat.mediaDir;
+      BaseUrl = "https://${navidromeDomain}";
+      Agents = "";
+      CoverArtPriority = "embedded";
+      Deezer.Enabled = false;
+      DataFolder = "/var/lib/navidrome/";
+      EnableExternalServices = false;
+      EnableNowPlaying = false;
+      LastFM.Enabled = false;
+      ListenBrainz.Enabled = false;
+      PID.Album = "folder";
     };
   };
+
+  services.caddy.virtualHosts."${navidromeDomain}".extraConfig =
+    "reverse_proxy :${toString config.services.navidrome.settings.Port}";
+
+  services.borgmatic.configurations.mantis.source_directories = [
+    config.services.pinchflat.mediaDir
+    config.services.navidrome.settings.DataFolder
+  ];
+  homer.links = [
+    {
+      name = "ASMR";
+      logo = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/navidrome.png";
+      url = "https://asmr.home.arpa";
+    }
+    {
+      name = "Pinchflat";
+      logo = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pinchflat.png";
+      url = "https://yt.home.arpa";
+    }
+  ];
 }

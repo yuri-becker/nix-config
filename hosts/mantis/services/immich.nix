@@ -46,4 +46,11 @@ in
   services.borgmatic.configurations.mantis.source_directories = [
     config.services.immich.mediaLocation
   ];
+  homer.links = [
+    {
+      name = "Immich";
+      logo = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/immich.png";
+      url = "https://photos.home.arpa";
+    }
+  ];
 }
