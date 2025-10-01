@@ -1,8 +1,17 @@
 # Module for Python development
 { pkgs, ... }:
-{
-  programs.pyenv.enable = true;
-  home.packages = with pkgs; [
+let
+  packages = with pkgs; [
     jetbrains.pycharm-community-bin
+    poetry
+    ruff
+    ty
   ];
+in
+{
+  home.packages = packages;
+  programs.pyenv = {
+    enable = true;
+    enableFishIntegration = true;
+  };
 }

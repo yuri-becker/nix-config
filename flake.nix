@@ -13,6 +13,8 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     colmena.url = "github:zhaofengli/colmena";
     colmena.inputs.nixpkgs.follows = "nixpkgs";
+    wakatime-ls.url = "github:mrnossiom/wakatime-ls";
+    wakatime-ls.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -23,10 +25,18 @@
       home-manager,
       sops-nix,
       colmena,
+      wakatime-ls,
     }:
     {
       darwinConfigurations."liquid" = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit self home-manager sops-nix; };
+        specialArgs = {
+          inherit
+            self
+            home-manager
+            sops-nix
+            wakatime-ls
+            ;
+        };
         modules = [ ./hosts/liquid ];
       };
       colmenaHive = colmena.lib.makeHive {

@@ -1,14 +1,16 @@
 { pkgs, ... }:
 let
-  theme = builtins.readFile (builtins.fetchurl {
-    url =
-      "https://raw.githubusercontent.com/catppuccin/kitty/b14e8385c827f2d41660b71c7fec1e92bdcf2676/themes/mocha.conf";
-    sha256 = "92fcdd01c33e64243fbba4bb6af4b88877769432b0bffe862cf88de80e909524";
-  });
-in {
+  theme = builtins.readFile (
+    builtins.fetchurl {
+      url = "https://raw.githubusercontent.com/catppuccin/kitty/b14e8385c827f2d41660b71c7fec1e92bdcf2676/themes/mocha.conf";
+      sha256 = "92fcdd01c33e64243fbba4bb6af4b88877769432b0bffe862cf88de80e909524";
+    }
+  );
+in
+{
   programs.kitty = {
     enable = true;
-    darwinLaunchOptions = [ "--start-as maximized -1 --title Meow" ];
+    darwinLaunchOptions = [ "--start-as fullscreen --single-instance" ];
     font = {
       name = "MesloLGS Nerd Font";
       package = pkgs.meslo-lgs-nf;
@@ -16,8 +18,12 @@ in {
     };
     settings = {
       # Font
-      modify_font = "cell_height +8px";
+      modify_font = "cell_height +4px";
       cursor_shape = "underline";
+
+      # Remote Control
+      allow_remote_control = "socket-only";
+      listen_on = "unix:/tmp/kitty-socket";
 
       # Cursor
       cursor_underline_thickness = 4.0;
@@ -41,9 +47,13 @@ in {
       window_alert_on_bell = true;
 
       # Window
-      enabled_layouts = "grid";
+      enabled_layouts = "tall:bias=70,stack";
       hide_window_decorations = false;
       resize_in_steps = false;
+      window_margin_width = 0;
+      window_border_width = "1pt";
+      window_padding_width = 1;
+      draw_minimal_borders = false;
 
       # Tab Bar
       tab_bar_edge = "top";
@@ -51,8 +61,7 @@ in {
       tab_bar_min_tabs = 2;
       tab_powerline_style = "slanted";
       tab_activity_symbol = "✨";
-      tab_title_template =
-        "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{fmt.bold}{index} {fmt.nobold}{title}";
+      tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{fmt.bold}{index} {fmt.nobold}{title}";
 
       # Advanced
       shell = "zsh -c ${pkgs.fish}/bin/fish";
@@ -69,6 +78,14 @@ in {
     keybindings = {
       "shift+cmd+up" = "no_op";
       "shift+cmd+down" = "no_op";
+      "cmd+t" = "new_tab_with_cwd";
+      "cmd+enter" = "new_window_with_cwd";
+      "cmd+w" = "close_window_with_confirmation ignore-shell";
+      "cmd+." = "layout_action bias 20 50 70";
+      "shift+cmd+." = "toggle_layout stack";
+      "cmd+]" = "next_window";
+      "cmd+[" = "prev_window";
+      "cmd+n" = "no_op";
     };
     extraConfig = theme;
   };

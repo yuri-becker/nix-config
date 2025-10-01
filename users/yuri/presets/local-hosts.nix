@@ -43,6 +43,9 @@
       user = "git";
       identityFile = "${config.home.homeDirectory}/.ssh/id_github";
     };
+    matchBlocks."gitlab.alt.coop" = {
+      identityFile = "${config.home.homeDirectory}/.ssh/id_gitlab_alt_coop";
+    };
     matchBlocks."ocelot" = {
       hostname = "192.168.0.10";
       user = "root";

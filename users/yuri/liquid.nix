@@ -2,6 +2,7 @@
 {
   imports = [
     ./presets/darwin.nix
+    ./presets/work.nix
     ./presets/local-hosts.nix
     ./toolchains/ansible.nix
     ./toolchains/mobile-dev.nix

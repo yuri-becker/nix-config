@@ -16,6 +16,7 @@
       ];
       home-manager.extraSpecialArgs = {
         hostname = "liquid";
+        wakatime-ls = specialArgs.wakatime-ls;
       };
     }
   ];
