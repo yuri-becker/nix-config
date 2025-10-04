@@ -1,9 +1,15 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    deno
     marksman
-    nixd
+    nixdoc
     nixfmt-rfc-style
+    prettier
+    superhtml
+    taplo
+    vscode-css-languageserver
+    vscode-json-languageserver
     yaml-language-server
   ];
   programs.helix = {
@@ -30,8 +36,6 @@
         "Cmd-f" = ":format";
         "Cmd-S-ret" =
           ":run-shell-command kitten @ launch --type window --cwd current --copy-env hx %{buffer_name}";
-        "Cmd-g" = ":run-shell-command kitten @ launch --type overlay --cwd current --copy-env lazygit";
-        "Cmd-n" = "@:o <C-r>%<C-w>";
         "Cmd-e" = "@ b<down>";
         "Cmd-S-down" = [
           "extend_to_line_bounds"
@@ -49,16 +53,89 @@
           "flip_selections"
         ];
       };
+
+      keys.normal.space = {
+        "'" = "no_op";
+        "F" = "no_op";
+        "g" = ":run-shell-command kitten @ launch --type overlay --cwd current --copy-env lazygit";
+        "G" = "no_op";
+        "Cmd-del" = [
+          ":run-shell-command trash %"
+          ":buffer-close"
+        ];
+        "n" = "@:o <C-r>%<C-w>";
+      };
     };
     languages = {
-      language-server.nixd = {
-        command = "${pkgs.nixd}/bin/nixd";
-        options.home-manager.expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.<name>.options.home-manager.users.type.getSubOptions []";
-      };
-      language-server.wakatime = {
-        command = "wakatime-ls";
+      language-server = {
+        pylsp = {
+          config.pylsp = {
+            plugins.ruff.enabled = true;
+            plugins.black.enabled = true;
+          };
+        };
+        nixd = {
+          command = "${pkgs.nixd}/bin/nixd";
+          options.home-manager.expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.<name>.options.home-manager.users.type.getSubOptions []";
+        };
+        wakatime = {
+          command = "wakatime-ls";
+        };
       };
       language = [
+        {
+          name = "css";
+          language-servers = [
+            "vscode-css-language-server"
+            "wakatime"
+          ];
+          formatter.command = "${pkgs.prettier}/bin/prettier";
+          formatter.args = [
+            "--parser"
+            "css"
+          ];
+        }
+        {
+          name = "html";
+          language-servers = [
+            "superhtml"
+            "wakatime"
+          ];
+          formatter.command = "${pkgs.prettier}/bin/prettier";
+          formatter.args = [
+            "--parser"
+            "html"
+          ];
+        }
+        {
+          name = "json";
+          language-servers = [
+            "vscode-json-language-server"
+            "wakatime"
+          ];
+          formatter.command = "${pkgs.deno}/bin/deno";
+          formatter.args = [
+            "fmt"
+            "-"
+            "--ext"
+            "json"
+          ];
+
+        }
+        {
+          name = "markdown";
+          formatter.command = "${pkgs.deno}/bin/deno";
+          formatter.args = [
+            "fmt"
+            "-"
+            "--ext"
+            "md"
+          ];
+          language-servers = [
+            "markdown"
+            "wakatime"
+          ];
+        }
         {
           name = "nix";
           auto-format = true;
@@ -70,8 +147,14 @@
         }
         {
           name = "python";
+          formatter.command = "${pkgs.ruff}/bin/ruff";
+          formatter.args = [
+            "format"
+            "--silent"
+          ];
           language-servers = [
-            "ty"
+            "ruff"
+            "pylsp"
             "wakatime"
           ];
         }
@@ -83,9 +166,15 @@
           ];
         }
         {
-          name = "markdown";
+          name = "toml";
+          formatter.command = "${pkgs.taplo}/bin/taplo";
+          formatter.args = [
+            "format"
+            "-"
+          ];
+          auto-format = true;
           language-servers = [
-            "markdown"
+            "taplo"
             "wakatime"
           ];
         }
@@ -94,6 +183,11 @@
           language-servers = [
             "yaml-language-server"
             "wakatime"
+          ];
+          formatter.command = "${pkgs.prettier}/bin/prettier";
+          formatter.args = [
+            "--parser"
+            "yaml"
           ];
         }
       ];

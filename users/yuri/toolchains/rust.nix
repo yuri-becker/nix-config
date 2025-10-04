@@ -1,11 +1,11 @@
 # Module for Rust Development
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     cargo-shuttle
     cargo-watch
     rustup
     sea-orm-cli
-    jetbrains.rust-rover
   ];
 
   programs.fish.shellAbbrs = {

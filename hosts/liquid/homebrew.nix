@@ -8,7 +8,6 @@
       cleanup = "zap";
     };
     brews = [
-      "bitwarden-cli" # marked as broken in nixpkgs
       "mas"
     ];
     casks = [
@@ -18,18 +17,15 @@
       "burp-suite"
       "freecad" # nixpkgs doenst have darwin
       "jordanbaird-ice"
-      "monero-wallet"
       "nextcloud" # nixpkgs doesnt have darwin
       "obs"
       "obsidian" # Wanna get rid of anyway
       "onlyoffice" # nixpkgs doesnt have darwin
       "orion" # not in nixpkgs
-      "playcover-community"
       "prusaslicer" # webkitgtk marked as broken
       "raspberry-pi-imager"
       "sony-ps-remote-play" # not in nixpkgs (but in nur)
       "teamspeak-client@beta" # nixpkgs doenst have darwin
-      "whoozle-android-file-transfer"
       "xppen-pentablet" # not in nixpkgs
     ];
     masApps = {

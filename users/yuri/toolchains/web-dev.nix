@@ -1,5 +1,6 @@
 # Module for Web Application Development
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     deno
     electron-chromedriver

@@ -6,6 +6,7 @@
     shellInit = "fish_add_path /opt/homebrew/bin";
   };
   home.packages = with pkgs; [
+    cyberduck
     raycast
     shottr
     the-unarchiver

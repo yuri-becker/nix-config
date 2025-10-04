@@ -5,6 +5,7 @@
     ./presets/work.nix
     ./presets/local-hosts.nix
     ./toolchains/ansible.nix
+    ./toolchains/3d-printing.nix
     ./toolchains/mobile-dev.nix
     ./toolchains/python.nix
     ./toolchains/rust.nix
@@ -12,7 +13,6 @@
   ];
   home.packages = with pkgs; [
     borgbackup
-    cyberduck
     ghidra
     gimp
     iina
