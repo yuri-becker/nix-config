@@ -5,10 +5,13 @@
   wakatime-ls,
   ...
 }:
+let
+  wakatime-ls-pkg = wakatime-ls.packages.${pkgs.system}.wakatime-ls;
+in
 {
   home.packages = [
     pkgs.wakatime-cli
-    wakatime-ls.packages.${pkgs.system}.wakatime-ls
+    wakatime-ls-pkg
   ];
   sops.secrets."wakatime/api_key" = {
     sopsFile = ./wakatime.secrets.yaml;
@@ -22,5 +25,9 @@
         status_bar_enabled = true;
       };
     };
+  };
+
+  programs.helix.languages.language-server.wakatime = {
+    command = "${wakatime-ls-pkg}/bin/wakatime-ls";
   };
 }

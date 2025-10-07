@@ -57,7 +57,19 @@
       keys.normal.space = {
         "'" = "no_op";
         "F" = "no_op";
-        "g" = ":run-shell-command kitten @ launch --type overlay --cwd current --copy-env lazygit";
+        ":" = ":write-all";
+        "g" = [
+          ":write-all"
+          ":new"
+          ":insert-output lazygit"
+          ":buffer-close!"
+          ":redraw"
+          ":reload-all"
+        ];
+        "t" = [
+          ":hsplit-new"
+          ":insert-output fish"
+        ];
         "G" = "no_op";
         "Cmd-del" = [
           ":run-shell-command trash %"
@@ -68,18 +80,10 @@
     };
     languages = {
       language-server = {
-        pylsp = {
-          config.pylsp = {
-            plugins.ruff.enabled = true;
-            plugins.black.enabled = true;
-          };
-        };
         nixd = {
           command = "${pkgs.nixd}/bin/nixd";
-          options.home-manager.expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.<name>.options.home-manager.users.type.getSubOptions []";
-        };
-        wakatime = {
-          command = "wakatime-ls";
+          config.nix.options.home-manager.expr =
+            "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.<name>.options.home-manager.users.type.getSubOptions []";
         };
       };
       language = [
@@ -142,19 +146,6 @@
           formatter.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
           language-servers = [
             "nixd"
-            "wakatime"
-          ];
-        }
-        {
-          name = "python";
-          formatter.command = "${pkgs.ruff}/bin/ruff";
-          formatter.args = [
-            "format"
-            "--silent"
-          ];
-          language-servers = [
-            "ruff"
-            "pylsp"
             "wakatime"
           ];
         }
