@@ -1,5 +1,9 @@
 { config, ... }:
 {
+  imports = [
+    ../toolchains/tex.nix
+  ];
+
   programs.git.includes = [
     {
       condition = "gitdir:~/Projects/control.alt.coop/";

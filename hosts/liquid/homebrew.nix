@@ -8,7 +8,8 @@
       cleanup = "zap";
     };
     brews = [
-      "mas"
+      "fileicon" # not in nixpkgs
+      "mas" # needed for masApps
     ];
     casks = [
       "affinity-designer@1" # not in nixpkgs

@@ -15,20 +15,12 @@
   };
 
   programs.helix.languages = {
-    language-server.basedpyright.config.python = {
+    language-server.basedpyright.config.basedpyright.analysis = {
       # See https://github.com/microsoft/pyright/blob/main/docs/configuration.md
       typeCheckingMode = "strict";
-      reportPropertyTypeMismatch = "error";
-      reportMissingTypeStubs = "warning";
-      reportImportCycles = "warning";
-      reportUnusedImport = "warning";
-      reportUnusedClass = "warning";
-      reportUnusedFunction = "warning";
-      reportUnusedVariable = "warning";
-      reportDuplicateImport = "warning";
-      reportPrivateUsage = "warning";
-      reportDeprecated = "warning";
-      reportConstantRedefinition = "warning";
+      diagnosticSeverityOverrides = {
+        reportUnusedCallResult = "none";
+      };
     };
     language = [
       {

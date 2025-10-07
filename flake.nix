@@ -15,6 +15,8 @@
     colmena.inputs.nixpkgs.follows = "nixpkgs";
     wakatime-ls.url = "github:mrnossiom/wakatime-ls";
     wakatime-ls.inputs.nixpkgs.follows = "nixpkgs";
+    naviterm.url = "gitlab:detoxify92/naviterm";
+    naviterm.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -26,6 +28,7 @@
       sops-nix,
       colmena,
       wakatime-ls,
+      naviterm,
     }:
     {
       darwinConfigurations."liquid" = nix-darwin.lib.darwinSystem {
@@ -35,6 +38,7 @@
             home-manager
             sops-nix
             wakatime-ls
+            naviterm
             ;
         };
         modules = [ ./hosts/liquid ];

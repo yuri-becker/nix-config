@@ -6,6 +6,7 @@
     ./common.nix
     ../cli/just.nix
     ../cli/lazygit.nix
+    ../cli/naviterm.nix
     ../cli/nix-search-tv.nix
     ../applications/feishin.nix
     ../applications/kitty.nix

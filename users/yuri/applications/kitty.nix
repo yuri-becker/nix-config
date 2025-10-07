@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   theme = builtins.readFile (
     builtins.fetchurl {
@@ -6,6 +6,10 @@ let
       sha256 = "92fcdd01c33e64243fbba4bb6af4b88877769432b0bffe862cf88de80e909524";
     }
   );
+  kittyIcon = builtins.fetchurl {
+    url = "https://raw.githubusercontent.com/k0nserv/kitty-icon/main/src/neue_outrun/icon_512x512.png";
+    sha256 = "0932w14hi3zfhxljazqdsg4zddzgl2jw6ycd95fwmhbirab4kdas";
+  };
 in
 {
   programs.kitty = {
@@ -18,7 +22,7 @@ in
     };
     settings = {
       # Font
-      modify_font = "cell_height +4px";
+      modify_font = "cell_height +2px";
       cursor_shape = "underline";
 
       # Remote Control
@@ -88,5 +92,13 @@ in
       "cmd+n" = "no_op";
     };
     extraConfig = theme;
+  };
+  xdg.configFile."kitty/kitty.app.png" = {
+    source = kittyIcon;
+    onChange =
+      if pkgs.stdenv.isDarwin then
+        "/opt/homebrew/bin/fileicon set \"${pkgs.kitty}/Applications/kitty.app\" \"${kittyIcon}\""
+      else
+        null;
   };
 }

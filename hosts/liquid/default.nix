@@ -17,6 +17,7 @@
       home-manager.extraSpecialArgs = {
         hostname = "liquid";
         wakatime-ls = specialArgs.wakatime-ls;
+        naviterm = specialArgs.naviterm;
       };
     }
   ];
@@ -39,7 +40,6 @@
       builtins.elem (lib.getName pkg) [
         "google-chrome"
         "raycast"
-        "rust-rover"
         "shottr"
         "the-unarchiver"
       ];
