@@ -95,10 +95,10 @@ in
   };
   xdg.configFile."kitty/kitty.app.png" = {
     source = kittyIcon;
-    onChange =
+    onChange = 
       if pkgs.stdenv.isDarwin then
         "/opt/homebrew/bin/fileicon set \"${pkgs.kitty}/Applications/kitty.app\" \"${kittyIcon}\""
       else
-        null;
+        "";
   };
 }

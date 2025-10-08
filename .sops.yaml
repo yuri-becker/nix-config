@@ -1,19 +1,17 @@
 keys:
   - &yuri_at_liquid age1z2pt33cpdvat6t498sqw3a6gfnvcdnk8xphk8euf9t4zjzzteuvq7uwxyw
   - &yuri_at_mantis age1y4pplvjn22fdxtmtf2m6t5fpfrgp495q2sumvt8tlx0fwm2qc9hqh5l3ma
+  - &yuri_at_meryl age18j3qmwflvj84jrqcp4gw6e2m5qxvyha95vd5fc2c7e0kk9wsyqcs6jahpw
   - &mantis age1lynl2fyd6jput050myqj8fghn7kgxys79ugklpe4v5w7tx49sa3qcj5ynd
 creation_rules:
-  - path_regex: ^users/yuri/(.*/)?[^/]*liquid.secrets.yaml$ # Host-specific secrets
-    key_groups:
-      - age:
-          - *yuri_at_liquid
-  - path_regex: ^users/yuri/(.*/)?[^/]*secrets.yaml$
+  - path_regex: ^users/yuri/(.*/)?[^/]*secrets.yaml$ # User secrets
     key_groups:
       - age:
           - *yuri_at_liquid
           - *yuri_at_mantis
-  - path_regex: ^hosts/mantis/(.*/)?[^/]*secrets.yaml$
+          - *yuri_at_meryl
+  - path_regex: ^hosts/mantis/(.*/)?[^/]*secrets.yaml$ # Host secrets
     key_groups:
       - age:
-          - *yuri_at_liquid
+          - *yuri_at_liquid # Deployment host
           - *mantis

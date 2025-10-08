@@ -43,6 +43,18 @@
         };
         modules = [ ./hosts/liquid ];
       };
+      nixosConfigurations."meryl" = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+	   inherit
+             self
+	     home-manager
+	     sops-nix
+	     wakatime-ls
+	     naviterm
+	   ;
+        };
+        modules = [ ./hosts/meryl ];
+      };
       colmenaHive = colmena.lib.makeHive {
         meta = {
           nixpkgs = import nixpkgs { system = "x86_64-linux"; };
