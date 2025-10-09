@@ -10,6 +10,7 @@ let
     url = "https://raw.githubusercontent.com/k0nserv/kitty-icon/main/src/neue_outrun/icon_512x512.png";
     sha256 = "0932w14hi3zfhxljazqdsg4zddzgl2jw6ycd95fwmhbirab4kdas";
   };
+  modifier = if pkgs.stdenv.isDarwin then "cmd" else "ctrl";
 in
 {
   programs.kitty = {
@@ -18,7 +19,7 @@ in
     font = {
       name = "MesloLGS Nerd Font";
       package = pkgs.meslo-lgs-nf;
-      size = 20;
+      size = if pkgs.stdenv.isDarwin then 20 else 18;
     };
     settings = {
       # Font
@@ -52,7 +53,7 @@ in
 
       # Window
       enabled_layouts = "tall:bias=70,stack";
-      hide_window_decorations = false;
+      hide_window_decorations = if pkgs.stdenv.isDarwin then false else true;
       resize_in_steps = false;
       window_margin_width = 0;
       window_border_width = "1pt";
@@ -78,18 +79,19 @@ in
       macos_window_resizable = true;
       macos_show_window_title_in = "window";
       macos_menubar_title_max_length = -1;
+      wayland_titlebar_color = "background";
     };
     keybindings = {
-      "shift+cmd+up" = "no_op";
-      "shift+cmd+down" = "no_op";
-      "cmd+t" = "new_tab_with_cwd";
-      "cmd+enter" = "new_window_with_cwd";
-      "cmd+w" = "close_window_with_confirmation ignore-shell";
-      "cmd+." = "layout_action bias 20 50 70";
-      "shift+cmd+." = "toggle_layout stack";
-      "cmd+]" = "next_window";
-      "cmd+[" = "prev_window";
-      "cmd+n" = "no_op";
+      "shift+${modifier}+up" = "no_op";
+      "shift+${modifier}+down" = "no_op";
+      "${modifier}+t" = "new_tab_with_cwd";
+      "${modifier}+enter" = "new_window_with_cwd";
+      "${modifier}+w" = "close_window_with_confirmation ignore-shell";
+      "${modifier}+." = "layout_action bias 20 50 70";
+      "shift+${modifier}+." = "toggle_layout stack";
+      "${modifier}+]" = "next_window";
+      "${modifier}+[" = "prev_window";
+      "${modifier}+n" = "no_op";
     };
     extraConfig = theme;
   };

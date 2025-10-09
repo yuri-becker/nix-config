@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  modifier = if pkgs.stdenv.isDarwin then "Cmd" else "C";
+in
 {
   home.packages = with pkgs; [
     deno
@@ -33,11 +36,11 @@
         character = "▏";
       };
       keys.normal = {
-        "Cmd-f" = ":format";
-        "Cmd-S-ret" =
+        "${modifier}-f" = ":format";
+        "${modifier}-S-ret" =
           ":run-shell-command kitten @ launch --type window --cwd current --copy-env hx %{buffer_name}";
-        "Cmd-e" = "@ b<down>";
-        "Cmd-S-down" = [
+        "${modifier}-e" = "@ b<down>";
+        "${modifier}-S-down" = [
           "extend_to_line_bounds"
           "delete_selection"
           "paste_after"
@@ -45,7 +48,7 @@
           "goto_line_start"
           "normal_mode"
         ];
-        "Cmd-S-up" = [
+        "${modifier}-S-up" = [
           "extend_to_line_bounds"
           "delete_selection"
           "move_line_up"
@@ -71,7 +74,7 @@
           ":insert-output fish"
         ];
         "G" = "no_op";
-        "Cmd-del" = [
+        "${modifier}-del" = [
           ":run-shell-command trash %"
           ":buffer-close"
         ];

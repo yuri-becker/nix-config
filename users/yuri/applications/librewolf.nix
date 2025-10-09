@@ -17,9 +17,6 @@
           icon = "https://kagi.com/favicon.ico";
         };
       };
-      extensions = {
-
-      };
     };
   };
 }

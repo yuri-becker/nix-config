@@ -6,7 +6,7 @@
     ./presets/locality/local-hosts.nix
     ./presets/os/linux.nix
     ./presets/usecase/work.nix
+    ./applications/aonsoku.nix
     ./applications/gnome
-    ./applications/moosync.nix
   ];
 }
