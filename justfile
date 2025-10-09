@@ -3,14 +3,19 @@ default:
   @just --list
 
 [macos]
-darwin:
+rebuild:
     sudo darwin-rebuild switch --flake .
-alias d := darwin
 
-remotes tag='*':
+[linux]
+rebuild:
+    sudo nixos-rebuild switch --flake .
+
+alias r := rebuild
+
+colmena tag='*':
     nix run .#colmena -- build --impure --on @{{ tag }}
     nix run .#colmena -- apply --impure --on @{{ tag }}
-alias r := remotes
+alias c := colmena
 
 update:
   nix flake update

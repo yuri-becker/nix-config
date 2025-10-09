@@ -68,7 +68,7 @@ in
       tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{fmt.bold}{index} {fmt.nobold}{title}";
 
       # Advanced
-      shell = "zsh -c ${pkgs.fish}/bin/fish";
+      shell = "$SHELL -c ${pkgs.fish}/bin/fish";
       editor = "${pkgs.helix}/bin/hx";
       term = "xterm";
 
@@ -95,7 +95,7 @@ in
   };
   xdg.configFile."kitty/kitty.app.png" = {
     source = kittyIcon;
-    onChange = 
+    onChange =
       if pkgs.stdenv.isDarwin then
         "/opt/homebrew/bin/fileicon set \"${pkgs.kitty}/Applications/kitty.app\" \"${kittyIcon}\""
       else

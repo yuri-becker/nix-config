@@ -1,7 +1,9 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
-    ../toolchains/tex.nix
+    ../../toolchains/python.nix
+    ../../toolchains/tex.nix
+    ../../applications/librewolf.nix
   ];
 
   programs.git.includes = [
@@ -19,4 +21,9 @@
   programs.ssh.matchBlocks."gitlab.alt.coop" = {
     identityFile = "${config.home.homeDirectory}/.ssh/id_gitlab_alt_coop";
   };
+
+  home.packages = with pkgs; [
+    mattermost-desktop
+  ];
+
 }

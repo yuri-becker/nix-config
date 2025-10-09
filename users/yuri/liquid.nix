@@ -1,15 +1,11 @@
 { pkgs, ... }:
 {
   imports = [
-    ./presets/darwin.nix
-    ./presets/work.nix
-    ./presets/local-hosts.nix
-    ./toolchains/ansible.nix
-    ./toolchains/3d-printing.nix
-    ./toolchains/mobile-dev.nix
-    ./toolchains/python.nix
-    ./toolchains/rust.nix
-    ./toolchains/web-dev.nix
+    ./presets/common.nix
+    ./presets/locality/local-hosts.nix
+    ./presets/os/darwin.nix
+    ./presets/usecase/personal.nix
+    ./presets/usecase/work.nix
   ];
   home.packages = with pkgs; [
     borgbackup
@@ -24,6 +20,5 @@
     woodpecker-cli
   ];
   programs.home-manager.enable = true;
-  programs.mpv.enable = true;
   programs.yt-dlp.enable = true;
 }

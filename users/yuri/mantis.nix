@@ -2,7 +2,8 @@
 {
   imports = [
     ./presets/common.nix
-    ./presets/linux.nix
-    ./presets/remote-hosts.nix
+    ./presets/os/linux.nix
+    ./presets/locality/remote-hosts.nix
+    ./applications/vesktop.nix
   ];
 }

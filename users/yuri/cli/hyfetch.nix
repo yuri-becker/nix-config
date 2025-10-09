@@ -9,6 +9,7 @@
       lightness = 0.65;
       color_align.mode = "vertical";
       backend = "fastfetch";
+      pride_month_disable = false;
     };
   };
   home.packages = with pkgs; [ fastfetch ];

@@ -2,9 +2,11 @@
 {
   imports = [
     ./presets/common.nix
-    ./presets/linux.nix
-    ./presets/work.nix
-    ./presets/local-hosts.nix
-    ./toolchains/python.nix
+    ./presets/hardware/office.nix
+    ./presets/locality/local-hosts.nix
+    ./presets/os/linux.nix
+    ./presets/usecase/work.nix
+    ./applications/gnome
+    ./applications/moosync.nix
   ];
 }

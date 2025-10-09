@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.fish = {
     enable = true;
     interactiveShellInit = "set fish_greeting";
@@ -22,6 +23,7 @@
       rm = "rm -i";
       rimraf = "rm -rf";
       t = "tail -f";
+      yk = "ykman oath accounts code";
     };
   };
 

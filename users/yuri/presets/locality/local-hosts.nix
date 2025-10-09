@@ -3,15 +3,11 @@
 {
   fonts.fontconfig.enable = true;
   imports = [
-    ./common.nix
-    ../cli/just.nix
-    ../cli/lazygit.nix
-    ../cli/naviterm.nix
-    ../cli/nix-search-tv.nix
-    ../applications/feishin.nix
-    ../applications/kitty.nix
-    ../applications/vesktop.nix
-    ../applications/wakatime.nix
+    ../../cli/just.nix
+    ../../cli/lazygit.nix
+    ../../cli/nix-search-tv.nix
+    ../../applications/kitty.nix
+    ../../applications/wakatime.nix
   ];
   home.packages = with pkgs; [
     commitlint-rs

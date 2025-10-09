@@ -39,7 +39,6 @@
     persistent-apps = [
       "/Applications/Orion.app"
       "${pkgs.kitty}/Applications/kitty.app"
-      "${pkgs.feishin}/Applications/Feishin.app"
       "/System/Applications/Calendar.app"
       {
         spacer.small = true;
