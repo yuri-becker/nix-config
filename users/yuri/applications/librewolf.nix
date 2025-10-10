@@ -6,7 +6,7 @@
       "en-GB"
       "de"
     ];
-
+    enableGnomeExtensions = true;
     profiles.work = {
       search = {
         force = true;

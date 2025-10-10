@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
   imports = [
+    ./clipboard.nix
     ./dock.nix
+    ./top-bar.nix
     ./theme.nix
   ];
   programs.gnome-shell = {

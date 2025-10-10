@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   theme = builtins.readFile (
     builtins.fetchurl {
@@ -10,7 +10,6 @@ let
     url = "https://raw.githubusercontent.com/k0nserv/kitty-icon/main/src/neue_outrun/icon_512x512.png";
     sha256 = "0932w14hi3zfhxljazqdsg4zddzgl2jw6ycd95fwmhbirab4kdas";
   };
-  modifier = if pkgs.stdenv.isDarwin then "cmd" else "ctrl";
 in
 {
   programs.kitty = {
@@ -82,16 +81,36 @@ in
       wayland_titlebar_color = "background";
     };
     keybindings = {
-      "shift+${modifier}+up" = "no_op";
-      "shift+${modifier}+down" = "no_op";
-      "${modifier}+t" = "new_tab_with_cwd";
-      "${modifier}+enter" = "new_window_with_cwd";
-      "${modifier}+w" = "close_window_with_confirmation ignore-shell";
-      "${modifier}+." = "layout_action bias 20 50 70";
-      "shift+${modifier}+." = "toggle_layout stack";
-      "${modifier}+]" = "next_window";
-      "${modifier}+[" = "prev_window";
-      "${modifier}+n" = "no_op";
+      # Unbinds
+      "shift+super+up" = "no_op";
+      "shift+super+down" = "no_op";
+      "shift+ctrl+up" = "no_op";
+      "shift+ctrl+down" = "no_op";
+      "super+n" = "no_op";
+      "ctrl+shift+f11" = "no_op";
+      "ctrl+cmd+f" = "no_op";
+      "ctrl+shift+f10" = "no_op";
+      "ctrl+tab" = "no_op";
+      "cmd+," = "no_op";
+      "ctrl+shift+f2" = "no_op";
+      "ctrl+shift+escape" = "no_op";
+      "ctrl+shift+a>m" = "no_op";
+      "ctrl+shift+a>l" = "no_op";
+      "cmd+h" = "no_op";
+      # Clipboard
+      "super+c" = "copy_to_clipboard";
+      "super+v" = "paste_from_clipboard";
+      # Windows
+      "super+enter" = "new_window_with_cwd";
+      "super+w" = "close_window_with_confirmation ignore-shell";
+      "super+." = "layout_action bias 20 50 70";
+      "shift+super+." = "toggle_layout stack";
+      "super+]" = "next_window";
+      "super+[" = "prev_window";
+      # Tabs
+      "super+shift+]" = "next_tab";
+      "super+shift+[" = "previous_tab";
+      "super+t" = "new_tab_with_cwd";
     };
     extraConfig = theme;
   };

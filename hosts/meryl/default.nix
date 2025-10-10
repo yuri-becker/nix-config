@@ -2,6 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./pam.nix
     ./users
     specialArgs.sops-nix.nixosModules.sops
   ];
