@@ -5,7 +5,6 @@
     ./presets/locality/local-hosts.nix
     ./presets/os/darwin.nix
     ./presets/usecase/personal.nix
-    ./presets/usecase/work.nix
   ];
   home.packages = with pkgs; [
     borgbackup

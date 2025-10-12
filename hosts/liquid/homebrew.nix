@@ -26,6 +26,7 @@
       "prusaslicer" # webkitgtk marked as broken
       "raspberry-pi-imager"
       "sony-ps-remote-play" # not in nixpkgs (but in nur)
+      "submariner" # not in nixpkgs
       "teamspeak-client@beta" # nixpkgs doenst have darwin
       "xppen-pentablet" # not in nixpkgs
     ];
