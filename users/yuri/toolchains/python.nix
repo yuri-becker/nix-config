@@ -2,9 +2,14 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    gcc
     basedpyright
   ];
   programs.poetry.enable = true;
+  programs.uv = {
+    enable = true;
+    settings = { };
+  };
   programs.ruff = {
     enable = true;
     settings = { };
