@@ -2,9 +2,13 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    gcc
     basedpyright
   ];
+
+  programs.pyenv = {
+    enable = true;
+    enableFishIntegration = true;
+  };
   programs.poetry.enable = true;
   programs.uv = {
     enable = true;
@@ -13,10 +17,6 @@
   programs.ruff = {
     enable = true;
     settings = { };
-  };
-  programs.pyenv = {
-    enable = true;
-    enableFishIntegration = true;
   };
 
   programs.helix.languages = {

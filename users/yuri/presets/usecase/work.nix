@@ -8,7 +8,7 @@
 
   programs.git.includes = [
     {
-      condition = "gitdir:~/Projects/control.alt.coop/";
+      condition = "gitdir:~/Projects/";
       contents = {
         user = {
           name = "Yuri Becker";
