@@ -1,23 +1,50 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
-  themeName = "Nightfox-Dark";
+  themePkg = pkgs.nightfox-gtk-theme.override {
+    colorVariants = [ "dark" ];
+    themeVariants = [ "purple" ];
+    sizeVariants = [ "standard" ];
+    tweakVariants = [ "black" ];
+  };
+  themeName = config.gtk.theme.name;
   cursorTheme = "Capitaine Cursors (Palenight) - White";
-  iconTheme = "WhiteSur-dark";
+  iconTheme = config.gtk.iconTheme.name;
 in
 {
   home.packages = with pkgs; [
-    capitaine-cursors-themed
     gtk-engine-murrine
     gnome-themes-extra
     sassc
-    nightfox-gtk-theme
-    whitesur-icon-theme
   ];
   programs.gnome-shell.theme = {
     name = themeName;
-    package = pkgs.nightfox-gtk-theme;
+    package = themePkg;
   };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Nightfox-Purple-Dark";
+      package = themePkg;
+    };
+    iconTheme = {
+      name = "WhiteSur-purple-dark";
+      package = pkgs.whitesur-icon-theme.override {
+        themeVariants = [ "purple" ];
+      };
+    };
+    cursorTheme = {
+      name = "Capitaine Cursors (Palenight) - White";
+      package = pkgs.capitaine-cursors-themed;
+    };
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+  };
+
   dconf.settings = {
+    "org/gnome/shell/extensions/user-theme" = {
+      name = themeName;
+    };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       accent-color = "purple";
@@ -25,15 +52,6 @@ in
       cursor-theme = cursorTheme;
       icon-theme = iconTheme;
     };
-  };
-
-  gtk = {
-    enable = true;
-    theme.name = themeName;
-    iconTheme.name = iconTheme;
-    cursorTheme.name = cursorTheme;
-    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
-    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
 
   home.sessionVariables.GTK_THEME = themeName;

@@ -11,6 +11,7 @@
   ];
   home.packages = with pkgs; [
     commitlint-rs
+    devenv
     erdtree
     ffmpeg-full
     meslo-lgs-nf
@@ -38,6 +39,10 @@
     matchBlocks."github.com" = {
       user = "git";
       identityFile = "${config.home.homeDirectory}/.ssh/id_github";
+    };
+    matchBlocks."gitlab.com" = {
+      user = "git";
+      identityFile = "${config.home.homeDirectory}/.ssh/id_gitlab";
     };
     matchBlocks."gitlab.alt.coop" = {
       identityFile = "${config.home.homeDirectory}/.ssh/id_gitlab_alt_coop";

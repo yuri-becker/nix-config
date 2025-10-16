@@ -2,17 +2,39 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    deno
-    electron-chromedriver
-    fnm
     hoppscotch
-    yarn-berry
+    prettier
+    superhtml
+    typescript-language-server
+    vscode-css-languageserver
+    # Webkit browser for testing
+    (if stdenv.isLinux then epiphany else builtins.null)
   ];
 
-  # Untouched Chromium and Firefox for Application Testing
-  programs.chromium = {
-    enable = true;
-    package = pkgs.google-chrome;
-  };
-  programs.firefox.enable = true;
+  programs.helix.languages.language = [
+    {
+      name = "css";
+      language-servers = [
+        "vscode-css-language-server"
+        "wakatime"
+      ];
+      formatter.command = "${pkgs.prettier}/bin/prettier";
+      formatter.args = [
+        "--parser"
+        "css"
+      ];
+    }
+    {
+      name = "html";
+      language-servers = [
+        "superhtml"
+        "wakatime"
+      ];
+      formatter.command = "${pkgs.prettier}/bin/prettier";
+      formatter.args = [
+        "--parser"
+        "html"
+      ];
+    }
+  ];
 }

@@ -3,21 +3,8 @@
 {
   home.packages = with pkgs; [
     basedpyright
+    ruff
   ];
-
-  programs.pyenv = {
-    enable = true;
-    enableFishIntegration = true;
-  };
-  programs.poetry.enable = true;
-  programs.uv = {
-    enable = true;
-    settings = { };
-  };
-  programs.ruff = {
-    enable = true;
-    settings = { };
-  };
 
   programs.helix.languages = {
     language-server.basedpyright.config.basedpyright.analysis = {

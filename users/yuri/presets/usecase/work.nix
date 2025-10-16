@@ -1,8 +1,10 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ../../toolchains/web-dev.nix
     ../../toolchains/python.nix
     ../../toolchains/tex.nix
+    ../../applications/geary-work.nix
     ../../applications/librewolf.nix
   ];
 
@@ -27,4 +29,8 @@
     signal-desktop-bin
   ];
 
+  xdg.autostart.entries = [
+    "${pkgs.mattermost-desktop}/share/applications/Mattermost.desktop"
+    "${pkgs.signal-desktop-bin}/share/applications/signal.desktop"
+  ];
 }

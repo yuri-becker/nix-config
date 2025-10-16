@@ -13,9 +13,7 @@ in
     pkgs.wakatime-cli
     wakatime-ls-pkg
   ];
-  sops.secrets."wakatime/api_key" = {
-    sopsFile = ./wakatime.secrets.yaml;
-  };
+  sops.secrets."wakatime/api_key".sopsFile = ./wakatime.secrets.yaml;
   home.file.".wakatime.cfg" = {
     enable = true;
     text = lib.generators.toINI { } {
