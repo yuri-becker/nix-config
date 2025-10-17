@@ -1,7 +1,4 @@
 { config, lib, ... }:
-let
-
-in
 {
   options = {
     homer.links =
@@ -34,6 +31,11 @@ in
           {
             name = "Dashboard";
             icon = "fas fa-house-chimney";
+          }
+          {
+            name = "Pocket ID";
+            icon = "fas fa-id-badge";
+            url = "https://${config.pocket-id.domain}";
           }
           {
             name = "Get Root Certificate";

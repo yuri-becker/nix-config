@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./actual.nix
     ./adguard.nix
     ./audiobookshelf.nix
     ./borgmatic.nix
@@ -10,5 +11,6 @@
     ./immich.nix
     ./monitoring.nix
     ./pinchflat.nix
+    ./pocket-id.nix
   ];
 }

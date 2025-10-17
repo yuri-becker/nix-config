@@ -1,5 +1,6 @@
 { config, ... }:
 {
+  # Backup not needed since everything is stored in the database it seems
   services.homebox = {
     enable = true;
     database.createLocally = true;
@@ -12,10 +13,6 @@
 
   services.caddy.virtualHosts."inventory.home.arpa".extraConfig =
     "reverse_proxy :${config.services.homebox.settings.HBOX_WEB_PORT}";
-
-  services.borgmatic.configurations.mantis.source_directories = [
-    config.services.homebox.settings.HBOX_STORAGE_DATA
-  ];
 
   homer.links = [
     {
