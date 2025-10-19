@@ -1,16 +1,17 @@
 # Module for Web Application Development
 { pkgs, ... }:
-{
-  home.packages = with pkgs; [
+let
+  packages = with pkgs; [
     hoppscotch
     prettier
     superhtml
     typescript-language-server
     vscode-css-languageserver
-    # Webkit browser for testing
-    (if stdenv.isLinux then epiphany else builtins.null)
   ];
-
+  linuxPackages = with pkgs; if stdenv.isLinux then [ epiphany ] else [ ];
+in
+{
+  home.packages = packages ++ linuxPackages;
   programs.helix.languages.language = [
     {
       name = "css";

@@ -9,7 +9,6 @@
   home.packages = with pkgs; [
     borgbackup
     ghidra
-    gimp
     iina
     moonlight-qt
     nmap

@@ -19,6 +19,9 @@
       };
     };
 
+    systemd.services.actual.environment.NODE_EXTRA_CA_CERTS =
+      "${config.services.caddy.dataDir}/.local/share/caddy/pki/authorities/local/root.crt";
+
     services.caddy.virtualHosts."${config.actual.domain}".extraConfig =
       "reverse_proxy :${toString config.services.actual.settings.port}";
     services.borgmatic.configurations.mantis.source_directories = [

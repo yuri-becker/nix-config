@@ -1,6 +1,8 @@
 { specialArgs, pkgs, ... }:
 {
   imports = [
+    ./audio.nix
+    ./desktop.nix
     ./docker.nix
     ./hardware-configuration.nix
     ./pam.nix
@@ -8,24 +10,36 @@
     specialArgs.sops-nix.nixosModules.sops
   ];
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-  nix.extraOptions = ''
-    extra-substituters = https://devenv.cachix.org
-    extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
-  '';
+  nix = {
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    extraOptions = ''
+      extra-substituters = https://devenv.cachix.org
+      extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
+    '';
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 7d";
+    };
+  };
+
   system.stateVersion = "25.05";
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.luks.devices."luks-fe6e29aa-65b3-4153-b2c2-39d34734a70a".device =
-    "/dev/disk/by-uuid/fe6e29aa-65b3-4153-b2c2-39d34734a70a";
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    kernelPackages = pkgs.linuxPackages_latest;
+    initrd.luks.devices."luks-fe6e29aa-65b3-4153-b2c2-39d34734a70a".device =
+      "/dev/disk/by-uuid/fe6e29aa-65b3-4153-b2c2-39d34734a70a";
+  };
 
-  networking.hostName = "meryl";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "meryl";
+    networkmanager.enable = true;
+  };
 
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -40,39 +54,5 @@
     layout = "us";
     variant = "";
   };
-
-  services.xserver.enable = true; # @Future Me: This enables Wayland as well
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome = {
-    enable = true;
-    extraGSettingsOverrides = ''
-      [org.gnome.mutter]
-      experimental-features=['scale-monitor-framebuffer']
-    '';
-  };
-  environment.gnome.excludePackages = with pkgs; [
-    decibels
-    geary
-    gnome-console
-    gnome-contacts
-    gnome-clocks
-    gnome-music
-    gnome-logs
-    gnome-text-editor
-    gnome-system-monitor
-    loupe
-    totem
-    yelp
-  ];
-
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
   services.printing.enable = true;
-  services.pcscd.enable = true;
 }

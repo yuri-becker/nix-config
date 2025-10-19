@@ -17,6 +17,7 @@
       "beeper" # nixpkgs doesnt have darwin
       "burp-suite"
       "freecad" # nixpkgs doenst have darwin
+      "gimp" # suddenly marked as incompatbile for darwin
       "jordanbaird-ice"
       "nextcloud" # nixpkgs doesnt have darwin
       "obs"
@@ -24,7 +25,6 @@
       "onlyoffice" # nixpkgs doesnt have darwin
       "orion" # not in nixpkgs
       "prusaslicer" # webkitgtk marked as broken
-      "raspberry-pi-imager"
       "sony-ps-remote-play" # not in nixpkgs (but in nur)
       "submariner" # not in nixpkgs
       "teamspeak-client@beta" # nixpkgs doenst have darwin

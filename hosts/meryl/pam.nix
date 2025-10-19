@@ -4,6 +4,7 @@
     login.u2fAuth = true;
     sudo.u2fAuth = true;
   };
+  services.pcscd.enable = true;
   security.pam.u2f.settings.cue = true;
 
   # Locks Screen when Yubikey is unplugged

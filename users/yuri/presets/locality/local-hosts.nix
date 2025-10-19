@@ -54,4 +54,8 @@
       identityFile = "${config.home.homeDirectory}/.ssh/id_ocelot";
     };
   };
+  programs.fish.shellAbbrs = {
+    "catboy-house" = "ssh catboy-house -t bash";
+    "mantis" = "ssh mantis -t fish";
+  };
 }
