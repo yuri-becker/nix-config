@@ -14,12 +14,14 @@ let
       #!${fish}/bin/fish
       argparse 'media=' -- $argv; or return 1
 
+      set -l temp (mktemp -d)
+
       for folder in $_flag_media/*
           set -l artist (basename $folder)
           echo "Going through $artist"
           set -l track 1
           for file in (ls $folder | sort -r)
-              ${tageditor}/bin/tageditor set album="$artist" albumartist="$artist" track=$track artist="$artist" -f "$folder/$file"
+              ${tageditor}/bin/tageditor set album="$artist" albumartist="$artist" track=$track artist="$artist" --quiet --temp-dir "$temp" -f "$folder/$file"
               set track (math $track + 1)
           end
       end
