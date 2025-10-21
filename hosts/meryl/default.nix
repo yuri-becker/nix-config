@@ -55,4 +55,9 @@
     variant = "";
   };
   services.printing.enable = true;
+
+  # Epomaker Alice 66
+  services.udev.extraRules = ''
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="36b0", ATTRS{idProduct}=="300a", TAG+="uaccess"
+  '';
 }
