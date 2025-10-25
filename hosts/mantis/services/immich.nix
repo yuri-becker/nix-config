@@ -8,6 +8,8 @@ in
   sops.secrets."immich/smtp/username".sopsFile = sopsFile;
   sops.secrets."immich/smtp/password".sopsFile = sopsFile;
   sops.secrets."immich/external-domain".sopsFile = sopsFile;
+  sops.secrets."immich/oauth/id".sopsFile = sopsFile;
+  sops.secrets."immich/oauth/secret".sopsFile = sopsFile;
   sops.templates."immich.json" = {
     owner = config.services.immich.user;
     content = lib.generators.toJSON { } {
@@ -24,15 +26,23 @@ in
       server.externalDomain = config.sops.placeholder."immich/external-domain";
       server.publicUsers = false;
       storageTemplate.enabled = false;
-      machineLearning.clip.enabled = false;
       trash = {
         enabled = true;
         days = 360;
       };
       reverseGeocoding.enabled = true;
-      oauth.enabled = false;
-      passwordLogin.enabled = true;
+      passwordLogin.enabled = false;
       newVersionCheck.enabled = false;
+      backup.database.enabled = false; # Is backed up via Borgmatic
+      oauth = {
+        enabled = true;
+        autoLaunch = false;
+        autoRegister = true;
+        buttonText = "Login with Pocket ID";
+        clientId = config.sops.placeholder."immich/oauth/id";
+        clientSecret = config.sops.placeholder."immich/oauth/secret";
+        issuerUrl = "https://id.home.arpa";
+      };
     };
   };
   services.immich = {
