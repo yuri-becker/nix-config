@@ -6,6 +6,7 @@
     ../../cli/just.nix
     ../../cli/lazygit.nix
     ../../cli/nix-search-tv.nix
+    ../../applications/feishin.nix
     ../../applications/kitty.nix
     ../../applications/wakatime.nix
   ];
@@ -21,10 +22,11 @@
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
     matchBlocks."catboy-house" = {
       hostname = "46.4.241.139";
       user = "yuri";
-      identityFile = "${config.home.homeDirectory}/.ssh/id_catboy-house"; # TODO change key
+      identityFile = "${config.home.homeDirectory}/.ssh/id_catboy-house";
     };
     matchBlocks."*.repo.borgbase.com" = {
       hostname = "%h";

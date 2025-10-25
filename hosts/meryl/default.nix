@@ -1,30 +1,18 @@
 { specialArgs, pkgs, ... }:
+let
+  hostname = "meryl";
+in
 {
   imports = [
+    ../../mixins/docker.nix
+    ../../mixins/nix-options.nix
     ./audio.nix
     ./desktop.nix
-    ./docker.nix
     ./hardware-configuration.nix
     ./pam.nix
     ./users
     specialArgs.sops-nix.nixosModules.sops
   ];
-
-  nix = {
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    extraOptions = ''
-      extra-substituters = https://devenv.cachix.org
-      extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
-    '';
-    gc = {
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 7d";
-    };
-  };
 
   system.stateVersion = "25.05";
 
@@ -37,7 +25,7 @@
   };
 
   networking = {
-    hostName = "meryl";
+    hostName = hostname;
     networkmanager.enable = true;
   };
 

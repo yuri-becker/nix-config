@@ -4,6 +4,7 @@
     ./actual.nix
     ./adguard.nix
     ./audiobookshelf.nix
+    ./beszel-agent.nix
     ./borgmatic.nix
     ./caddy.nix
     ./homebox.nix

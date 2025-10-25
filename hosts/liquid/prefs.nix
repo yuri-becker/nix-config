@@ -38,7 +38,7 @@
 
     persistent-apps = [
       "/Applications/Orion.app"
-      "/Applications/Submariner.app"
+      "${pkgs.feishin}/Applications/feishin.app"
       "${pkgs.kitty}/Applications/kitty.app"
       "/System/Applications/Calendar.app"
       {

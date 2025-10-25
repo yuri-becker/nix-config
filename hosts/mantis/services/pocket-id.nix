@@ -10,7 +10,7 @@ in
   options.pocket-id.domain =
     with lib;
     mkOption {
-      type = lib.types.str;
+      type = types.str;
       default = "id.home.arpa";
     };
   config = {

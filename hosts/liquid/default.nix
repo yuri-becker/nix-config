@@ -1,6 +1,7 @@
 { specialArgs, lib, ... }:
 {
   imports = [
+    ../../mixins/nix-options.nix
     ./prefs.nix
     ./homebrew.nix
     ./notunes.nix
@@ -26,18 +27,13 @@
   };
   nix = {
     enable = true;
-    settings.experimental-features = "nix-command flakes";
-    optimise.automatic = true;
-    extraOptions = ''
-      extra-platforms = x86_64-darwin aarch64-darwin
-    '';
+    extraOptions = "extra-platforms = x86_64-darwin aarch64-darwin";
   };
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
     config.allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
-        "google-chrome"
         "raycast"
         "shottr"
         "the-unarchiver"

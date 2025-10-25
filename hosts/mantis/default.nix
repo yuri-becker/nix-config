@@ -1,11 +1,15 @@
 { specialArgs, pkgs, ... }:
+let
+  hostname = "mantis";
+in
 {
   deployment = {
-    targetHost = "mantis";
+    targetHost = hostname;
     tags = [ "lan" ];
   };
 
   imports = [
+    ../../mixins/nix-options.nix
     ./hardware-configuration.nix
     ./services
     ./users
@@ -15,7 +19,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "mantis";
+  networking.hostName = hostname;
   networking.interfaces.enp60s0.wakeOnLan.enable = true;
 
   system.stateVersion = "25.05";
@@ -29,17 +33,10 @@
       PermitRootLogin = "no";
     };
   };
-
   security.sudo.wheelNeedsPassword = false;
 
   environment.systemPackages = with pkgs; [
     usbutils
   ];
   sops.gnupg.sshKeyPaths = [ ];
-
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 7d";
-  };
 }

@@ -26,7 +26,6 @@
       "orion" # not in nixpkgs
       "prusaslicer" # webkitgtk marked as broken
       "sony-ps-remote-play" # not in nixpkgs (but in nur)
-      "submariner" # not in nixpkgs
       "teamspeak-client@beta" # nixpkgs doenst have darwin
       "xppen-pentablet" # not in nixpkgs
     ];

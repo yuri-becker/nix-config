@@ -10,7 +10,7 @@
     borgbackup
     ghidra
     iina
-    moonlight-qt
+    #moonlight-qt
     nmap
     openscad
     transmission_4-qt
