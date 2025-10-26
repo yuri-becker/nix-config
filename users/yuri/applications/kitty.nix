@@ -52,7 +52,7 @@ in
 
       # Window
       enabled_layouts = "tall:bias=70,stack";
-      hide_window_decorations = if pkgs.stdenv.isDarwin then false else true;
+      hide_window_decorations = pkgs.stdenv.isDarwin;
       resize_in_steps = false;
       window_margin_width = 0;
       window_border_width = "1pt";

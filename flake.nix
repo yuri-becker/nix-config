@@ -50,6 +50,14 @@
         };
         modules = [ ./hosts/meryl ];
       };
+      homeConfigurations."yuri" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [sops-nix.homeManagerModule ./users/yuri/solid.nix];
+        extraSpecialArgs = {
+          inherit wakatime-ls;
+          hostname = "solid";
+        };
+      };
       colmenaHive = colmena.lib.makeHive {
         meta = {
           nixpkgs = import nixpkgs { system = "x86_64-linux"; };

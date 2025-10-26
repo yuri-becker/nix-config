@@ -12,6 +12,10 @@ rebuild:
 
 alias r := rebuild
 
+[linux]
+rebuild-homemanager:
+    nix run home-manager/master -- switch --flake .
+
 colmena tag='*':
     nix run .#colmena -- build --impure --on @{{ tag }}
     nix run .#colmena -- apply --impure --on @{{ tag }}

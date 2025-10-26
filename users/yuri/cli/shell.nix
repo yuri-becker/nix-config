@@ -41,6 +41,7 @@
       nodejs.symbol = " ";
       os.disabled = false;
       os.symbols = {
+        CachyOS = " ";
         Debian = " ";
         Macos = " ";
         NixOS = " ";
