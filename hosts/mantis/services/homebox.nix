@@ -8,6 +8,8 @@
       HBOX_WEB_PORT = "30005";
       HBOX_WEB_HOST = "127.0.0.1";
       HBOX_OPTIONS_ALLOW_REGISTRATION = "false";
+      HBOX_STORAGE_CONN_STRING = "file:///var/lib/homebox?no_tmp_dir=true";
+      HBOX_STORAGE_PREFIX_PATH = "";
     };
   };
 

@@ -74,7 +74,7 @@
       {
         name = "Mainsail @ Otacon";
         logo = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/mainsail.png";
-        url = "http://otacon.local";
+        url = "https://otacon.home.arpa";
       }
     ];
   };

@@ -10,8 +10,8 @@
     ./homebox.nix
     ./homer.nix
     ./immich.nix
-    ./monitoring.nix
     ./pinchflat.nix
     ./pocket-id.nix
+    ./spoolman.nix
   ];
 }

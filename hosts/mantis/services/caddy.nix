@@ -20,6 +20,7 @@ in
     '';
     virtualHosts."${certDomain}:443".extraConfig = "redir http://${certDomain}";
     virtualHosts."ha.home.arpa".extraConfig = "reverse_proxy 192.168.0.10:80";
+    virtualHosts."otacon.home.arpa".extraConfig = "reverse_proxy 192.168.0.242:80";
   };
   users.users."${config.services.caddy.user}".packages = with pkgs; [
     nss

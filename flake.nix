@@ -4,7 +4,7 @@
   nixConfig.warn-dirty = false;
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/master";
@@ -52,7 +52,10 @@
       };
       homeConfigurations."yuri" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [sops-nix.homeManagerModule ./users/yuri/solid.nix];
+        modules = [
+          sops-nix.homeManagerModule
+          ./users/yuri/solid.nix
+        ];
         extraSpecialArgs = {
           inherit wakatime-ls;
           hostname = "solid";
