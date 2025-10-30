@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  sdpath = "/gcode";
+  sdpath = "${config.services.moonraker.stateDir}/gcodes";
   user = "klipper";
 in
 {

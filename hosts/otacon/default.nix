@@ -1,4 +1,4 @@
-{ ... }:
+{ specialArgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -6,6 +6,7 @@
     ./mainsail.nix
     ./moonraker.nix
     ./klipper.nix
+    specialArgs.sops-nix.nixosModules.sops
   ];
 
   system.stateVersion = "25.05";

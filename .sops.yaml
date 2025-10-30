@@ -4,6 +4,7 @@ keys:
   - &yuri_at_meryl age18j3qmwflvj84jrqcp4gw6e2m5qxvyha95vd5fc2c7e0kk9wsyqcs6jahpw
   - &yuri_at_solid age1xldleptkn6ysezfgfm8dgjvfgwglcdg345tka95n75j2ee40k4dsgtp5kk
   - &mantis age1lynl2fyd6jput050myqj8fghn7kgxys79ugklpe4v5w7tx49sa3qcj5ynd
+  - &otacon age15az56jmmlvng58q3fukyussyl6w2zygm8rg6k4pqhks4zmyvyy2qp238ww
 creation_rules:
   - path_regex: ^users/yuri/(.*/)?[^/]*secrets.yaml$ # User secrets
     key_groups:
@@ -16,4 +17,11 @@ creation_rules:
     key_groups:
       - age:
           - *yuri_at_liquid # Deployment host
+          - *yuri_at_meryl # Backup deployment host
           - *mantis
+  - path_regex: ^hosts/otacon/(.*/)?[^/]*secrets.yaml$ # Host secrets
+    key_groups:
+      - age:
+          - *yuri_at_liquid # Deployment host
+          - *yuri_at_meryl # Backup deployment host
+          - *otacon

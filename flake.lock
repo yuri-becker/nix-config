@@ -173,11 +173,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1748746145,
-        "narHash": "sha256-bwkCAK9pOyI2Ww4Q4oO1Ynv7O9aZPrsIAMMASmhVGp4=",
+        "lastModified": 1761705569,
+        "narHash": "sha256-dqljv29XldlKvdTwFw8GkxOQHrz3/13yxdwHW8+nzBI=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "12a0d94a2f2b06714f747ab97b2fa546f46b460c",
+        "rev": "bca7909cb02f5139e0a490b0ff4bae775ea3ebf6",
         "type": "github"
       },
       "original": {
@@ -231,15 +231,15 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1761684374,
-        "narHash": "sha256-OaW1bDZFuShuct+n09X1UzpS/D0jbnUUiqF/94mGDTc=",
-        "owner": "yuri-becker",
+        "lastModified": 1761849542,
+        "narHash": "sha256-5fNSKIUG54TD5jq5hgsCmB4FB0mO8teiBE18fU81mfc=",
+        "owner": "mrnossiom",
         "repo": "wakatime-ls",
-        "rev": "2ab330bfe91a66ab8149ad60cfd9bb798a5b033e",
+        "rev": "89e4091ef5e4c1830dd9bd463f8b063f8335bfad",
         "type": "github"
       },
       "original": {
-        "owner": "yuri-becker",
+        "owner": "mrnossiom",
         "repo": "wakatime-ls",
         "type": "github"
       }
