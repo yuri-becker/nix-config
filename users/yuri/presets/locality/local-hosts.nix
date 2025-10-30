@@ -57,7 +57,13 @@
     };
     matchBlocks."otacon" = {
       hostname = "192.168.0.242";
-      identityFile = "${config.home.homeDirectory}/.ssh/id_rsa_otacon";
+      user = "yuri";
+      port = 21896;
+      identityFile = "${config.home.homeDirectory}/.ssh/id_otacon";
+    };
+
+    matchBlocks."*" = {
+      identitiesOnly = true;
     };
   };
   programs.fish.shellAbbrs = {

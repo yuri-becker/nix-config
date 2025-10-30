@@ -17,6 +17,10 @@
       "nix-command"
       "flakes"
     ];
+    settings.trusted-users = [
+      "root"
+      "@wheel"
+    ];
     optimise.automatic = true;
     extraOptions = ''
       extra-substituters = https://devenv.cachix.org

@@ -1,13 +1,5 @@
 { specialArgs, pkgs, ... }:
-let
-  hostname = "mantis";
-in
 {
-  deployment = {
-    targetHost = hostname;
-    tags = [ "lan" ];
-  };
-
   imports = [
     ../../mixins/nix-options.nix
     ./hardware-configuration.nix
@@ -19,7 +11,7 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = hostname;
+  networking.hostName = "mantis";
   networking.interfaces.enp60s0.wakeOnLan.enable = true;
 
   system.stateVersion = "25.05";

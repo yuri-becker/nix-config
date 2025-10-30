@@ -8,6 +8,9 @@ in
   services.caddy.virtualHosts."${domain}".extraConfig =
     "reverse_proxy :${toString config.services.spoolman.port}";
 
+  services.caddy.virtualHosts."${domain}:80".extraConfig =
+    "reverse_proxy :${toString config.services.spoolman.port}";
+
   homer.links = [
     {
       name = "Spoolman";

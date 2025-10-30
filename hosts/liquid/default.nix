@@ -28,6 +28,7 @@
   nix = {
     enable = true;
     extraOptions = "extra-platforms = x86_64-darwin aarch64-darwin";
+    linux-builder.enable = true;
   };
   nixpkgs = {
     hostPlatform = "aarch64-darwin";

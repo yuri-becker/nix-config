@@ -8,18 +8,24 @@ rebuild:
 
 [linux]
 rebuild:
-    sudo nixos-rebuild switch --flake .
+    if `awk -F= '$1=="NAME" { print $2 ;}' /etc/os-release` == "NixOS"
+    {
+        sudo nixos-rebuild switch --flake .
+    } else {
+        nix run home-manager/master -- switch --flake .
+    }
 
 alias r := rebuild
 
-[linux]
-rebuild-homemanager:
-    nix run home-manager/master -- switch --flake .
-
-colmena tag='*':
-    nix run .#colmena -- build --impure --on @{{ tag }}
-    nix run .#colmena -- apply --impure --on @{{ tag }}
+[positional-arguments]
+colmena node:
+    nix run .#colmena -- build --impure --on {{ node }}
+    nix run .#colmena -- apply --impure --on {{ node }}
 alias c := colmena
+
+[positional-arguments]
+build-sd node:
+    nix build .#nixosConfigurations.{{ node }}.config.system.build.sdImage
 
 update:
   nix flake update

@@ -4,7 +4,7 @@
   nixConfig.warn-dirty = false;
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/master";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/master";
@@ -50,6 +50,14 @@
         };
         modules = [ ./hosts/meryl ];
       };
+      nixosConfigurations."otacon" = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-installer.nix"
+          ./hosts/otacon
+          { sdImage.compressImage = false; }
+        ];
+      };
       homeConfigurations."yuri" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
@@ -75,12 +83,22 @@
               "flakes"
             ];
           };
+          deployment.targetUser = null;
+        };
+        mantis = {
+          imports = [ ./hosts/mantis ];
           deployment = {
             buildOnTarget = true;
-            targetUser = null;
+            targetHost = "mantis";
           };
         };
-        mantis = import ./hosts/mantis;
+        otacon = {
+          imports = [ ./hosts/otacon ];
+          deployment = {
+            buildOnTarget = false;
+            targetHost = "otacon";
+          };
+        };
       };
       apps = colmena.apps;
     };
