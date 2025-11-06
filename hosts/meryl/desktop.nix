@@ -12,6 +12,7 @@
   environment.gnome.excludePackages = with pkgs; [
     decibels
     geary
+    gnome-calendar
     gnome-console
     gnome-contacts
     gnome-clocks

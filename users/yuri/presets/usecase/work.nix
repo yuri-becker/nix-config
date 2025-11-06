@@ -2,10 +2,13 @@
 {
   imports = [
     ../../toolchains/web-dev.nix
+    ../../toolchains/java.nix
     ../../toolchains/python.nix
     ../../toolchains/tex.nix
-    ../../applications/geary-work.nix
+    ../../applications/evolution-work.nix
     ../../applications/librewolf.nix
+    ../../applications/onlyoffice.nix
+    ../../applications/phone.nix
   ];
 
   programs.git.includes = [
@@ -25,12 +28,14 @@
   };
 
   home.packages = with pkgs; [
+    beeper
     mattermost-desktop
-    signal-desktop-bin
   ];
 
   xdg.autostart.entries = [
     "${pkgs.mattermost-desktop}/share/applications/Mattermost.desktop"
-    "${pkgs.signal-desktop-bin}/share/applications/signal.desktop"
+    "${pkgs.beeper}/share/applications/beepertexts.desktop"
+    "${pkgs.linphone}/share/applications/linphone.desktop"
   ];
+
 }

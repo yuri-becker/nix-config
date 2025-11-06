@@ -8,12 +8,14 @@ rebuild:
 
 [linux]
 rebuild:
-    if `awk -F= '$1=="NAME" { print $2 ;}' /etc/os-release` == "NixOS"
-    {
-        sudo nixos-rebuild switch --flake .
-    } else {
+    #!/usr/bin/env bash
+    @set -euxo pipefail
+    @osname=`awk -F= '$1=="NAME" { print $2 ;}' /etc/os-release`
+    @if [[ "$osname" == "NixOS" ]]; then
+        sudo nixos-rebuild switch --flake . 
+    else 
         nix run home-manager/master -- switch --flake .
-    }
+    fi
 
 alias r := rebuild
 

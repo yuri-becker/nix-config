@@ -9,8 +9,10 @@ let
   templateFile = "geary.ini";
 in
 {
-  home.packages = [ pkgs.geary ];
-  xdg.autostart.entries = [ "${pkgs.geary}/share/applications/org.gnome.Geary.desktop" ];
+  home.packages = [
+    pkgs.evolution
+  ];
+  xdg.autostart.entries = [ "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop" ];
 
   sops.secrets = {
     "geary/incoming/login".sopsFile = sopsFile;

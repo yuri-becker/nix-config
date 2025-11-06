@@ -78,7 +78,6 @@ in
       macos_window_resizable = true;
       macos_show_window_title_in = "window";
       macos_menubar_title_max_length = -1;
-      wayland_titlebar_color = "background";
     };
     keybindings = {
       # Unbinds
