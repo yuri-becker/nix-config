@@ -160,13 +160,8 @@ in
       ];
     };
   };
-  programs.fish.functions.dev = ''
-    if count $argv > /dev/null
-      cd $argv
-    end
-    if type -q kitten
-      kitten @ set-window-title "$(basename $(pwd))"
-    end
-    hx .
+  programs.fish.functions.hx-grammar-rebuild = ''
+    hx -g fetch
+    nix shell nixpkgs#gcc --command hx -g build
   '';
 }

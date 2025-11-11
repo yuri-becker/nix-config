@@ -46,6 +46,9 @@
       format = "ssh";
       key = "${config.home.homeDirectory}/.ssh/id_github";
     };
-    diff-so-fancy.enable = true;
+  };
+  programs.diff-so-fancy = {
+    enable = true;
+    enableGitIntegration = true;
   };
 }
