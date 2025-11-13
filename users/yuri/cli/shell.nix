@@ -23,7 +23,9 @@
       rm = "rm -i";
       rimraf = "rm -rf";
       t = "tail -f";
-      yk = "ykman oath accounts code";
+    };
+    functions = {
+      otp = "${pkgs.yubikey-manager}/bin/ykman oath accounts code -s $argv | wl-copy";
     };
   };
 

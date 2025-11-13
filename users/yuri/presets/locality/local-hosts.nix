@@ -16,6 +16,7 @@
     erdtree
     ffmpeg-full
     meslo-lgs-nf
+    nerd-fonts.jetbrains-mono
     yubikey-manager
   ];
   sops.age.generateKey = false;

@@ -9,6 +9,7 @@
     ../../applications/librewolf.nix
     ../../applications/onlyoffice.nix
     ../../applications/phone.nix
+    ../../applications/zed.nix
   ];
 
   programs.git.includes = [
