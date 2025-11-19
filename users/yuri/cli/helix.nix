@@ -8,6 +8,8 @@ in
     marksman
     nixdoc
     nixfmt-rfc-style
+    prettier
+    superhtml
     taplo
     vscode-css-languageserver
     vscode-json-languageserver
@@ -88,6 +90,30 @@ in
         };
       };
       language = [
+        {
+          name = "css";
+          language-servers = [
+            "vscode-css-language-server"
+            "wakatime"
+          ];
+          formatter.command = "${pkgs.prettier}/bin/prettier";
+          formatter.args = [
+            "--parser"
+            "css"
+          ];
+        }
+        {
+          name = "html";
+          language-servers = [
+            "superhtml"
+            "wakatime"
+          ];
+          formatter.command = "${pkgs.prettier}/bin/prettier";
+          formatter.args = [
+            "--parser"
+            "html"
+          ];
+        }
         {
           name = "json";
           language-servers = [

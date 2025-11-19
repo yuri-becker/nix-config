@@ -39,6 +39,9 @@
         "shottr"
         "the-unarchiver"
       ];
+    config.permittedInsecurePackages = [
+      "electron-36.9.5"
+    ];
   };
   users.users.yuri = {
     name = "yuri";

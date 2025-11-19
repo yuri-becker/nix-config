@@ -9,6 +9,7 @@
     ../../applications/feishin.nix
     ../../applications/kitty.nix
     ../../applications/wakatime.nix
+    ../../applications/zed.nix
   ];
   home.packages = with pkgs; [
     commitlint-rs

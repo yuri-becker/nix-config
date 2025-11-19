@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    nil
+    nixd
+  ];
   programs.zed-editor = {
     enable = true;
     extensions = [
@@ -41,12 +45,25 @@
       soft_wrap = "editor_width";
       tab_bar.show = false;
       tab_size = 2;
-      telemetry.diagnostics = false;
-      telemetry.metrics = false;
-      terminal.shell.program = "${pkgs.fish}/bin/fish";
+      telemetry = {
+        diagnostics = false;
+        metrics = false;
+      };
+      title_bar = {
+        show_branch_icon = true;
+        show_sign_in = false;
+      };
+      terminal.shell.program = "${lib.getExe pkgs.fish}";
       theme = "Tokyo Night";
       ui_font_family = ".SystemUIFont";
       ui_font_size = 18.0;
+
+      languages.Nix = {
+        formatter.external = {
+          command = "${lib.getExe pkgs.nixfmt-rfc-style}";
+          arguments = [ "--strict" ];
+        };
+      };
     };
   };
 }

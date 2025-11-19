@@ -2,14 +2,11 @@
 {
   imports = [
     ../../toolchains/web-dev.nix
-    ../../toolchains/java.nix
-    ../../toolchains/python.nix
     ../../toolchains/tex.nix
     ../../applications/evolution-work.nix
     ../../applications/librewolf.nix
     ../../applications/onlyoffice.nix
     ../../applications/phone.nix
-    ../../applications/zed.nix
   ];
 
   programs.git.includes = [
@@ -31,7 +28,10 @@
   home.packages = with pkgs; [
     beeper
     mattermost-desktop
+    linphonePackages.linphone-desktop
   ];
+
+  home.file.".linphone-sounds".source = "${pkgs.linphonePackages.liblinphone}/share/sounds/linphone";
 
   xdg.autostart.entries = [
     "${pkgs.mattermost-desktop}/share/applications/Mattermost.desktop"
