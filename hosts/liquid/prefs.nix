@@ -39,17 +39,16 @@
     persistent-apps = [
       "/Applications/Orion.app"
       "${pkgs.feishin}/Applications/feishin.app"
+      { spacer.small = true; }
+      "${pkgs.zed-editor}/Applications/Zed.app"
       "${pkgs.kitty}/Applications/kitty.app"
+      { spacer.small = true; }
+      "${pkgs.fastmail-desktop}/Applications/Fastmail.app"
       "/System/Applications/Calendar.app"
-      {
-        spacer.small = true;
-      }
       "${pkgs.vesktop}/Applications/Vesktop.app"
       "/Applications/Beeper Desktop.app"
       "/Applications/Teamspeak.app"
-      {
-        spacer.small = true;
-      }
+      { spacer.small = true; }
     ];
   };
   system.defaults.finder = {

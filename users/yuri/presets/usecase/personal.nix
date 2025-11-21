@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ../../toolchains/ansible.nix
@@ -8,4 +8,5 @@
     ../../toolchains/web-dev.nix
     ../../applications/vesktop.nix
   ];
+  home.packages = with pkgs; [ fastmail-desktop ];
 }

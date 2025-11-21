@@ -8,7 +8,6 @@
     enable = true;
     extensions = [
       "angular"
-      "ansible"
       "catppuccin"
       "catppuccin-icons"
       "docker-compose"
@@ -29,6 +28,7 @@
     ];
     userSettings = {
       autosave.after_delay.milliseconds = 1000;
+      base_keymap = "JetBrains";
       buffer_font_family = "JetBrainsMono Nerd Font";
       buffer_font_size = 22;
       cursor_shape = "bar";
@@ -65,5 +65,22 @@
         };
       };
     };
+    userKeymaps = [
+      {
+        context = "Editor && mode == full";
+        bindings = {
+          "cmd-e" = "tab_switcher::Toggle";
+          "cmd-`" = "terminal_panel::Toggle";
+          "cmd+shift+'" = "workspace::ToggleZoom";
+        };
+      }
+      {
+        context = "Terminal";
+        bindings = {
+          "cmd-t" = "workspace::NewTerminal";
+          "cmd-w" = "pane::CloseActiveItem";
+        };
+      }
+    ];
   };
 }

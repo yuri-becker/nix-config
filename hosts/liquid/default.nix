@@ -12,9 +12,7 @@
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.users.yuri.imports = [ ../../users/yuri/liquid.nix ];
-      home-manager.sharedModules = [
-        specialArgs.sops-nix.homeManagerModule
-      ];
+      home-manager.sharedModules = [ specialArgs.sops-nix.homeManagerModule ];
       home-manager.extraSpecialArgs = {
         hostname = "liquid";
         wakatime-ls = specialArgs.wakatime-ls;
@@ -35,13 +33,12 @@
     config.allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
+        "fastmail-desktop"
         "raycast"
         "shottr"
         "the-unarchiver"
       ];
-    config.permittedInsecurePackages = [
-      "electron-36.9.5"
-    ];
+    config.permittedInsecurePackages = [ "electron-36.9.5" ];
   };
   users.users.yuri = {
     name = "yuri";

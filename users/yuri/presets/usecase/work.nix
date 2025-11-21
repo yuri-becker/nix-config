@@ -27,6 +27,7 @@
 
   home.packages = with pkgs; [
     beeper
+    evolution
     mattermost-desktop
     linphonePackages.linphone-desktop
   ];
@@ -37,6 +38,7 @@
     "${pkgs.mattermost-desktop}/share/applications/Mattermost.desktop"
     "${pkgs.beeper}/share/applications/beepertexts.desktop"
     "${pkgs.linphone}/share/applications/linphone.desktop"
+    "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop"
   ];
 
 }

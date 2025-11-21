@@ -28,6 +28,7 @@
     matchBlocks."catboy-house" = {
       hostname = "46.4.241.139";
       user = "yuri";
+      port = 29158;
       identityFile = "${config.home.homeDirectory}/.ssh/id_catboy-house";
     };
     matchBlocks."*.repo.borgbase.com" = {
