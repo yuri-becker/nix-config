@@ -17,6 +17,7 @@ in
 {
   home.packages = with pkgs; [
     logiops
+    gutenprint
   ];
 
   systemd.user.services.logid = {
