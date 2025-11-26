@@ -23,6 +23,7 @@
         "Yuri" = "#b4befe";
       };
       gui.screenMode = "half";
+      git.overrideGpg = true;
     };
   };
 

@@ -14,7 +14,6 @@
       "dockerfile"
       "env"
       "html"
-      "java"
       "nix"
       "scss"
       "tokyo-night"
@@ -70,15 +69,16 @@
         context = "Editor && mode == full";
         bindings = {
           "cmd-e" = "tab_switcher::Toggle";
-          "cmd-`" = "terminal_panel::Toggle";
-          "cmd+shift+'" = "workspace::ToggleZoom";
+          "cmd-'" = "terminal_panel::Toggle";
         };
       }
       {
         context = "Terminal";
         bindings = {
           "cmd-t" = "workspace::NewTerminal";
+          "cmd-'" = "editor::ToggleFocus";
           "cmd-w" = "pane::CloseActiveItem";
+          "cmd+\"" = "workspace::ToggleZoom";
         };
       }
     ];

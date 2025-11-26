@@ -10,6 +10,7 @@
     enable = true;
   };
   home.packages = with pkgs; [
+    gnome-calendar
     gnome-tweaks
   ];
 }

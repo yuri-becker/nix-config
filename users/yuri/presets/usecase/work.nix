@@ -1,12 +1,11 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ../../toolchains/java.nix
     ../../toolchains/web-dev.nix
     ../../toolchains/tex.nix
-    ../../applications/evolution-work.nix
     ../../applications/librewolf.nix
     ../../applications/onlyoffice.nix
-    ../../applications/phone.nix
   ];
 
   programs.git.includes = [
@@ -27,7 +26,6 @@
 
   home.packages = with pkgs; [
     beeper
-    evolution
     mattermost-desktop
     linphonePackages.linphone-desktop
   ];
@@ -38,7 +36,6 @@
     "${pkgs.mattermost-desktop}/share/applications/Mattermost.desktop"
     "${pkgs.beeper}/share/applications/beepertexts.desktop"
     "${pkgs.linphone}/share/applications/linphone.desktop"
-    "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop"
   ];
 
 }
