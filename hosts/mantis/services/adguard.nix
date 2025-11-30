@@ -1,6 +1,32 @@
 { config, ... }:
 let
   sopsFile = ./adguard.secrets.yaml;
+  upstreamServers = {
+    quad9 = {
+      tls = "tls://dns.quad9.net";
+      v4.primary = "9.9.9.9";
+      v4.secondary = "149.112.112.112";
+      v6.primary = "2620:fe::fe";
+      v6.secondary = "2620:fe::9";
+    };
+    cloudflare = {
+      v4.primary = "1.1.1.1";
+      v4.secondary = "1.0.0.1";
+      v6.primary = "2606:4700:4700::1111";
+      v6.secondary = "2606:4700:4700::1001";
+    };
+  };
+  bootstrap = with upstreamServers; [
+    quad9.v6.primary
+    quad9.v4.primary
+    cloudflare.v6.primary
+    cloudflare.v4.primary
+    quad9.v6.secondary
+    quad9.v4.secondary
+    cloudflare.v6.secondary
+    cloudflare.v4.secondary
+  ];
+  upstream = with upstreamServers; [ quad9.tls ] ++ bootstrap;
 in
 {
   sops.secrets."adguard/passwords/yuri".sopsFile = sopsFile;
@@ -18,16 +44,8 @@ in
       "192.168.0.11"
       "127.0.0.1"
     ];
-    settings.dns.upstream_dns = [
-      "9.9.9.9"
-      "149.112.112.112"
-      "2620:fe::fe"
-    ];
-    settings.dns.bootstrap_dns = [
-      "9.9.9.9"
-      "149.112.112.112"
-      "2620:fe::fe"
-    ];
+    settings.dns.upstream_dns = upstream;
+    settings.dns.bootstrap_dns = bootstrap;
     settings.statistics.interval = "8760h";
     settings.filters = [
       {
