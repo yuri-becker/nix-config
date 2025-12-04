@@ -4,6 +4,7 @@
   sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
   home.packages = with pkgs; [
     cameractrls-gtk4
+    gthumb
     wl-clipboard
   ];
 }
