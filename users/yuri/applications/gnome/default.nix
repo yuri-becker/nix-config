@@ -3,6 +3,7 @@
   imports = [
     ./clipboard.nix
     ./dock.nix
+    ./keybindings.nix
     ./top-bar.nix
     ./theme.nix
   ];

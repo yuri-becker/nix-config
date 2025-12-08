@@ -11,10 +11,10 @@ in
   imports = [
     ../../mixins/docker.nix
     ../../mixins/nix-options.nix
+    ../../mixins/office-hardware.nix
     ./audio.nix
     ./desktop.nix
     ./hardware-configuration.nix
-    ./mouse.nix
     ./pam.nix
     ./users
     specialArgs.sops-nix.nixosModules.sops
@@ -50,28 +50,6 @@ in
   };
   services.printing.enable = true;
 
-  services.udev = {
-    packages = with pkgs; [
-      qmk-udev-rules
-      via
-    ];
-  };
-
-  # Epomaker Alice 66, Keychron Q11 and Logitech Bolt thingy
-  services.udev.extraRules = ''
-    KERNEL=="hidraw*", SUBSYSTEMS=="hidraw", ATTRS{idVendor}=="36b0", ATTRS{idProduct}=="300a", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl" 
-    KERNEL=="hidraw*", SUBSYSTEMS=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="01e0", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c548", TAG+="uaccess" 
-  '';
-
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "beeper"
-      "via"
-    ];
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-36.9.5"
-  ];
-
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "beeper" ];
+  nixpkgs.config.permittedInsecurePackages = [ "electron-36.9.5" ];
 }

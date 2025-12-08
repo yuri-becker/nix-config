@@ -3,14 +3,10 @@ let
   namespace = "org/gnome/shell/extensions/pano";
   body-bg-color = "rgb(36,31,49)";
   header-bg-color = "rgb(36,31,49)";
-  item-colors = {
-    inherit body-bg-color header-bg-color;
-  };
+  item-colors = { inherit body-bg-color header-bg-color; };
 in
 {
-  programs.gnome-shell.extensions = with pkgs.gnomeExtensions; [
-    { package = pano; }
-  ];
+  programs.gnome-shell.extensions = with pkgs.gnomeExtensions; [ { package = pano; } ];
   dconf.settings = {
     "${namespace}" = {
       active-item-border-color = "rgb(129,61,156)";

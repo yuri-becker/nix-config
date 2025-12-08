@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
-  programs.gnome-shell.extensions = with pkgs.gnomeExtensions; [
-    { package = tophat; }
-  ];
+  programs.gnome-shell.extensions = with pkgs.gnomeExtensions; [ { package = tophat; } ];
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {

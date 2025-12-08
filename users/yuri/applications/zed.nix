@@ -57,10 +57,16 @@
       ui_font_family = ".SystemUIFont";
       ui_font_size = 18.0;
 
+      # Nix
       languages.Nix = {
         formatter.external = {
           command = "${lib.getExe pkgs.nixfmt-rfc-style}";
           arguments = [ "--strict" ];
+        };
+      };
+      lsp.nil = {
+        settings = {
+          nix.flake.autoArchive = true;
         };
       };
     };
