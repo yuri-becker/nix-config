@@ -12,8 +12,7 @@
       "mas" # needed for masApps
     ];
     casks = [
-      "affinity-designer@1" # not in nixpkgs
-      "balenaetcher" # not in nixpkgs (but in nur)
+      "affinity"
       "beeper" # nixpkgs doesnt have darwin
       "burp-suite"
       "freecad" # nixpkgs doenst have darwin
