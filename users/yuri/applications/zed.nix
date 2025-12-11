@@ -26,6 +26,7 @@
       package-version-server
     ];
     userSettings = {
+      active_pane_modifiers.inactive_opacity = 0.7;
       autosave.after_delay.milliseconds = 1000;
       base_keymap = "JetBrains";
       buffer_font_family = "JetBrainsMono Nerd Font";
@@ -40,7 +41,11 @@
       minimap.show = "auto";
       minimap.thumb = "always";
       prettier.allowed = true;
-      project_panel.default_width = 300;
+      project_panel = {
+        button = true;
+        default_width = 300;
+        hide_root = true;
+      };
       soft_wrap = "editor_width";
       tab_bar.show = false;
       tab_size = 2;
@@ -70,23 +75,59 @@
         };
       };
     };
-    userKeymaps = [
-      {
-        context = "Editor && mode == full";
-        bindings = {
-          "cmd-e" = "tab_switcher::Toggle";
-          "cmd-'" = "terminal_panel::Toggle";
+    userKeymaps =
+      let
+        panelCommons = panel: {
+          "cmd-'" = "terminal_panel::ToggleFocus";
+          "cmd-/" = "project_panel::ToggleFocus";
+          "cmd-w" =
+            if panel == "project_panel" then "workspace::CloseActiveDock" else "pane::CloseActiveItem";
+          "f1" = "projects::OpenRecent";
+          "f2" = "workspace::Open";
+          "cmd-e" =
+            if panel == "editor" then
+              [
+                "action::Sequence"
+                [
+                  "${panel}::ToggleFocus"
+                  "tab_switcher::Toggle"
+                ]
+              ]
+            else
+              "tab_switcher::Toggle";
         };
-      }
-      {
-        context = "Terminal";
-        bindings = {
-          "cmd-t" = "workspace::NewTerminal";
-          "cmd-'" = "editor::ToggleFocus";
-          "cmd-w" = "pane::CloseActiveItem";
-          "cmd+\"" = "workspace::ToggleZoom";
-        };
-      }
-    ];
+      in
+      [
+        {
+          context = "Editor && mode == full";
+          bindings = panelCommons "editor" // {
+            "cmd-[" = "pane::GoBack";
+            "cmd-]" = "pane::GoForward";
+            "cmd-shift-up" = "editor::MoveLineUp";
+            "cmd-shift-down" = "editor::MoveLineDown";
+          };
+        }
+        {
+          context = "TabSwitcher";
+          bindings = {
+            "cmd-e" = "menu::SelectNext";
+            "cmd-up" = "menu::SelectPrevious";
+            "cmd-down" = "menu::SelectNext";
+            "cmd-w" = "tab_switcher::CloseSelectedItem";
+          };
+        }
+        {
+          context = "ProjectPanel";
+          bindings = panelCommons "project_panel" // { };
+        }
+        {
+          context = "Terminal";
+          bindings = panelCommons "terminal_panel" // {
+            "cmd-t" = "workspace::NewTerminal";
+            "cmd-[" = "pane::ActivatePreviousItem";
+            "cmd-]" = "pane::ActivateNextItem";
+          };
+        }
+      ];
   };
 }
