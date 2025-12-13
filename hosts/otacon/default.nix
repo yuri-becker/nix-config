@@ -1,4 +1,4 @@
-{ specialArgs, ... }:
+{ pkgs, specialArgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -38,4 +38,5 @@
   };
 
   security.sudo.wheelNeedsPassword = false;
+  environment.systemPackages = with pkgs; [ libcamera ];
 }

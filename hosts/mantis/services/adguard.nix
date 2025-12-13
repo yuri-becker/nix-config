@@ -29,7 +29,6 @@ let
   upstream = with upstreamServers; [ quad9.tls ] ++ bootstrap;
 in
 {
-  sops.secrets."adguard/passwords/yuri".sopsFile = sopsFile;
   services.adguardhome = {
     enable = true;
     port = 30001;
@@ -37,7 +36,7 @@ in
     settings.users = [
       {
         name = "yuri";
-        password = config.sops.placeholder."adguard/passwords/yuri"; # TODO, doesnt work like this
+        password = "$2y$10$QjqU2Jpfuk6ie.UG4tKer.V37t6n7B/urRIaCL15W860r7zSpzo7W";
       }
     ];
     settings.dns.bind_hosts = [
@@ -61,13 +60,16 @@ in
         name = "uBlock₀ filters – Badware risks";
       }
     ];
-    settings.filtering.blocked_services.ids = [ "tiktok" ];
-    settings.filtering.rewrites = [
-      {
-        domain = "*.home.arpa";
-        answer = "192.168.0.11";
-      }
-    ];
+    settings.filtering = {
+      blocked_services.ids = [ "tiktok" ];
+      rewrites = [
+        {
+          enabled = true;
+          domain = "*.home.arpa";
+          answer = "192.168.0.11";
+        }
+      ];
+    };
   };
   networking.firewall.allowedUDPPorts = [ 53 ];
   services.caddy.virtualHosts."dns.home.arpa".extraConfig =

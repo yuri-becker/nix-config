@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   theme = builtins.readFile (
     builtins.fetchurl {
@@ -14,7 +14,7 @@ in
 {
   programs.kitty = {
     enable = true;
-    darwinLaunchOptions = [ "--start-as fullscreen --single-instance" ];
+    darwinLaunchOptions = [ "--single-instance" ];
     font = {
       name = "MesloLGS Nerd Font";
       package = pkgs.meslo-lgs-nf;
@@ -52,7 +52,6 @@ in
 
       # Window
       enabled_layouts = "tall:bias=70,stack";
-      hide_window_decorations = pkgs.stdenv.isDarwin;
       resize_in_steps = false;
       window_margin_width = 0;
       window_border_width = "1pt";
@@ -68,8 +67,8 @@ in
       tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{fmt.bold}{index} {fmt.nobold}{title}";
 
       # Advanced
-      shell = "$SHELL -c ${pkgs.fish}/bin/fish";
-      editor = "${pkgs.helix}/bin/hx";
+      shell = "$SHELL -c ${lib.getExe pkgs.fish}";
+      editor = "${lib.getExe pkgs.helix}";
       term = "xterm";
 
       # OS-specific
@@ -117,7 +116,7 @@ in
     source = kittyIcon;
     onChange =
       if pkgs.stdenv.isDarwin then
-        "/opt/homebrew/bin/fileicon set \"${pkgs.kitty}/Applications/kitty.app\" \"${kittyIcon}\""
+        "sudo /opt/homebrew/bin/fileicon set \"${pkgs.kitty}/Applications/kitty.app\" \"${kittyIcon}\""
       else
         "";
   };
