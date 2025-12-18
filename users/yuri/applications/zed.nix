@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     nil
     nixd
+    tinymist
   ];
   programs.zed-editor = {
     enable = true;
@@ -18,6 +19,7 @@
       "scss"
       "tokyo-night"
       "toml"
+      "typst"
       "wakatime"
     ];
     extraPackages = with pkgs; [
@@ -72,6 +74,12 @@
       lsp.nil = {
         settings = {
           nix.flake.autoArchive = true;
+        };
+      };
+      lsp.tinymist = {
+        settings = {
+          "exportPdf" = "onSave";
+          "outputPath" = "$root/$name";
         };
       };
     };
