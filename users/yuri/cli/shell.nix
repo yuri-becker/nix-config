@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   programs.fish = {
     enable = true;
@@ -27,6 +27,7 @@
     functions = {
       otp = "${pkgs.yubikey-manager}/bin/ykman oath accounts code -s $argv | wl-copy";
     };
+    shellInit = lib.mkIf pkgs.stdenv.isDarwin "fish_add_path /opt/homebrew/bin";
   };
 
   programs.starship = {

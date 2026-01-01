@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   logid-cfg =
     # See https://github.com/PixlOne/logiops/blob/main/logid.example.cfg
@@ -24,12 +29,14 @@ let
     '';
 in
 {
-  environment.systemPackages = with pkgs; [
-    logiops
-    gutenprint
-  ];
+  environment.systemPackages =
+    with pkgs;
+    lib.mkIf config.localhost.office.enable [
+      logiops
+      gutenprint
+    ];
 
-  systemd.services."logiops-daemon" = {
+  systemd.services."logiops-daemon" = lib.mkIf config.localhost.office.enable {
     description = "Logitech Options Daemon";
     serviceConfig = {
       User = "root";

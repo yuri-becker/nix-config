@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  modifier = if pkgs.stdenv.isDarwin then "Cmd" else "Cmd";
+  modifier = "Cmd";
 in
 {
   home.packages = with pkgs; [

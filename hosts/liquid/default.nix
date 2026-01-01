@@ -1,7 +1,11 @@
-{ specialArgs, lib, ... }:
+{
+  specialArgs,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
-    ../../mixins/nix-options.nix
     ./prefs.nix
     ./homebrew.nix
     ./notunes.nix
@@ -11,7 +15,13 @@
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.users.yuri.imports = [ ../../users/yuri/liquid.nix ];
+      home-manager.users.yuri.imports = [
+        ../../users/yuri
+        {
+          localhost.enable = true;
+          localhost.personal.enable = true;
+        }
+      ];
       home-manager.sharedModules = [ specialArgs.sops-nix.homeManagerModule ];
       home-manager.extraSpecialArgs = {
         hostname = "liquid";

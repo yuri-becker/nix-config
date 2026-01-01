@@ -2,10 +2,10 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    cargo-shuttle
-    cargo-watch
-    rustup
-    sea-orm-cli
+    # cargo-shuttle
+    # cargo-watch
+    # rustup
+    # sea-orm-cli
   ];
 
   programs.fish.shellAbbrs = {

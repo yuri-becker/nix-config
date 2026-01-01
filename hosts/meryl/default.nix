@@ -4,14 +4,8 @@
   pkgs,
   ...
 }:
-let
-  hostname = "meryl";
-in
 {
   imports = [
-    ../../mixins/docker.nix
-    ../../mixins/nix-options.nix
-    ../../mixins/office-hardware.nix
     ./audio.nix
     ./desktop.nix
     ./hardware-configuration.nix
@@ -19,6 +13,9 @@ in
     ./users
     specialArgs.sops-nix.nixosModules.sops
   ];
+  docker.enable = true;
+  localhost.enable = true;
+  localhost.office.enable = true;
 
   system.stateVersion = "25.05";
 
@@ -31,7 +28,7 @@ in
   };
 
   networking = {
-    hostName = hostname;
+    hostName = specialArgs.hostname;
     networkmanager.enable = true;
   };
 

@@ -1,11 +1,17 @@
-{ pkgs, ... }:
 {
-  programs.gnome-shell.extensions = with pkgs.gnomeExtensions; [ { package = tophat; } ];
-
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      lock-show-date = true;
-      clock-show-weekday = true;
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  config = lib.mkIf config.gnome.enable {
+    programs.gnome-shell.extensions = with pkgs.gnomeExtensions; [ { package = tophat; } ];
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        lock-show-date = true;
+        clock-show-weekday = true;
+      };
     };
   };
 }

@@ -1,6 +1,8 @@
-{ ... }:
+{ config, lib, ... }:
 {
-  programs.onlyoffice = {
-    enable = true;
+  config = lib.mkIf config.localhost.enable {
+    programs.onlyoffice = {
+      enable = true;
+    };
   };
 }

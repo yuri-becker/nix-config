@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   programs.git = {
     enable = true;
@@ -51,4 +51,5 @@
     enable = true;
     enableGitIntegration = true;
   };
+  home.packages = with pkgs; [ gitflow ];
 }

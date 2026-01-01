@@ -2,7 +2,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../mixins/nix-options.nix
     ./mainsail.nix
     ./moonraker.nix
     ./klipper.nix

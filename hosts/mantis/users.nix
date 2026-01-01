@@ -8,15 +8,13 @@ in
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.users.yuri = import ../../../users/yuri/mantis.nix;
-      home-manager.sharedModules = [
-        specialArgs.sops-nix.homeManagerModule
-      ];
+      home-manager.users.yuri = import ../../../users/yuri;
+      home-manager.sharedModules = [ specialArgs.sops-nix.homeManagerModule ];
     }
   ];
 
   sops.secrets."passwords/yuri" = {
-    sopsFile = sopsFile;
+    inherit sopsFile;
     neededForUsers = true;
   };
 

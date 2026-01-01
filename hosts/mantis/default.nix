@@ -1,7 +1,6 @@
 { specialArgs, pkgs, ... }:
 {
   imports = [
-    ../../mixins/nix-options.nix
     ./hardware-configuration.nix
     ./services
     ./users
@@ -27,8 +26,6 @@
   };
   security.sudo.wheelNeedsPassword = false;
 
-  environment.systemPackages = with pkgs; [
-    usbutils
-  ];
+  environment.systemPackages = with pkgs; [ usbutils ];
   sops.gnupg.sshKeyPaths = [ ];
 }
