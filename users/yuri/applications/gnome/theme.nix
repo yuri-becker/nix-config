@@ -17,7 +17,7 @@ let
 in
 {
 
-  config = lib.mkIf config.gnome.enable {
+  config = lib.mkIf config.localhost.gnome.enable {
 
     home.packages = with pkgs; [
       gtk-engine-murrine

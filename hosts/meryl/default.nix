@@ -48,5 +48,4 @@
   services.printing.enable = true;
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "beeper" ];
-  nixpkgs.config.permittedInsecurePackages = [ "electron-36.9.5" ];
 }

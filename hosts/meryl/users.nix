@@ -11,6 +11,7 @@
           imports = [ ../../users/yuri ];
           localhost.enable = true;
           localhost.work.enable = true;
+          localhost.gnome.enable = true;
         }
       );
       home-manager.sharedModules = [ specialArgs.sops-nix.homeManagerModule ];

@@ -5,17 +5,15 @@
   ...
 }:
 {
-  options = with lib; {
-    gnome.enable = mkEnableOption "gnome configuration";
-  };
   imports = [
     ./clipboard.nix
     ./dock.nix
     ./keybindings.nix
+    ./notifications.nix
     ./top-bar.nix
     ./theme.nix
   ];
-  config = lib.mkIf config.gnome.enable {
+  config = lib.mkIf config.localhost.gnome.enable {
     programs.gnome-shell = {
       enable = true;
     };

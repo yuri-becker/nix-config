@@ -5,8 +5,12 @@
   ...
 }:
 {
-  config = lib.mkIf config.gnome.enable {
-    programs.gnome-shell.extensions = with pkgs.gnomeExtensions; [ { package = tophat; } ];
+  config = lib.mkIf config.localhost.gnome.enable {
+    programs.gnome-shell.extensions = with pkgs.gnomeExtensions; [
+      { package = notification-counter; }
+      { package = tophat; }
+      { package = next-up; }
+    ];
     dconf.settings = {
       "org/gnome/desktop/interface" = {
         lock-show-date = true;
@@ -18,7 +22,7 @@
         mem-display = "numeric";
         mount-to-monitor = "/";
         network-usage-unit = "bytes";
-        position-in-panel = "left";
+        position-in-panel = "right";
         show-disk = true;
         show-fs = false;
         show-net = false;

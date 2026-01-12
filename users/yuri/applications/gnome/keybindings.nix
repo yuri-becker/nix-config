@@ -1,7 +1,7 @@
 { config, lib, ... }:
 {
 
-  config = lib.mkIf config.gnome.enable {
+  config = lib.mkIf config.localhost.gnome.enable {
     dconf.settings = {
       "org/gnome/shell/keybindings" = {
         screenshot = [ ];

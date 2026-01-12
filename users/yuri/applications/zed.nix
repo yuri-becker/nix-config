@@ -71,7 +71,7 @@
         # Nix
         languages.Nix = {
           formatter.external = {
-            command = "${lib.getExe pkgs.nixfmt-rfc-style}";
+            command = "${lib.getExe pkgs.nixfmt}";
             arguments = [ "--strict" ];
           };
         };

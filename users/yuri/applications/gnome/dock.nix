@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.gnome.enable {
+  config = lib.mkIf config.localhost.gnome.enable {
     programs.gnome-shell.extensions = with pkgs.gnomeExtensions; [ { package = dash-to-dock; } ];
     dconf.settings."org/gnome/shell" = {
       favorite-apps = [

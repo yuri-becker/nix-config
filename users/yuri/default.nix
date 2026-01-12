@@ -9,6 +9,7 @@
     localhost.enable = mkEnableOption "that this host is meant to be locally interacted with";
     localhost.personal.enable = mkEnableOption "toolchain for personal workloads";
     localhost.work.enable = mkEnableOption "toolchain for wage-labour-related workloads";
+    localhost.gnome.enable = mkEnableOption "gnome configuration";
   };
 
   config = {
@@ -69,5 +70,6 @@
   imports = [
     ./applications
     ./cli
+    ./hardware
   ];
 }

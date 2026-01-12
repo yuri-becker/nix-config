@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  ...
 }:
 {
   config = lib.mkIf config.localhost.work.enable {
