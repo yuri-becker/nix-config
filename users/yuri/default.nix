@@ -70,6 +70,6 @@
   imports = [
     ./applications
     ./cli
-    ./hardware
+    ./services
   ];
 }

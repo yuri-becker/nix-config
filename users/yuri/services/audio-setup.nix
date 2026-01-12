@@ -7,7 +7,7 @@
 {
   config = lib.mkIf (config.localhost.enable && pkgs.stdenv.isLinux) {
 
-    systemd.user.services.bitrate =
+    systemd.user.services.audio-setup =
       let
         pw-link = "${pkgs.pipewire}/bin/pw-link";
         pw-metadata = "${pkgs.pipewire}/bin/pw-metadata";

@@ -9,7 +9,6 @@
     ./clipboard.nix
     ./dock.nix
     ./keybindings.nix
-    ./notifications.nix
     ./top-bar.nix
     ./theme.nix
   ];

@@ -17,8 +17,8 @@
       home-manager.sharedModules = [ specialArgs.sops-nix.homeManagerModule ];
       home-manager.extraSpecialArgs = {
         hostname = "meryl";
-        wakatime-ls = specialArgs.wakatime-ls;
-      };
+      }
+      // specialArgs;
     }
   ];
 
