@@ -8,7 +8,7 @@
       home-manager.users.yuri = (
         { ... }:
         {
-          imports = [ ../../../users/yuri ];
+          imports = [ ../../users/yuri ];
           localhost.enable = true;
           localhost.work.enable = true;
         }

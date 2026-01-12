@@ -12,7 +12,7 @@ let
 in
 {
   config = lib.mkIf config.gnome.enable {
-    programs.gnome-shell.extensions = with pkgs.gnomeExtensions; [ { package = pano; } ];
+    programs.gnome-shell.extensions = with pkgs.gnomeExtensions; [ { package = clipboard-history; } ];
     dconf.settings = {
       "${namespace}" = {
         active-item-border-color = "rgb(129,61,156)";

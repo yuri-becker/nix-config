@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs.git = {
     enable = true;
@@ -45,6 +50,16 @@
       signByDefault = true;
       format = "ssh";
       key = "${config.home.homeDirectory}/.ssh/id_github";
+    };
+  };
+  programs.git.includes = lib.optional config.localhost.work.enable {
+    condition = "gitdir:~/Projects/";
+    contents = {
+      user = {
+        name = "Yuri Becker";
+        email = "yuri@control.alt.coop";
+        signingKey = "${config.home.homeDirectory}/.ssh/id_gitlab_alt_coop";
+      };
     };
   };
   programs.diff-so-fancy = {

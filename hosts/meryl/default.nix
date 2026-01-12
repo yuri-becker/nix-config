@@ -10,7 +10,7 @@
     ./desktop.nix
     ./hardware-configuration.nix
     ./pam.nix
-    ./users
+    ./users.nix
     specialArgs.sops-nix.nixosModules.sops
   ];
   docker.enable = true;
@@ -28,7 +28,7 @@
   };
 
   networking = {
-    hostName = specialArgs.hostname;
+    hostName = "meryl";
     networkmanager.enable = true;
   };
 

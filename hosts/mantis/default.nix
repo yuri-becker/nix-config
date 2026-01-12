@@ -3,7 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ./services
-    ./users
+    ./users.nix
     specialArgs.sops-nix.nixosModules.sops
   ];
 

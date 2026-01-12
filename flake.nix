@@ -46,28 +46,18 @@
           wakatime-ls
           ;
       };
-      mkHost = import ./mkHost.nix entrypoints specialArgs;
-      mkColmenaHive = import ./mkColmenaHive.nix entrypoints specialArgs;
+      lib = import ./lib.nix { inherit (inputs) nixpkgs; };
+      mkHost = lib.mkHost entrypoints specialArgs;
+      mkHive = lib.mkHive entrypoints specialArgs;
     in
-    (mkHost { hostname = "meryl"; })
-    // (mkHost {
-      hostname = "solid";
-      type = "home-manager";
-    })
-    // (mkHost {
-      hostname = "liquid";
-      type = "darwin";
-    })
-    // (mkHost {
-      hostname = "otacon";
-      type = "image";
-      system = "aarch64-linux";
-    })
-    // (mkColmenaHive (
-      (mkHost { hostname = "mantis"; })
-      // (mkHost {
-        hostname = "otacon";
-        buildOnTarget = false;
-      })
-    ));
+    lib.deepMerge [
+      (mkHost { hostname = "meryl"; })
+      (mkHost { hostname = "solid"; type = "home-manager"; })
+      (mkHost { hostname = "liquid"; type = "darwin"; })
+      (mkHost { hostname = "otacon"; type = "image"; system = "aarch64-linux"; })
+      (mkHive [
+        (mkHost { hostname = "mantis"; })
+        (mkHost { hostname = "otacon"; buildOnTarget = false; })
+      ])
+    ];
 }

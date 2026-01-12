@@ -52,6 +52,7 @@
         cameractrls-gtk4
         epiphany
         gthumb
+        pwvucontrol
         wl-clipboard
       ]
       ++ lib.optionals pkgs.stdenv.isDarwin [

@@ -6,11 +6,6 @@
 }:
 {
   config = lib.mkIf config.localhost.enable {
-    home.packages = with pkgs; [
-      nil
-      nixd
-      tinymist
-    ];
     programs.zed-editor = {
       enable = true;
       extensions = [
@@ -18,6 +13,7 @@
         "ansible"
         "catppuccin"
         "catppuccin-icons"
+        "django"
         "docker-compose"
         "dockerfile"
         "env"
@@ -33,6 +29,7 @@
         nil
         nixd
         package-version-server
+        tinymist
       ];
       userSettings = {
         active_pane_modifiers.inactive_opacity = 0.7;

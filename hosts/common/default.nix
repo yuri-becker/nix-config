@@ -14,14 +14,9 @@
       default = "7d";
     };
   };
-  imports = [
-    ./docker.nix
-    ./keyboards.nix
-    ./nix-options.nix
-    ./office-hardware.nix
-  ];
+  imports = [ ./office-hardware.nix ];
   config = {
-    environment.systemPackages = with pkgs; [ ] ++ lib.optionals services.localhost.enable [ vials ];
+    environment.systemPackages = with pkgs; [ ] ++ lib.optionals config.localhost.enable [ vial ];
     services.udev = lib.mkIf config.localhost.enable {
       packages = with pkgs; [ qmk-udev-rules ];
       # Epomaker Alice 66 and Keychron Q11
