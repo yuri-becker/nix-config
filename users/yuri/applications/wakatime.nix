@@ -12,7 +12,7 @@ in
   config = lib.mkIf config.localhost.enable {
     home.packages = [
       pkgs.wakatime-cli
-      wakatime-ls-pkg
+      # wakatime-ls-pkg # until https://github.com/wakatime/zed-wakatime/issues/99 is fixed
     ];
     sops.secrets."wakatime/api_key".sopsFile = ./wakatime.secrets.yaml;
     home.file.".wakatime.cfg" = {

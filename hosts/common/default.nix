@@ -30,6 +30,7 @@
       rootless.enable = true;
       rootless.setSocketVariable = true;
     };
+    programs.nix-ld = lib.mkIf (config.localhost.enable && pkgs.stdenv.isLinux) { enable = true; };
 
     nix = {
       settings.experimental-features = [
