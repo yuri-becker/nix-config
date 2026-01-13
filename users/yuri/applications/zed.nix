@@ -18,6 +18,7 @@
         "dockerfile"
         "env"
         "html"
+        "justfile"
         "nix"
         "scss"
         "tokyo-night"

@@ -1,6 +1,8 @@
+set quiet
+
 [private]
 default:
-  @just --list
+  just --list
 
 [doc("Rebuilds system")]
 [macos]
@@ -36,7 +38,28 @@ build-sd node:
 [doc("Updates the flake (does not update the system - rebuild to do that)")]
 update:
   nix flake update
-alias u := update
+
+[doc("Updates the flake and rebuilds")]
+update-and-switch:
+  #!/usr/bin/env bash
+  just update
+  if [[ "$(git status -s | grep -F "flake.lock" | wc --lines) -eq 0" ]]; then
+    echo -e "\033[1;32mNo updates available.\033[0;m"
+    exit
+  fi
+
+  just rebuild
+
+  git add "flake.lock"
+  if [[ "$(git status -s | grep -F -v 'M  flake.lock' | wc --lines)" -eq 0 ]]; then
+    echo -e "\033[1;32mPress anything to commit and push…\033[0;m" && read -p ""
+    git commit -m "Update flake"
+    git push
+  else
+    echo -e "\033[1;33m⚠️ Changes outside of flake.lock detected - Not commiting"
+  fi
+
+alias u := update-and-switch
 
 [doc("Re-encrypts the secrets files after the keys in .sops.yaml were changed.")]
 sops-updatekeys:
