@@ -16,9 +16,7 @@ let
   iconTheme = config.gtk.iconTheme.name;
 in
 {
-
   config = lib.mkIf config.localhost.gnome.enable {
-
     home.packages = with pkgs; [
       gtk-engine-murrine
       gnome-themes-extra
