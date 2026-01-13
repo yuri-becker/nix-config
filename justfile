@@ -4,19 +4,19 @@ default:
 
 [doc("Rebuilds system")]
 [macos]
-rebuild:
-    sudo darwin-rebuild switch --flake .
+rebuild action="switch":
+    {{ if action == "switch" { "sudo " } else { "" } }}darwin-rebuild {{ action }} --flake .
 
 [doc("Rebuilds system or home-manager configuration.")]
 [linux]
-rebuild:
+rebuild action="switch":
     #!/usr/bin/env bash
     set -euxo pipefail
     osname=`awk -F= '$1=="NAME" { print $2 ;}' /etc/os-release`
     if [[ "$osname" == "NixOS" ]]; then
-        sudo nixos-rebuild switch --flake .
+        {{ if action == "switch" { "sudo " } else { "" } }}nixos-rebuild {{ action }} --flake .
     else
-        nix run home-manager/master -- switch --flake .
+        nix run home-manager/master -- {{ action }} --flake .
     fi
 
 alias r := rebuild
