@@ -15,7 +15,8 @@
         virtual-speaker = "Virtual-Speaker";
         virtual-mic = "Virtual-Microphone";
         k5 = "alsa_output.usb-GuangZhou_FiiO_Electronics_Co._Ltd_FiiO_K5_Pro-00.iec958-stereo";
-        btr5 = "alsa_output.usb-FiiO_FiiO_BTR5-00.analog-stereo";
+        scarlett.sink = "alsa_output.usb-Focusrite_Scarlett_Solo_USB-00.HiFi__Line1__sink";
+        scarlett.filter = "Scarlett Solo";
         sc-420 = "alsa_input.usb-USB_MICROPHONE_USB_MICROPHONE_20190809-00.analog-stereo";
         trashy-thinkpad-mic = "alsa_input.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__Mic1__source";
         pipewire-setup = pkgs.writeShellScriptBin "pipewire-setup" ''
@@ -30,16 +31,20 @@
             ${pactl} load-module module-remap-source source_name=${virtual-mic}
           fi
 
-          # Output: Fiio K5
-          ${pw-link} ${virtual-speaker}:monitor_FL ${k5}:playback_FL
-          ${pw-link} ${virtual-speaker}:monitor_FR ${k5}:playback_FR
-          # Output: Fiio BTR5
-          ${pw-link} ${virtual-speaker}:monitor_FL ${btr5}:playback_FL
-          ${pw-link} ${virtual-speaker}:monitor_FR ${btr5}:playback_FR
+          if [[ "$(pw-dump | grep '${scarlett.filter}' | wc --lines)" -gt 0 ]]; then
+            # Output: Scarlett Solo
+            ${pw-link} ${virtual-speaker}:monitor_FL ${scarlett.sink}:playback_FL
+            ${pw-link} ${virtual-speaker}:monitor_FR ${scarlett.sink}:playback_FR
+          else
+            # Output: Fiio K5
+            ${pw-link} ${virtual-speaker}:monitor_FL ${k5}:playback_FL
+            ${pw-link} ${virtual-speaker}:monitor_FR ${k5}:playback_FR
+          fi
 
           # Input: SC 420
           ${pw-link} ${sc-420}:capture_FL input.${virtual-mic}:input_FL
           ${pw-link} ${sc-420}:capture_FR input.${virtual-mic}:input_FR
+
           # Input: Thinkpad Microphone
           ${pw-link} ${trashy-thinkpad-mic}:capture_FL input.${virtual-mic}:input_FL
           ${pw-link} ${trashy-thinkpad-mic}:capture_FR input.${virtual-mic}:input_FR
