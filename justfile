@@ -43,7 +43,7 @@ update:
 update-and-switch:
   #!/usr/bin/env bash
   just update
-  if [[ "$(git status -s | grep -F "flake.lock" | wc --lines) -eq 0" ]]; then
+  if [[ "$(git status -s | grep -F "flake.lock" | wc --lines)" -eq 0 ]]; then
     echo -e "\033[1;32mNo updates available.\033[0;m"
     exit
   fi
