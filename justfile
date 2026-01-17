@@ -5,9 +5,10 @@ default:
   just --list
 
 [doc("Rebuilds system")]
+[positional-arguments]
 [macos]
 rebuild action="switch":
-    {{ if action == "switch" { "sudo " } else { "" } }}darwin-rebuild {{ action }} --flake .
+    {{ if action == "switch" { "sudo " } else { "" } }}darwin-rebuild {{ action }} --flake .#$(hostname)
 
 [doc("Rebuilds system or home-manager configuration.")]
 [linux]

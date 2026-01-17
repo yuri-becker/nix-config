@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  specialArgs,
   ...
 }:
 {
@@ -14,24 +15,8 @@
       default = "7d";
     };
   };
-  imports = [ ./office-hardware.nix ];
+  imports = [ ./linux.nix ];
   config = {
-    environment.systemPackages = with pkgs; [ ] ++ lib.optionals config.localhost.enable [ vial ];
-    services.udev = lib.mkIf config.localhost.enable {
-      packages = with pkgs; [ qmk-udev-rules ];
-      # Epomaker Alice 66 and Keychron Q11
-      extraRules = ''
-        KERNEL=="hidraw*", SUBSYSTEMS=="hidraw", ATTRS{idVendor}=="36b0", ATTRS{idProduct}=="300a", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
-        KERNEL=="hidraw*", SUBSYSTEMS=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="01e0", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
-      '';
-    };
-    virtualisation.docker = lib.mkIf config.docker.enable {
-      enable = true;
-      rootless.enable = true;
-      rootless.setSocketVariable = true;
-    };
-    programs.nix-ld = lib.mkIf (config.localhost.enable && pkgs.stdenv.isLinux) { enable = true; };
-
     nix = {
       settings.experimental-features = [
         "nix-command"
@@ -51,5 +36,7 @@
         options = "--delete-older-than ${config.nix-options.gc-older-than}";
       } (if pkgs.stdenv.isDarwin then { interval.Hour = 4; } else { dates = "daily"; });
     };
+    nixpkgs.config.allowUnfree = true;
+    nixpkgs.hostPlatform.system = specialArgs.system;
   };
 }

@@ -6,6 +6,11 @@
 }:
 {
   config = lib.mkIf config.localhost.enable {
+    # home.packages = with pkgs; [
+      # nil
+      # nixd
+      # tinymist
+    # ];
     programs.zed-editor = {
       enable = true;
       extensions = [
@@ -17,6 +22,7 @@
         "docker-compose"
         "dockerfile"
         "env"
+        "git-firefly"
         "html"
         "justfile"
         "nix"
@@ -27,6 +33,7 @@
         "wakatime"
       ];
       extraPackages = with pkgs; [
+        just-lsp
         nil
         nixd
         package-version-server
