@@ -44,9 +44,9 @@
       ++ lib.optionals config.localhost.enable [
         commitlint-rs
         devenv
-        erdtree
         ffmpeg-full
         meslo-lgs-nf
+        ncdu
         nerd-fonts.jetbrains-mono
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [

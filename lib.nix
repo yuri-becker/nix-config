@@ -3,13 +3,18 @@
   deepMerge = with nixpkgs.lib; listOfAttrSets: foldl' recursiveUpdate { } listOfAttrSets;
   mkHost =
     { nix-darwin, home-manager, ... }:
-    specialArgs:
+    extraSpecialArgs:
     {
       hostname,
       type ? "nixos",
       system ? "x86_64-linux",
       buildOnTarget ? true,
     }:
+    let
+      specialArgs = extraSpecialArgs // {
+        inherit system hostname;
+      };
+    in
     if type == "darwin" then
       {
         darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {

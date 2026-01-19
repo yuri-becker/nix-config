@@ -1,9 +1,4 @@
-{
-  specialArgs,
-  lib,
-  pkgs,
-  ...
-}:
+{ specialArgs, ... }:
 {
   imports = [
     ./prefs.nix
@@ -37,18 +32,6 @@
     enable = true;
     extraOptions = "extra-platforms = x86_64-darwin aarch64-darwin";
     linux-builder.enable = true;
-  };
-  nixpkgs = {
-    hostPlatform = "aarch64-darwin";
-    config.allowUnfreePredicate =
-      pkg:
-      builtins.elem (lib.getName pkg) [
-        "fastmail-desktop"
-        "raycast"
-        "shottr"
-        "the-unarchiver"
-      ];
-    config.permittedInsecurePackages = [ "electron-36.9.5" ];
   };
   users.users.yuri = {
     name = "yuri";

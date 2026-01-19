@@ -52,12 +52,26 @@
     in
     lib.deepMerge [
       (mkHost { hostname = "meryl"; })
-      (mkHost { hostname = "solid"; type = "home-manager"; })
-      (mkHost { hostname = "liquid"; type = "darwin"; })
-      (mkHost { hostname = "otacon"; type = "image"; system = "aarch64-linux"; })
+      (mkHost {
+        hostname = "solid";
+        type = "home-manager";
+      })
+      (mkHost {
+        hostname = "liquid";
+        type = "darwin";
+        system = "aarch64-darwin";
+      })
+      (mkHost {
+        hostname = "otacon";
+        type = "image";
+        system = "aarch64-linux";
+      })
       (mkHive [
         (mkHost { hostname = "mantis"; })
-        (mkHost { hostname = "otacon"; buildOnTarget = false; })
+        (mkHost {
+          hostname = "otacon";
+          buildOnTarget = false;
+        })
       ])
     ];
 }
