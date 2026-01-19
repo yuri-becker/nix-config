@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs.fish = {
     enable = true;
@@ -23,7 +28,17 @@
       rm = "rm -i";
       rimraf = "rm -rf";
       t = "tail -f";
-    };
+    }
+    // (
+      if !config.localhost.enable then
+        { }
+      else
+        {
+          de = "devenv";
+          deu = "devenv up";
+          des = "devenv shell";
+        }
+    );
     functions = {
       otp = "${pkgs.yubikey-manager}/bin/ykman oath accounts code -s $argv | wl-copy";
     };

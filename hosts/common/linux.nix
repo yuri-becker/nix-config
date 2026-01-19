@@ -8,7 +8,7 @@
   config = lib.mkIf (config.localhost.enable && pkgs.stdenv.isLinux) {
     environment.systemPackages =
       with pkgs;
-      lib.optionals config.localhost.enable [ vials ]
+      lib.optionals config.localhost.enable [ vial ]
       ++ lib.optionals config.localhost.office.enable [
         logiops
         gutenprint
