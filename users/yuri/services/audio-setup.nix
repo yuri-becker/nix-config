@@ -9,6 +9,7 @@
 
     systemd.user.services.audio-setup =
       let
+        samplerate = "192000";
         pw-link = "${pkgs.pipewire}/bin/pw-link";
         pw-metadata = "${pkgs.pipewire}/bin/pw-metadata";
         pactl = "${pkgs.pulseaudio}/bin/pactl";
@@ -20,7 +21,7 @@
         sc-420 = "alsa_input.usb-USB_MICROPHONE_USB_MICROPHONE_20190809-00.analog-stereo";
         pipewire-setup = pkgs.writeShellScriptBin "pipewire-setup" ''
           # BITRATE
-          ${pw-metadata} --name settings 0 clock.force-rate 384000
+          ${pw-metadata} --name settings 0 clock.force-rate ${samplerate}
 
           # OUTPUTS
           if [[ $(pw-link --output | grep '${virtual-speaker}' | wc --lines) -eq 0 ]]; then

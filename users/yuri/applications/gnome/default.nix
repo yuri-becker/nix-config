@@ -16,11 +16,14 @@
       enable = true;
       extensions = with pkgs.gnomeExtensions; [
         { package = clipboard-history; }
+        { package = color-picker; }
         { package = dash-to-dock; }
         { package = grand-theft-focus; }
         { package = next-up; }
         { package = notification-counter; }
         { package = tophat; }
+        # { package = user-themes; }
+        { package = uxplay-control; }
       ];
     };
 
@@ -31,17 +34,29 @@
       };
 
       "org/gnome/shell" = {
-        favorite-apps = [
-          "librewolf.desktop"
-          "kitty.desktop"
-          "org.gnome.Nautilus.desktop"
-          "dev.zed.Zed.desktop"
-          "org.gnome.Calendar.desktop"
-          "linphone.desktop"
-          "Mattermost.desktop"
-          "beepertexts.desktop"
-          "feishin.desktop"
-        ];
+        favorite-apps =
+          if config.localhost.work.enable then
+            [
+              "librewolf.desktop"
+              "kitty.desktop"
+              "org.gnome.Nautilus.desktop"
+              "dev.zed.Zed.desktop"
+              "org.gnome.Calendar.desktop"
+              "linphone.desktop"
+              "Mattermost.desktop"
+              "beepertexts.desktop"
+              "feishin.desktop"
+            ]
+          else if config.localhost.gaming.enable then
+            [
+              "librewolf.desktop"
+              "kitty.desktop"
+              "org.gnome.Nautilus.desktop"
+              "feishin.desktop"
+              ""
+            ]
+          else
+            [ ];
       };
 
       "org/gnome/shell/keybindings" = {

@@ -1,4 +1,10 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  specialArgs,
+  ...
+}:
 {
   config = lib.mkIf config.localhost.enable {
     programs.librewolf =
@@ -30,7 +36,8 @@
       in
       {
         enable = true;
-        languagePacks = [
+        package = if specialArgs.type == "nixos" then pkgs.librewolf else null;
+        languagePacks = lib.optionals (specialArgs.type == "nixos") [
           "en-GB"
           "de"
         ];

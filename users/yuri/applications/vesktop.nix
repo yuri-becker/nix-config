@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   config = lib.mkIf config.localhost.personal.enable {
     programs.vesktop = {
@@ -109,5 +114,6 @@
         };
       };
     };
+    xdg.autostart.entries = [ "${pkgs.vesktop}/share/applications/vesktop.desktop" ];
   };
 }

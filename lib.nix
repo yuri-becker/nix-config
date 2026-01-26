@@ -12,7 +12,7 @@
     }:
     let
       specialArgs = extraSpecialArgs // {
-        inherit system hostname;
+        inherit system hostname type;
       };
     in
     if type == "darwin" then

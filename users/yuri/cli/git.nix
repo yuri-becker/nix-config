@@ -8,12 +8,19 @@
   programs.git = {
     enable = true;
     settings = {
-      user.name = "Yuri";
-      user.email = "hi@yuri.li";
+      user = {
+        name = "Yuri";
+        email = "hi@yuri.li";
+        signingkey = "${config.home.homeDirectory}/.ssh/id_github";
+      };
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
+      signing = {
+        signByDefault = true;
+        format = "ssh";
+      };
 
-      aliases = {
+      alias = {
         a = "add";
         A = "add .";
         b = "branch";
@@ -46,25 +53,34 @@
         wip = ''!git commit -m " WIP " --no-verify && git push'';
       };
     };
-    signing = {
-      signByDefault = true;
-      format = "ssh";
-      key = "${config.home.homeDirectory}/.ssh/id_github";
-    };
-  };
-  programs.git.includes = lib.optional config.localhost.work.enable {
-    condition = "gitdir:~/Projects/";
-    contents = {
-      user = {
-        name = "Yuri Becker";
-        email = "yuri@control.alt.coop";
-        signingKey = "${config.home.homeDirectory}/.ssh/id_gitlab_alt_coop";
-      };
-    };
+
+    includes =
+      let
+        conditions.remote = host: "hasconfig:remote.*.url:git@${host}:*/**";
+        contents.altCoop = keyname: {
+          user = {
+            name = "Yuri Becker";
+            email = "yuri@control.alt.coop";
+            signingKey = "${config.home.homeDirectory}/.ssh/${keyname}";
+          };
+        };
+      in
+      [
+        {
+          condition = conditions.remote "git.alt.coop";
+          contents = contents.altCoop "id_git_alt_coop";
+        }
+        {
+          condition = conditions.remote "gitlab.alt.coop";
+          contents = contents.altCoop "id_gitlab_alt_coop";
+        }
+      ];
   };
   programs.diff-so-fancy = {
     enable = true;
     enableGitIntegration = true;
   };
-  home.packages = with pkgs; [ gitflow ];
+  home.packages = with pkgs; [
+    gitflow
+  ];
 }
