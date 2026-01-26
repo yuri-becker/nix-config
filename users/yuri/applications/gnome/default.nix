@@ -34,29 +34,31 @@
       };
 
       "org/gnome/shell" = {
-        favorite-apps =
+        favorite-apps = [
+          "librewolf.desktop"
+          "kitty.desktop"
+          "feishin.desktop"
+          "org.gnome.Nautilus.desktop"
+        ]
+        ++ (
           if config.localhost.work.enable then
             [
-              "librewolf.desktop"
-              "kitty.desktop"
-              "org.gnome.Nautilus.desktop"
-              "dev.zed.Zed.desktop"
-              "org.gnome.Calendar.desktop"
-              "linphone.desktop"
               "Mattermost.desktop"
               "beepertexts.desktop"
-              "feishin.desktop"
+              "linphone.desktop"
+              "org.gnome.Calendar.desktop"
+              "dev.zed.Zed.desktop"
             ]
           else if config.localhost.gaming.enable then
             [
-              "librewolf.desktop"
-              "kitty.desktop"
-              "org.gnome.Nautilus.desktop"
-              "feishin.desktop"
-              ""
+              "fastmail.desktop"
+              "vesktop.desktop"
+              "beepertexts.desktop"
+              "steam.desktop"
             ]
           else
-            [ ];
+            [ ]
+        );
       };
 
       "org/gnome/shell/keybindings" = {

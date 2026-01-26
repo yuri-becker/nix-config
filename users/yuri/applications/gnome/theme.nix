@@ -18,6 +18,7 @@ in
 {
   config = lib.mkIf config.localhost.gnome.enable {
     home.packages = with pkgs; [
+      capitaine-cursors-themed
       gtk-engine-murrine
       gnome-themes-extra
       sassc
