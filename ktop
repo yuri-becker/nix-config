@@ -1,0 +1,107 @@
+[/]
+app-picker-layout=[{'com.governikus.ausweisapp2.desktop': <{'position': <0>}>, 'org.gnome.Weather.desktop': <{'position': <1>}>, 'com.usebottles.bottles.desktop': <{'position': <2>}>, 'org.gnome.Maps.desktop': <{'position': <3>}>, 'btop.desktop': <{'position': <4>}>, 'org.gnome.SimpleScan.desktop': <{'position': <5>}>, 'org.gnome.Settings.desktop': <{'position': <6>}>, 'org.cachyos.KernelManager.desktop': <{'position': <7>}>, 'org.gnome.Calculator.desktop': <{'position': <8>}>, 'org.gnome.Snapshot.desktop': <{'position': <9>}>, 'org.gnome.Characters.desktop': <{'position': <10>}>, 'Utilities': <{'position': <11>}>, 'System': <{'position': <12>}>, 'org.gnome.Calendar.desktop': <{'position': <13>}>, 'io.github.streetpea.Chiaki4deck.desktop': <{'position': <14>}>, 'cmake-gui.desktop': <{'position': <15>}>, 'dolphin-emu.desktop': <{'position': <16>}>, 'duckstation.desktop': <{'position': <17>}>, 'dev.eden_emu.eden.desktop': <{'position': <18>}>}, {'org.gnome.Extensions.desktop': <{'position': <0>}>, 'org.gnome.Nautilus.desktop': <{'position': <1>}>, 'fladder.desktop': <{'position': <2>}>, 'flycast.desktop': <{'position': <3>}>, 'org.gnome.GHex.desktop': <{'position': <4>}>, 'gimp.desktop': <{'position': <5>}>, 'gparted.desktop': <{'position': <6>}>, '1000xRESIST.desktop': <{'position': <7>}>, 'lstopo.desktop': <{'position': <8>}>, 'heroic.desktop': <{'position': <9>}>, 'Air Twister.desktop': <{'position': <10>}>, 'Hollow Knight Silksong.desktop': <{'position': <11>}>, 'KINGDOM HEARTS -HD 1.5+2.5 ReMIX-.desktop': <{'position': <12>}>, 'org.kde.krita.desktop': <{'position': <13>}>, 'cups.desktop': <{'position': <14>}>, 'Axiom Verge.desktop': <{'position': <15>}>, 'menulibre.desktop': <{'position': <16>}>, 'mpv.desktop': <{'position': <17>}>, 'com.nextcloud.desktopclient.nextcloud.desktop': <{'position': <18>}>, 'com.obsproject.Studio.desktop': <{'position': <19>}>, 'onlyoffice-desktopeditors.desktop': <{'position': <20>}>, 'beeper.desktop': <{'position': <21>}>, 'system-config-printer.desktop': <{'position': <22>}>, 'protontricks.desktop': <{'position': <23>}>}, {'net.davidotek.pupgui2.desktop': <{'position': <0>}>, 'assistant.desktop': <{'position': <1>}>, 'bruno.desktop': <{'position': <2>}>, 'qdbusviewer.desktop': <{'position': <3>}>, 'linguist.desktop': <{'position': <4>}>, 'designer.desktop': <{'position': <5>}>, 'hu.irl.cameractrls.desktop': <{'position': <6>}>, 'CloverPit.desktop': <{'position': <7>}>, 'org.cachyos.scx-manager.desktop': <{'position': <8>}>, 'SimRail - The Railway Simulator.desktop': <{'position': <9>}>, 'Deep Rock Galactic Survivor.desktop': <{'position': <10>}>, 'steam-bp-ultrawide.desktop': <{'position': <11>}>, 'steam-rom-manager.desktop': <{'position': <12>}>, 'streamcontroller.desktop': <{'position': <13>}>, 'Devil May Cry HD Collection.desktop': <{'position': <14>}>, 'dev.lizardbyte.app.Sunshine.desktop': <{'position': <15>}>, 'Train Sim World 6.desktop': <{'position': <16>}>, 'org.gnome.tweaks.desktop': <{'position': <17>}>, 'uxplay.desktop': <{'position': <18>}>, 'via-nativia.desktop': <{'position': <19>}>, 'org.gnome.gitlab.YaLTeR.VideoTrimmer.desktop': <{'position': <20>}>, 'Dustborn.desktop': <{'position': <21>}>, "FlatOut Ultimate Carnage Collector's Edition.desktop": <{'position': <22>}>, 'org.gnome.gThumb.desktop': <{'position': <23>}>}, {'Winds of Change.desktop': <{'position': <0>}>, 'winetricks.desktop': <{'position': <1>}>, 'Hatsune Miku Project DIVA Mega Mix+.desktop': <{'position': <2>}>, 'XIVLauncher.desktop': <{'position': <3>}>, 'Helix.desktop': <{'position': <4>}>, 'org.pipewire.Helvum.desktop': <{'position': <5>}>, 'Lumines Arise.desktop': <{'position': <6>}>, 'Lunistice.desktop': <{'position': <7>}>, 'ns-usbloader.desktop': <{'position': <8>}>, 'jconsole-java-openjdk.desktop': <{'position': <9>}>, 'jshell-java-openjdk.desktop': <{'position': <10>}>, 'PCSX2.desktop': <{'position': <11>}>, 'org.rncbc.qpwgraph.desktop': <{'position': <12>}>, 'qv4l2.desktop': <{'position': <13>}>, 'qvidcap.desktop': <{'position': <14>}>, 'Star Trucker.desktop': <{'position': <15>}>, 'Sub for You.desktop': <{'position': <16>}>, 'vesktop.desktop': <{'position': <17>}>, 'We Were Here.desktop': <{'position': <18>}>, 'org.gnome.Epiphany.desktop': <{'position': <19>}>, 'dev.zed.Zed.desktop': <{'position': <20>}>}]
+disable-user-extensions=false
+disabled-extensions=['light-style@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'native-window-placement@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com', 'window-list@gnome-shell-extensions.gcampax.github.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'status-icons@gnome-shell-extensions.gcampax.github.com']
+enabled-extensions=['clipboard-history@alexsaveau.dev', 'color-picker@tuberry', 'dash-to-dock@micxgx.gmail.com', 'grand-theft-focus@zalckos.github.com', 'next-up@artisticat1.github.com', 'NotificationCounter@coolllsk', 'tophat@fflewddur.github.io', 'uxplay-control@xxanqw', 'user-theme@gnome-shell-extensions.gcampax.github.com']
+favorite-apps=['librewolf.desktop', 'kitty.desktop', 'feishin.desktop', 'org.gnome.Nautilus.desktop', 'fastmail.desktop', 'vesktop.desktop', 'TeamSpeak.desktop', 'steam.desktop']
+last-selected-power-profile='performance'
+welcome-dialog-last-shown-version='48.3'
+
+[extensions/arch-update]
+always-visible=false
+check-interval=120
+disable-parsing=false
+notify=true
+update-cmd='kitty --type tab -- yay --noconfirm'
+use-buildin-icons=false
+
+[extensions/auto-move-windows]
+application-list=@as []
+
+[extensions/clipboard-history]
+cache-only-favorites=true
+cache-size=100
+history-size=25
+ignore-password-mimes=false
+toggle-private-mode=@as []
+topbar-preview-size=50
+
+[extensions/clipboard-indicator]
+clear-history=@as []
+disable-down-arrow=true
+display-mode=0
+history-size=50
+next-entry=@as []
+prev-entry=@as []
+private-mode-binding=@as []
+toggle-menu=['<Shift><Super>v']
+
+[extensions/color-picker]
+color-history=[uint32 1780279, 1780279, 2240570, 2240570, 2240570, 2240570, 2240570, 2240570]
+
+[extensions/dash-to-dock]
+apply-custom-theme=true
+background-opacity=0.80000000000000004
+custom-theme-shrink=false
+dash-max-icon-size=48
+dock-position='BOTTOM'
+extend-height=false
+height-fraction=0.90000000000000002
+hot-keys=true
+icon-size-fixed=false
+isolate-workspaces=false
+multi-monitor=false
+preferred-monitor=-2
+preferred-monitor-by-connector='DP-2'
+preview-size-scale=0.089999999999999997
+scroll-action='cycle-windows'
+shortcut=@as []
+shortcut-text=''
+show-mounts=true
+show-show-apps-button=true
+
+[extensions/system-monitor]
+show-swap=true
+
+[extensions/tophat]
+cpu-display='numeric'
+fs-display='chart'
+mem-display='numeric'
+mount-to-monitor='/'
+network-usage-unit='bytes'
+position-in-panel='right'
+show-disk=true
+show-fs=false
+show-net=false
+
+[extensions/trayIconsReloaded]
+applications='[{"id":"streamcontroller.desktop","hidden":false},{"id":"discord.desktop","hidden":true},{"id":"steam-native.desktop","hidden":false},{"id":"steam.desktop","hidden":false}]'
+icon-brightness=0
+icon-contrast=0
+icon-padding-horizontal=6
+icon-size=16
+icons-limit=5
+tray-position='right'
+
+[extensions/user-theme]
+name='Nightfox-Purple-Dark'
+
+[extensions/uxplay-control]
+uxplay-logs=['[2026-01-25 13:52:28] STDOUT: UXPlay process started (PID: 12101).', '[2026-01-25 13:52:28] STDOUT: UxPlay 1.72: An Open-Source AirPlay mirroring and audio-streaming server.', '[2026-01-25 13:52:29] STDOUT: using system MAC address a8:a1:59:98:93:d5', '[2026-01-25 13:52:29] STDOUT: Initialized server socket(s)', '[2026-01-25 13:52:31] STDOUT: Attempting to stop UXPlay process.', '[2026-01-25 13:52:32] STDOUT: UXPlay process (PID: 12101) exited with status 0.']
+
+[keybindings]
+open-new-window-application-4=@as []
+screenshot=@as []
+screenshot-window=@as []
+show-screen-recording-ui=@as []
+show-screenshot-ui=['<Control><Alt>4']
+toggle-application-view=@as []
+toggle-message-tray=['<Super>u']
+toggle-overview=['Tools', '<Control>Up']
+
+[weather]
+automatic-location=true
+locations=[<(uint32 2, <('Duesseldorf', 'EDDL', false, [(0.89535390627309097, 0.11810061853604713)], @a(dd) [])>)>]
+
+[world-clocks]
+locations=@av []

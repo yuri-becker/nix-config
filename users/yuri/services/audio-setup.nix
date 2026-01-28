@@ -35,8 +35,8 @@
             ${pw-link} ${virtual-speaker}:monitor_FR ${scarlett.sink}:playback_FR
           else
             # Fiio K5
-            ${pw-link} ${virtual-speaker}:monitor_FL ${k5}:playback_FL
-            ${pw-link} ${virtual-speaker}:monitor_FR ${k5}:playback_FR
+            ${pw-link} ${virtual-speaker}:monitor_FL '${k5}:playback_FL'
+            ${pw-link} ${virtual-speaker}:monitor_FR '${k5}:playback_FR'
           fi
 
           # INPUTS

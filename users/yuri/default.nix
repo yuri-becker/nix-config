@@ -67,6 +67,7 @@
     {
       # Home Manager
       programs.home-manager.enable = true;
+      news.display = "silent";
       fonts.fontconfig.enable = lib.mkIf config.localhost.enable true;
       home.stateVersion = "25.05";
       home.username = "yuri";

@@ -21,6 +21,7 @@
         { package = grand-theft-focus; }
         { package = next-up; }
         { package = notification-counter; }
+        { package = quick-settings-tweaker; }
         { package = tophat; }
         # { package = user-themes; }
         { package = uxplay-control; }
@@ -54,6 +55,7 @@
               "fastmail.desktop"
               "vesktop.desktop"
               "beepertexts.desktop"
+              "TeamSpeak.desktop"
               "steam.desktop"
             ]
           else
@@ -92,6 +94,19 @@
         show-disk = true;
         show-fs = false;
         show-net = false;
+      };
+
+      "org/gnome/shell/extensions/quick-settings-tweaks" = {
+        dnd-quick-toggle-enabled = false;
+        media-enabled = false;
+        menu-animation-enabled = false;
+        notifications-enabled = false;
+        overlay-menu-enabled = false;
+        system-items-layout-enabled = true;
+        system-items-layout-hide = false;
+        system-items-layout-hide-lock = true;
+        unsafe-quick-toggle-enabled=false;
+        volume-mixer-menu-enabled=false
       };
     };
   };

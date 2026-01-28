@@ -10,6 +10,7 @@
     ./librewolf.nix
     ./linphone.nix
     ./mattermost.nix
+    ./nextcloud.nix
     ./onlyoffice.nix
     ./pcsx2.nix
     ./vesktop.nix

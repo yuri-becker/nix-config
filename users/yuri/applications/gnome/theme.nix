@@ -12,21 +12,21 @@ let
     tweakVariants = [ "black" ];
   };
   themeName = config.gtk.theme.name;
-  cursorTheme = "Capitaine Cursors (Palenight) - White";
   iconTheme = config.gtk.iconTheme.name;
 in
 {
   config = lib.mkIf config.localhost.gnome.enable {
     home.packages = with pkgs; [
-      capitaine-cursors-themed
       gtk-engine-murrine
       gnome-themes-extra
+      phinger-cursors
       sassc
     ];
     programs.gnome-shell.theme = {
       name = themeName;
       package = themePkg;
     };
+    home.file.".icons/default".source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors-light";
 
     gtk = {
       enable = true;
@@ -37,10 +37,6 @@ in
       iconTheme = {
         name = "WhiteSur-purple-dark";
         package = pkgs.whitesur-icon-theme.override { themeVariants = [ "purple" ]; };
-      };
-      cursorTheme = {
-        name = "Capitaine Cursors (Palenight) - White";
-        package = pkgs.capitaine-cursors-themed;
       };
       gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
       gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
@@ -54,7 +50,8 @@ in
         color-scheme = "prefer-dark";
         accent-color = "purple";
         gtk-theme = themeName;
-        cursor-theme = cursorTheme;
+        cursor-size = 32;
+        cursor-theme = "phinger-cursors-light";
         icon-theme = iconTheme;
       };
     };
