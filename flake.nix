@@ -27,8 +27,8 @@
       (mkHost { hostname = "liquid"; type = "darwin"; system = "aarch64-darwin"; })
       (mkHost { hostname = "otacon"; type = "image"; system = "aarch64-linux"; })
       (mkHive [
-        (mkHost { hostname = "mantis"; })
-        (mkHost { hostname = "otacon"; buildOnTarget = false; })
+        (mkHost { hostname = "mantis"; type = "colmena"; })
+        (mkHost { hostname = "otacon"; buildOnTarget = false; type = "colmena"; })
       ])
     ];
 }

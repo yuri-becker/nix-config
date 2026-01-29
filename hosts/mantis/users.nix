@@ -8,7 +8,7 @@ in
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.users.yuri = import ../../../users/yuri;
+      home-manager.users.yuri = import ../../users/yuri;
       home-manager.sharedModules = [ specialArgs.sops-nix.homeManagerModule ];
     }
   ];

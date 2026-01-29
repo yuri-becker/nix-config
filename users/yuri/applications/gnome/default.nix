@@ -105,8 +105,8 @@
         system-items-layout-enabled = true;
         system-items-layout-hide = false;
         system-items-layout-hide-lock = true;
-        unsafe-quick-toggle-enabled=false;
-        volume-mixer-menu-enabled=false
+        unsafe-quick-toggle-enabled = false;
+        volume-mixer-menu-enabled = false;
       };
     };
   };
