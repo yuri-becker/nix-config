@@ -41,8 +41,11 @@
         uxplay
         wl-clipboard
       ];
-      packages.personal = with pkgs; [ fladder ];
-      packages.personalLinux = with pkgs; [ krita ];
+      packages.personal = with pkgs; [ ];
+      packages.personalLinux = with pkgs; [
+        fladder
+        krita
+      ];
       packages.localhostDarwin = with pkgs; [
         cyberduck
         iina

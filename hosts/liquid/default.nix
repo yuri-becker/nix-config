@@ -18,10 +18,7 @@
         }
       ];
       home-manager.sharedModules = [ specialArgs.sops-nix.homeManagerModule ];
-      home-manager.extraSpecialArgs = {
-        hostname = "liquid";
-        wakatime-ls = specialArgs.wakatime-ls;
-      };
+      home-manager.extraSpecialArgs = specialArgs;
     }
   ];
   system = {
