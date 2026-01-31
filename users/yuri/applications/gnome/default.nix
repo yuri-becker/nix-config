@@ -21,6 +21,8 @@
     programs.gnome-shell = {
       enable = true;
       extensions = with pkgs.gnomeExtensions; [
+        { package = alphabetical-app-grid; }
+        { package = app-hider; }
         { package = clipboard-history; }
         { package = color-picker; }
         { package = dash-to-dock; }
