@@ -46,6 +46,7 @@
       };
 
       "org/gnome/shell" = {
+        disable-extension-version-validation = true;
         favorite-apps = [
           "librewolf.desktop"
           "kitty.desktop"
@@ -131,6 +132,7 @@
       };
 
       "org/gnome/shell/extensions/quick-settings-tweaks" = {
+        datemenu-hide-left-box = false;
         dnd-quick-toggle-enabled = false;
         media-enabled = false;
         menu-animation-enabled = false;

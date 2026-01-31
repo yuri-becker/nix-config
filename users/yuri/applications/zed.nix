@@ -7,9 +7,9 @@
 {
   config = lib.mkIf config.localhost.enable {
     # home.packages = with pkgs; [
-      # nil
-      # nixd
-      # tinymist
+    # nil
+    # nixd
+    # tinymist
     # ];
     programs.zed-editor = {
       enable = true;
@@ -44,7 +44,7 @@
         autosave.after_delay.milliseconds = 1000;
         base_keymap = "JetBrains";
         buffer_font_family = "JetBrainsMono Nerd Font";
-        buffer_font_size = 22;
+        buffer_font_size = 21;
         cursor_shape = "bar";
         disable_ai = true;
         git.inline_blame.enabled = false;

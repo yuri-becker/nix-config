@@ -31,21 +31,11 @@
     hostName = "meryl";
     networkmanager.enable = true;
   };
-
-  time.timeZone = "Europe/Berlin";
-  i18n.defaultLocale = "en_GB.UTF-8";
-  i18n.extraLocaleSettings = {
-    # See https://man.archlinux.org/man/locale.5
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_TIME = "en_DK.UTF-8";
-  };
   console.keyMap = "uk"; # Machine has a UK layout
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
-  services.printing.enable = true;
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "beeper" ];
 }

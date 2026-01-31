@@ -14,6 +14,8 @@
         gutenprint
       ];
 
+    services.printing.enable = true;
+
     services.udev = {
       packages = with pkgs; [ qmk-udev-rules ];
       # Epomaker Alice 66 and Keychron Q11
