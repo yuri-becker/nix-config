@@ -8,6 +8,10 @@
 {
   options = with lib; {
     localhost.enable = mkEnableOption "that this host is meant to be locally interacted with";
+    localhost.installLibrewolf = mkOption {
+      default = true;
+      type = types.bool;
+    };
     localhost.personal.enable = mkEnableOption "toolchain for personal workloads";
     localhost.work.enable = mkEnableOption "toolchain for wage-labour-related workloads";
     localhost.gnome.enable = mkEnableOption "gnome configuration";
@@ -35,17 +39,19 @@
       ];
       packages.localhostLinux = with pkgs; [
         cameractrls-gtk4
-        epiphany
+        diebahn
         gthumb
-        pwvucontrol
+        papers
         uxplay
         wl-clipboard
       ];
       packages.personal = with pkgs; [ ];
-      packages.personalLinux = with pkgs; [
-        fladder
-        krita
-      ];
+      packages.personalLinux =
+        with pkgs;
+        [
+          krita
+        ]
+        ++ lib.optionals pkgs.stdenv.isx86_64 [ fladder ];
       packages.localhostDarwin = with pkgs; [
         cyberduck
         iina

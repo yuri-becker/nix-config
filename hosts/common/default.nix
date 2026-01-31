@@ -8,6 +8,7 @@
 {
   options = with lib; {
     docker.enable = mkEnableOption "docker";
+    yubikey-pam.enable = mkEnableOption "pam module for YubiKey";
     localhost.enable = mkEnableOption "that this host is meant to be locally interacted with";
     localhost.office.enable = mkEnableOption "that this host uses the hardware i use in the office";
     nix-options.gc-older-than = mkOption {
@@ -15,7 +16,10 @@
       default = "7d";
     };
   };
-  imports = [ ./linux.nix ];
+  imports = [
+    ./pam.nix
+    ./linux.nix
+  ];
   config = {
     nix = {
       settings.experimental-features = [
@@ -38,5 +42,14 @@
     };
     nixpkgs.config.allowUnfree = true;
     nixpkgs.hostPlatform.system = specialArgs.system;
+
+    time.timeZone = "Europe/Berlin";
+    i18n.defaultLocale = "en_GB.UTF-8";
+    i18n.extraLocaleSettings = {
+      # See https://man.archlinux.org/man/locale.5
+      LC_ADDRESS = "de_DE.UTF-8";
+      LC_MEASUREMENT = "de_DE.UTF-8";
+      LC_TIME = "en_DK.UTF-8";
+    };
   };
 }

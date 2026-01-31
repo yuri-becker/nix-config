@@ -1,0 +1,32 @@
+{ specialArgs, ... }:
+{
+  imports = [
+    specialArgs.home-manager.nixosModules.home-manager
+    {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users.yuri = (
+        { ... }:
+        {
+          imports = [ ../../users/yuri ];
+          localhost.enable = true;
+          localhost.gnome.enable = true;
+        }
+      );
+      home-manager.sharedModules = [ specialArgs.sops-nix.homeManagerModule ];
+      home-manager.extraSpecialArgs = {
+        hostname = "liquidus";
+      }
+      // specialArgs;
+    }
+  ];
+
+  users.users.yuri = {
+    isNormalUser = true;
+    description = "Yuri";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+  };
+}

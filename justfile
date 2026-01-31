@@ -17,7 +17,7 @@ rebuild action="switch":
     set -euxo pipefail
     osname=`awk -F= '$1=="NAME" { print $2 ;}' /etc/os-release`
     if [[ "$osname" == "NixOS" ]]; then
-        {{ if action == "switch" { "sudo " } else { "" } }}nixos-rebuild {{ action }} --flake .
+        {{ if action == "switch" { "sudo " } else { "" } }}nixos-rebuild {{ action }} --flake . --impure
     else
         nix run home-manager/master -- {{ action }} --flake .
     fi

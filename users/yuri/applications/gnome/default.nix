@@ -8,8 +8,14 @@
   imports = [ ./theme.nix ];
   config = lib.mkIf config.localhost.gnome.enable {
     home.packages = with pkgs; [
+      gnome-calculator
       gnome-calendar
+      gnome-maps
+      gnome-system-monitor
       gnome-tweaks
+      nautilus
+      papers
+      simple-scan
     ];
 
     programs.gnome-shell = {
@@ -23,7 +29,6 @@
         { package = notification-counter; }
         { package = quick-settings-tweaker; }
         { package = tophat; }
-        # { package = user-themes; }
         { package = uxplay-control; }
       ];
     };
@@ -32,6 +37,10 @@
       "org/gnome/desktop/interface" = {
         lock-show-date = true;
         clock-show-weekday = true;
+      };
+      "org/gnome/desktop/peripherals/touchpad" = {
+        natural-scroll = false;
+        speed = 0.15384615384615374;
       };
 
       "org/gnome/shell" = {
@@ -58,6 +67,14 @@
               "TeamSpeak.desktop"
               "steam.desktop"
             ]
+          else if config.localhost.personal.enable then
+            [
+              "fastmail.desktop"
+              "vesktop.desktop"
+              "beepertexts.desktop"
+              "TeamSpeak.desktop"
+              "dev.zed.Zed.desktop"
+            ]
           else
             [ ]
         );
@@ -73,6 +90,21 @@
           "Tools" # F13
           "<Control>Up"
         ];
+      };
+
+      "org/gnome/gnome-system-monitor" = {
+        show-dependencies = true;
+        show-whose-processes = "all";
+      };
+      "org/gnome/gnome-system-monitor/proctree" = {
+
+        col-1-visible = true;
+        col-10-visible = true;
+        col-18-visible = true;
+        col-22-visible = true;
+        col-24-visible = true;
+        col-25-visible = true;
+        col-26-visible = false;
       };
 
       "org/gnome/shell/extensions/clipboard-history" = {

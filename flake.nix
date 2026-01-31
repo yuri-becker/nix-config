@@ -10,13 +10,14 @@
     sops-nix = { url = "github:Mic92/sops-nix"; inputs.nixpkgs.follows = "nixpkgs"; };
     colmena = { url = "github:zhaofengli/colmena"; inputs.nixpkgs.follows = "nixpkgs"; };
     wakatime-ls = { url = "github:mrnossiom/wakatime-ls"; inputs.nixpkgs.follows = "nixpkgs"; };
+    apple-silicon.url = "github:nix-community/nixos-apple-silicon/release-2025-11-18";
   };
 
   outputs =
     inputs:
     let
       entrypoints = { inherit (inputs) nix-darwin nixpkgs home-manager colmena ; };
-      specialArgs = { inherit (inputs) self home-manager sops-nix wakatime-ls ; };
+      specialArgs = { inherit (inputs) self home-manager sops-nix wakatime-ls apple-silicon; };
       lib = import ./lib.nix { inherit (inputs) nixpkgs; };
       mkHost = lib.mkHost entrypoints specialArgs;
       mkHive = lib.mkHive entrypoints specialArgs;
@@ -25,6 +26,7 @@
       (mkHost { hostname = "meryl"; })
       (mkHost { hostname = "solid"; type = "home-manager"; })
       (mkHost { hostname = "liquid"; type = "darwin"; system = "aarch64-darwin"; })
+      (mkHost { hostname = "liquidus"; type = "nixos"; system = "aarch64-linux"; })
       (mkHost { hostname = "otacon"; type = "image"; system = "aarch64-linux"; })
       (mkHive [
         (mkHost { hostname = "mantis"; type = "colmena"; })

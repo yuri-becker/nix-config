@@ -33,20 +33,45 @@
             };
           };
         };
+        commonSettings = {
+          "accessibility.browsewithcaret_shortcut.enabled" = false;
+          "accessibility.typeaheadfind.flashBar" = 0;
+          "browser.bookmarks.restore_default_bookmarks" = false;
+          "browser.startup.page" = 3;
+          "browser.toolbars.bookmarks.visibility" = "never";
+          "sidebar.visibility" = "hide-sidebar";
+          "webgl.disabled" = false;
+        };
       in
       {
         enable = true;
-        package = if specialArgs.type == "nixos" then pkgs.librewolf else null;
+        package = if config.localhost.installLibrewolf then pkgs.librewolf else null;
         languagePacks = lib.optionals (specialArgs.type == "nixos") [
           "en-GB"
           "de"
         ];
+        policies = {
+          ExtensionSettings = {
+            "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+              install_url = "https://addons.mozilla.org/firefox/downloads/file/4664623/bitwarden_password_manager-2025.12.1.xpi";
+              installation_mode = "force_installed";
+            };
+            "uBlock0@raymondhill.net" = {
+              install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+              installation_mode = "force_installed";
+              private_browsing = true;
+            };
+          };
+        };
+        profiles.personal = lib.mkIf config.localhost.personal.enable {
+          inherit search;
+          isDefault = true;
+          settings = commonSettings // { };
+        };
         profiles.work = lib.mkIf config.localhost.work.enable {
           inherit search;
-          settings = {
-            "accessibility.browsewithcaret_shortcut.enabled" = false;
-            "accessibility.typeaheadfind.flashBar" = 0;
-            "browser.bookmarks.restore_default_bookmarks" = false;
+          isDefault = true;
+          settings = commonSettings // {
             "browser.newtabpage.activity-stream.newtabWallpapers.wallpaper" = "dark-fox-anniversary";
             "browser.newtabpage.pinned" = [
               {
@@ -66,10 +91,6 @@
                 "label" = "Nextcloud";
               }
             ];
-            "browser.startup.page" = 3;
-            "browser.toolbars.bookmarks.visibility" = "never";
-            "sidebar.visibility" = "hide-sidebar";
-            "webgl.disabled" = false;
           };
         };
       };
