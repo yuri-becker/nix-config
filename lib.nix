@@ -100,7 +100,7 @@ in
               };
               defaults = {
                 time.timeZone = "Europe/Berlin";
-                i18n.defaultLocale = "en_US.UTF-8";
+                i18n.defaultLocale = "en_GB.UTF-8";
                 nix.settings = {
                   experimental-features = [
                     "nix-command"
