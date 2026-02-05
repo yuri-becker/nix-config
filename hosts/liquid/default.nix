@@ -3,8 +3,6 @@
   imports = [
     ./prefs.nix
     ./homebrew.nix
-    ./notunes.nix
-    ./beekeeper.nix
     specialArgs.sops-nix.darwinModules.sops
     specialArgs.home-manager.darwinModules.home-manager
     {

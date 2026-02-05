@@ -119,14 +119,6 @@
         };
         extraConfig = theme;
       };
-      xdg.configFile."kitty/kitty.app.png" = {
-        source = kittyIcon;
-        onChange =
-          if pkgs.stdenv.isDarwin then
-            "sudo /opt/homebrew/bin/fileicon set \"${pkgs.kitty}/Applications/kitty.app\" \"${kittyIcon}\""
-          else
-            "";
-      };
     }
   );
 }

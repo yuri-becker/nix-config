@@ -45,7 +45,6 @@
       { spacer.small = true; }
       "${pkgs.fastmail-desktop}/Applications/Fastmail.app"
       "/System/Applications/Calendar.app"
-      "${pkgs.vesktop}/Applications/Vesktop.app"
       "/Applications/Beeper Desktop.app"
       "/Applications/Teamspeak.app"
       { spacer.small = true; }
