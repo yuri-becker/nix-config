@@ -13,7 +13,6 @@
     ./nextcloud.nix
     ./onlyoffice.nix
     ./pcsx2.nix
-    ./vesktop.nix
     ./wakatime.nix
     ./zed.nix
   ];

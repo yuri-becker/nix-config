@@ -2,7 +2,6 @@
 {
   imports = [
     ./bat.nix
-    ./btop.nix
     ./git.nix
     ./helix.nix
     ./hyfetch.nix
