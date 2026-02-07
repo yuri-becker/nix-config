@@ -10,6 +10,7 @@
     ./homebox.nix
     ./homer.nix
     ./immich.nix
+    ./paperless.nix
     ./pinchflat.nix
     ./pocket-id.nix
     ./spoolman.nix

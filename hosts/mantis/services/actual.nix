@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 {
   options.actual.domain =
     with lib;
@@ -16,11 +12,11 @@
       enable = true;
       openFirewall = false;
       settings = {
+        port = 20912;
       };
     };
 
-    systemd.services.actual.environment.NODE_EXTRA_CA_CERTS =
-      "${config.services.caddy.dataDir}/.local/share/caddy/pki/authorities/local/root.crt";
+    systemd.services.actual.environment.NODE_EXTRA_CA_CERTS = import ./cert.nix;
 
     services.caddy.virtualHosts."${config.actual.domain}".extraConfig =
       "reverse_proxy :${toString config.services.actual.settings.port}";

@@ -13,10 +13,6 @@
           sha256 = "92fcdd01c33e64243fbba4bb6af4b88877769432b0bffe862cf88de80e909524";
         }
       );
-      kittyIcon = builtins.fetchurl {
-        url = "https://raw.githubusercontent.com/k0nserv/kitty-icon/main/src/neue_outrun/icon_512x512.png";
-        sha256 = "0932w14hi3zfhxljazqdsg4zddzgl2jw6ycd95fwmhbirab4kdas";
-      };
     in
     {
       programs.kitty = {

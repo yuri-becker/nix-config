@@ -27,7 +27,7 @@ alias r := rebuild
 [doc("Builds and deployes a remote target.")]
 [positional-arguments]
 colmena node:
-    nix run .#colmena -- build --impure --on {{ node }}
+    nix run .#colmena -- build --impure --on {{ node }} --show-trace --verbose
     nix run .#colmena -- apply --impure --on {{ node }}
 alias c := colmena
 

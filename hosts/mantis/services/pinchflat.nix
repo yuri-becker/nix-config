@@ -65,7 +65,7 @@ in
   services.caddy.virtualHosts."${navidromeDomain}".extraConfig =
     "reverse_proxy :${toString config.services.navidrome.settings.Port}";
 
-  services.borgmatic.configurations.mantis.source_directories = [
+  backup-dirs = [
     config.services.pinchflat.mediaDir
     config.services.navidrome.settings.DataFolder
   ];
