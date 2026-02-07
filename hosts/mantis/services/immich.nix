@@ -1,18 +1,20 @@
-{ config, lib, ... }:
+{ config, ... }:
 let
   domain = "photos.home.arpa";
   sopsFile = ./immich.secrets.yaml;
 in
 {
-  sops.secrets."immich/smtp/from".sopsFile = sopsFile;
-  sops.secrets."immich/smtp/username".sopsFile = sopsFile;
-  sops.secrets."immich/smtp/password".sopsFile = sopsFile;
-  sops.secrets."immich/external-domain".sopsFile = sopsFile;
-  sops.secrets."immich/oauth/id".sopsFile = sopsFile;
-  sops.secrets."immich/oauth/secret".sopsFile = sopsFile;
+  sops.secrets = {
+    "immich/smtp/from".sopsFile = sopsFile;
+    "immich/smtp/username".sopsFile = sopsFile;
+    "immich/smtp/password".sopsFile = sopsFile;
+    "immich/external-domain".sopsFile = sopsFile;
+    "immich/oauth/id".sopsFile = sopsFile;
+    "immich/oauth/secret".sopsFile = sopsFile;
+  };
   sops.templates."immich.json" = {
     owner = config.services.immich.user;
-    content = lib.generators.toJSON { } {
+    content = builtins.toJSON {
       notifications.smtp = {
         enabled = true;
         transport.host = "mail.smtp2go.com";
@@ -53,9 +55,7 @@ in
   };
   services.caddy.virtualHosts."${domain}".extraConfig =
     "reverse_proxy :${toString config.services.immich.port}";
-  services.borgmatic.configurations.mantis.source_directories = [
-    config.services.immich.mediaLocation
-  ];
+  backup-dirs = [ config.services.immich.mediaLocation ];
   homer.links = [
     {
       name = "Immich";

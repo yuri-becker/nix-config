@@ -53,9 +53,7 @@ in
       };
     };
 
-    services.borgmatic.configurations.mantis.source_directories = [
-      config.services.pocket-id.dataDir
-    ];
+    backup-dirs = [ config.services.pocket-id.dataDir ];
 
     services.caddy.virtualHosts."${config.pocket-id.domain}".extraConfig =
       "reverse_proxy :${toString config.services.pocket-id.settings.PORT}";

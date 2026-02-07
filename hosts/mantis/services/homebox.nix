@@ -15,6 +15,7 @@
 
   services.caddy.virtualHosts."inventory.home.arpa".extraConfig =
     "reverse_proxy :${config.services.homebox.settings.HBOX_WEB_PORT}";
+  backup-dirs = [ config.services.homebox.settings.HOME ];
 
   homer.links = [
     {
@@ -23,4 +24,5 @@
       url = "https://inventory.home.arpa";
     }
   ];
+
 }
