@@ -17,8 +17,8 @@
     };
   };
   imports = [
-    # ./pam.nix
-    # ./linux.nix
+    ./pam.nix
+    ./linux.nix
   ];
   config = {
     nix = {
