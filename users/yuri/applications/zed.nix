@@ -6,11 +6,11 @@
 }:
 {
   config = lib.mkIf config.localhost.enable {
-    # home.packages = with pkgs; [
-    # nil
-    # nixd
-    # tinymist
-    # ];
+    home.packages = with pkgs; [
+      nil
+      nixd
+      tinymist
+    ];
     programs.zed-editor = {
       enable = true;
       extensions = [
