@@ -40,6 +40,10 @@
         "git.alt.coop" = {
           identityFile = "${config.home.homeDirectory}/.ssh/id_git_alt_coop";
         };
+        "codeberg.org" = {
+          user = "git";
+          identityFile = "${config.home.homeDirectory}/.ssh/id_codeberg";
+        };
         "ocelot" = {
           hostname = "192.168.0.10";
           user = "root";

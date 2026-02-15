@@ -19,8 +19,10 @@
         signByDefault = true;
         format = "ssh";
       };
+      gpg.format = "ssh";
 
       alias = {
+        
         a = "add";
         A = "add .";
         b = "branch";
@@ -74,13 +76,17 @@
           condition = conditions.remote "gitlab.alt.coop";
           contents = contents.altCoop "id_gitlab_alt_coop";
         }
+        {
+          condition = conditions.remote "codeberg.org";
+          contents = {
+            user.signingKey = "${config.home.homeDirectory}/.ssh/id_codeberg";
+          };
+        }
       ];
   };
   programs.diff-so-fancy = {
     enable = true;
     enableGitIntegration = true;
   };
-  home.packages = with pkgs; [
-    gitflow
-  ];
+  home.packages = with pkgs; [ gitflow ];
 }
