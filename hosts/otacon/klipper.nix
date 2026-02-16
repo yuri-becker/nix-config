@@ -23,6 +23,7 @@ in
       virtual_sdcard.path = sdpath;
     };
     extraSettings = lib.concatStringsSep "\n" (
+      # Put an import 
       with builtins;
       [
         (readFile ./klipper/misc-macros.cfg)

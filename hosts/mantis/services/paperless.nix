@@ -53,6 +53,7 @@ in
     environmentFile = config.sops.templates."paperless.env".path;
     configureTika = true;
     database.createLocally = true;
+    consumptionDirIsPublic = true;
     settings = {
       PAPERLESS_OCR_LANGUAGES = "eng deu dan";
       PAPERLESS_OCR_LANGUAGE = "deu";
