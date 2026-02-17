@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 {
   programs.git = {
     enable = true;
@@ -22,7 +17,7 @@
       gpg.format = "ssh";
 
       alias = {
-        
+
         a = "add";
         A = "add .";
         b = "branch";

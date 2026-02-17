@@ -4,8 +4,6 @@
   pkgs,
   ...
 }:
-let
-in
 {
   hardware.sane.enable = true;
   services.udev.extraRules = ''

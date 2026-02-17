@@ -40,16 +40,25 @@
         tinymist
       ];
       userSettings = {
+        # See https://zed.dev/docs/reference/all-settings
         active_pane_modifiers.inactive_opacity = 0.7;
         autosave.after_delay.milliseconds = 1000;
         base_keymap = "JetBrains";
         buffer_font_family = "JetBrainsMono Nerd Font";
         buffer_font_size = 21;
+        collaboration_panel.button = false;
         cursor_shape = "bar";
         disable_ai = true;
+        git_panel.button = false;
         git.inline_blame.enabled = false;
         helix_mode = true;
+        hover_popover_enabled = true;
         icon_theme = "Catppuccin Mocha";
+        inlay_hints = {
+          enable = true;
+          show_type_hints = true;
+          show_parameter_hints = true;
+        };
         minimap.display_in = "active_editor";
         minimap.max_width_columns = 80;
         minimap.show = "auto";
@@ -60,6 +69,7 @@
           default_width = 300;
           hide_root = true;
         };
+        scrollbar.git_diff = false;
         soft_wrap = "editor_width";
         tab_bar.show = false;
         tab_size = 2;
@@ -75,6 +85,7 @@
         theme = "Tokyo Night";
         ui_font_family = ".SystemUIFont";
         ui_font_size = 18.0;
+        which_key.enabled = true;
 
         # Nix
         languages.Nix = {
