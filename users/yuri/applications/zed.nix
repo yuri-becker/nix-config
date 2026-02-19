@@ -124,6 +124,10 @@
           "**playbook*.yaml"
           "**playbook*.yml"
         ];
+        file_types.HTML = [
+          "hbs"
+          "html"
+        ];
       };
       userKeymaps =
         let
