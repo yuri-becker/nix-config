@@ -22,6 +22,7 @@
       enable = true;
       extensions = with pkgs.gnomeExtensions; [
         { package = alphabetical-app-grid; }
+        { package = alttab-mod; }
         { package = app-hider; }
         { package = clipboard-history; }
         { package = color-picker; }
