@@ -16,6 +16,8 @@
     localhost.work.enable = mkEnableOption "toolchain for wage-labour-related workloads";
     localhost.gnome.enable = mkEnableOption "gnome configuration";
     localhost.gaming.enable = mkEnableOption "games!!";
+    localhost.threed-printing.enable = mkEnableOption "prusaslicer and stuff";
+    localhost.moonlight.enable = mkEnableOption "moonlight client";
   };
 
   config =
@@ -67,6 +69,7 @@
         proton-ge-bin
         steam
       ];
+      packages.moonlight = with pkgs; [ moonlight-qt ];
     in
     {
       # Home Manager
@@ -94,6 +97,7 @@
         ++ lib.optionals (config.localhost.enable && pkgs.stdenv.isDarwin) packages.localhostDarwin
         ++ lib.optionals (config.localhost.gaming.enable) packages.gaming
         ++ lib.optional (config.localhost.gaming.enable && specialArgs.type == "nixos") packages.gamingNixos
+        ++ lib.optionals config.localhost.moonlight.enable packages.moonlight
         ++ lib.optionals config.localhost.personal.enable packages.personal
         ++ lib.optionals (config.localhost.personal.enable && pkgs.stdenv.isLinux) packages.personalLinux
         ++ lib.optionals (

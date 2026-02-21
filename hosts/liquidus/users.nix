@@ -12,6 +12,8 @@
           localhost.enable = true;
           localhost.personal.enable = true;
           localhost.gnome.enable = true;
+          localhost.threed-printing.enable = true;
+          localhost.moonlight.enable = true;
         }
       );
       home-manager.sharedModules = [ specialArgs.sops-nix.homeManagerModule ];

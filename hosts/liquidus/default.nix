@@ -1,4 +1,4 @@
-{ specialArgs, pkgs, ... }:
+{ pkgs, specialArgs, ... }:
 {
   imports = [
     ./desktop.nix
@@ -25,14 +25,16 @@
     networkmanager.enable = true;
   };
 
-  hardware.asahi.peripheralFirmwareDirectory = pkgs.requireFile {
-    name = "asahi";
-    hashMode = "recursive";
-    hash = "sha256-JVadaRQ+Oy5rGJxovNuFtUOB4Qj7Xtx9svoqiZJhth0=";
-    message = ''
-      nix-store --add-fixed sha256 --recursive /boot/asahi
-    '';
-  };
+  hardware.asahi.enable = true;
+  # hardware.asahi.peripheralFirmwareDirectory = pkgs.requireFile {
+  #   name = "asahi";
+  #   hashMode = "recursive";
+  #   hash = "sha256-JVadaRQ+Oy5rGJxovNuFtUOB4Qj7Xtx9svoqiZJhth0=";
+  #   message = ''
+  #     nix-store --add-fixed sha256 --recursive /boot/asahi
+  #   '';
+  # };
+  hardware.asahi.extractPeripheralFirmware = false;
   nix.settings = {
     extra-substituters = [ "https://nixos-apple-silicon.cachix.org" ];
     extra-trusted-public-keys = [
