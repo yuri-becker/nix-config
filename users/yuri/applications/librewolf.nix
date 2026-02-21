@@ -68,7 +68,10 @@ in
           "{446900e4-71c2-419f-a6a7-df9c091e268b}" = mkExtension "bitwarden-password-manager" {
             private_browsing = false;
           };
+          "ATBC@EasonWong" = mkExtension "adaptive-tab-bar-colour" { };
           "addon@darkreader.org" = mkExtension "darkreader" { };
+          "myallychou@gmail.com" = mkExtension "youtube-recommended-videos" { };
+          "sponsorBlocker@ajay.app" = mkExtension "sponsorblock" { };
           "uBlock0@raymondhill.net" = mkExtension "ublock-origin" { default_area = "menupanel"; };
         };
       };
@@ -84,12 +87,20 @@ in
           "browser.newtabpage.activity-stream.newtabWallpapers.wallpaper" = "dark-fox-anniversary";
           "browser.newtabpage.pinned" = [
             {
+              "url" = "https://sp.alt.coop/";
+              "label" = "Homepage";
+            }
+            {
               "url" = "https://gitlab.com/";
               "label" = "Gitlab";
             }
             {
               "url" = "https://gitlab.alt.coop/";
               "label" = "Gitlab (cac)";
+            }
+            {
+              "url" = "https://git.alt.coop/";
+              "label" = "Forgejo";
             }
             {
               "url" = "https://cloud.alt.coop/apps/deck/board/4";

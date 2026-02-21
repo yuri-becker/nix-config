@@ -154,6 +154,12 @@
         in
         [
           {
+            context = "Pane";
+            bindings = {
+              "ctrl-\"" = "workspace::ToggleZoom";
+            };
+          }
+          {
             context = "Editor && mode == full";
             bindings = panelCommons "editor" // {
               "ctrl-[" = "pane::GoBack";
