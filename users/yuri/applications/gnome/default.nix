@@ -40,6 +40,27 @@
         lock-show-date = true;
         clock-show-weekday = true;
       };
+      "org/gnome/desktop/wm/keybindings" = {
+        minimize = [ ];
+        move-to-workspace-1 = [ ];
+        move-to-workspace-last = [ ];
+        panel-run-dialog = [ "<Super>F2" ];
+        switch-applications = [ ];
+        switch-applications-backward = [ ];
+        switch-group = [ ];
+        switch-group-backward =[ ];
+        switch-input-source = [ ];
+        switch-input-source-backward = [ ];
+        switch-to-workspace-1 = [ ];
+        switch-to-workspace-last = [ ];
+        switch-to-workspace-left = [ ];
+        switch-to-workspace-right = [ ];
+        switch-windows = [ "<Super>Tab" ];
+        switch-windows-backward = [ "<Shift><Super>Tab" ];
+        toggle-fullscreen = [ "<Shift><Super>backslash" ];
+        toggle-maximized = [ "<Super>backslash" ];
+        unmaximize = [ ];
+      };
       "org/gnome/desktop/peripherals/touchpad" = {
         natural-scroll = false;
         speed = 0.15384615384615374;
@@ -85,10 +106,11 @@
 
       "org/gnome/shell/keybindings" = {
         screenshot = [ ];
-        screenshot-window = [ ];
+        screenshot-window = [ "<Shift><Super>t" ];
         show-screen-recording-ui = [ ];
-        show-screenshot-ui = [ "<Control><Alt>4" ];
-        toggle-message-tray = [ "<Super>u" ];
+        show-screenshot-ui = [ "<Super>t" ];
+
+        toggle-message-tray = [ "<Super>r" ];
         toggle-overview = [
           "Tools" # F13
           "<Control>Up"
@@ -143,6 +165,17 @@
         system-items-layout-hide-lock = true;
         unsafe-quick-toggle-enabled = false;
         volume-mixer-menu-enabled = false;
+      };
+      "org/gnome/settings-daemon/plugins/media-keys" = {
+        custom-keybindings = [ ];
+        help = [ ];
+        home = [ "<Super>e" ];
+        logout = [ ];
+        magnifier = [ ];
+        magnifier-zoom-in = [ ];
+        magnifier-zoom-out = [ ];
+        screenreader = [ ];
+        screensaver = [ "<Super>d" ];
       };
     };
   };

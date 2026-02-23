@@ -132,13 +132,14 @@
       userKeymaps =
         let
           panelCommons = panel: {
-            "cmd-'" = "terminal_panel::ToggleFocus";
-            "cmd-/" = "project_panel::ToggleFocus";
-            "cmd-w" =
+            "ctrl-'" = "terminal_panel::ToggleFocus";
+            "ctrl-/" = "project_panel::ToggleFocus";
+            "ctrl-w" =
               if panel == "project_panel" then "workspace::CloseActiveDock" else "pane::CloseActiveItem";
             "f1" = "projects::OpenRecent";
             "f2" = "workspace::Open";
-            "cmd-e" =
+            "f3" = "workspace::NewWindow";
+            "ctrl-e" =
               if panel == "editor" then
                 [
                   "action::Sequence"
@@ -155,19 +156,19 @@
           {
             context = "Editor && mode == full";
             bindings = panelCommons "editor" // {
-              "cmd-[" = "pane::GoBack";
-              "cmd-]" = "pane::GoForward";
-              "cmd-shift-up" = "editor::MoveLineUp";
-              "cmd-shift-down" = "editor::MoveLineDown";
+              "ctrl-[" = "pane::GoBack";
+              "ctrl-]" = "pane::GoForward";
+              "ctrl-shift-up" = "editor::MoveLineUp";
+              "ctrl-shift-down" = "editor::MoveLineDown";
             };
           }
           {
             context = "TabSwitcher";
             bindings = {
-              "cmd-e" = "menu::SelectNext";
-              "cmd-up" = "menu::SelectPrevious";
-              "cmd-down" = "menu::SelectNext";
-              "cmd-w" = "tab_switcher::CloseSelectedItem";
+              "ctrl-e" = "menu::SelectNext";
+              "ctrl-up" = "menu::SelectPrevious";
+              "ctrl-down" = "menu::SelectNext";
+              "ctrl-w" = "tab_switcher::CloseSelectedItem";
             };
           }
           {
@@ -177,9 +178,18 @@
           {
             context = "Terminal";
             bindings = panelCommons "terminal_panel" // {
-              "cmd-t" = "workspace::NewTerminal";
-              "cmd-[" = "pane::ActivatePreviousItem";
-              "cmd-]" = "pane::ActivateNextItem";
+              "ctrl-w" = [
+                "terminal::SendKeystroke"
+                "ctrl-w"
+              ];
+              "ctrl-e" = [
+                "terminal::SendKeystroke"
+                "ctrl-e"
+              ];
+              "ctrl-[" = "pane::ActivatePreviousItem";
+              "ctrl-]" = "pane::ActivateNextItem";
+              "ctrl-shift-w" = "pane::CloseActiveItem";
+              "ctrl-shift-t" = "workspace::NewTerminal";
             };
           }
         ];

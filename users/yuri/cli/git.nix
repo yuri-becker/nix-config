@@ -64,7 +64,7 @@
       in
       [
         {
-          condition = conditions.remote "git.alt.coop";
+          condition = conditions.remote "git.alt.coop:8022";
           contents = contents.altCoop "id_git_alt_coop";
         }
         {
