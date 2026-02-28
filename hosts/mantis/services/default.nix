@@ -13,6 +13,8 @@
     ./paperless.nix
     ./pinchflat.nix
     ./pocket-id.nix
+    ./printer.nix
+    ./scanner.nix
     ./spoolman.nix
   ];
 }

@@ -1,6 +1,5 @@
 { config, ... }:
 let
-  sopsFile = ./adguard.secrets.yaml;
   upstreamServers = {
     quad9 = {
       tls = "tls://dns.quad9.net";

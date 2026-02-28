@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 {
   programs.git = {
     enable = true;
@@ -19,8 +14,10 @@
         signByDefault = true;
         format = "ssh";
       };
+      gpg.format = "ssh";
 
       alias = {
+
         a = "add";
         A = "add .";
         b = "branch";
@@ -67,12 +64,18 @@
       in
       [
         {
-          condition = conditions.remote "git.alt.coop";
+          condition = conditions.remote "git.alt.coop:8022";
           contents = contents.altCoop "id_git_alt_coop";
         }
         {
           condition = conditions.remote "gitlab.alt.coop";
           contents = contents.altCoop "id_gitlab_alt_coop";
+        }
+        {
+          condition = conditions.remote "codeberg.org";
+          contents = {
+            user.signingKey = "${config.home.homeDirectory}/.ssh/id_codeberg";
+          };
         }
       ];
   };
@@ -80,7 +83,5 @@
     enable = true;
     enableGitIntegration = true;
   };
-  home.packages = with pkgs; [
-    gitflow
-  ];
+  home.packages = with pkgs; [ gitflow ];
 }

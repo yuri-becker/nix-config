@@ -6,11 +6,11 @@
 }:
 {
   config = lib.mkIf config.localhost.enable {
-    # home.packages = with pkgs; [
-    # nil
-    # nixd
-    # tinymist
-    # ];
+    home.packages = with pkgs; [
+      nil
+      nixd
+      tinymist
+    ];
     programs.zed-editor = {
       enable = true;
       extensions = [
@@ -40,16 +40,25 @@
         tinymist
       ];
       userSettings = {
+        # See https://zed.dev/docs/reference/all-settings
         active_pane_modifiers.inactive_opacity = 0.7;
         autosave.after_delay.milliseconds = 1000;
         base_keymap = "JetBrains";
         buffer_font_family = "JetBrainsMono Nerd Font";
         buffer_font_size = 21;
+        collaboration_panel.button = false;
         cursor_shape = "bar";
         disable_ai = true;
+        git_panel.button = false;
         git.inline_blame.enabled = false;
         helix_mode = true;
+        hover_popover_enabled = true;
         icon_theme = "Catppuccin Mocha";
+        inlay_hints = {
+          enable = true;
+          show_type_hints = true;
+          show_parameter_hints = true;
+        };
         minimap.display_in = "active_editor";
         minimap.max_width_columns = 80;
         minimap.show = "auto";
@@ -60,6 +69,7 @@
           default_width = 300;
           hide_root = true;
         };
+        scrollbar.git_diff = false;
         soft_wrap = "editor_width";
         tab_bar.show = false;
         tab_size = 2;
@@ -75,6 +85,7 @@
         theme = "Tokyo Night";
         ui_font_family = ".SystemUIFont";
         ui_font_size = 18.0;
+        which_key.enabled = true;
 
         # Nix
         languages.Nix = {
@@ -113,17 +124,22 @@
           "**playbook*.yaml"
           "**playbook*.yml"
         ];
+        file_types.HTML = [
+          "hbs"
+          "html"
+        ];
       };
       userKeymaps =
         let
           panelCommons = panel: {
-            "cmd-'" = "terminal_panel::ToggleFocus";
-            "cmd-/" = "project_panel::ToggleFocus";
-            "cmd-w" =
+            "ctrl-'" = "terminal_panel::ToggleFocus";
+            "ctrl-/" = "project_panel::ToggleFocus";
+            "ctrl-w" =
               if panel == "project_panel" then "workspace::CloseActiveDock" else "pane::CloseActiveItem";
             "f1" = "projects::OpenRecent";
             "f2" = "workspace::Open";
-            "cmd-e" =
+            "f3" = "workspace::NewWindow";
+            "ctrl-e" =
               if panel == "editor" then
                 [
                   "action::Sequence"
@@ -140,19 +156,19 @@
           {
             context = "Editor && mode == full";
             bindings = panelCommons "editor" // {
-              "cmd-[" = "pane::GoBack";
-              "cmd-]" = "pane::GoForward";
-              "cmd-shift-up" = "editor::MoveLineUp";
-              "cmd-shift-down" = "editor::MoveLineDown";
+              "ctrl-[" = "pane::GoBack";
+              "ctrl-]" = "pane::GoForward";
+              "ctrl-shift-up" = "editor::MoveLineUp";
+              "ctrl-shift-down" = "editor::MoveLineDown";
             };
           }
           {
             context = "TabSwitcher";
             bindings = {
-              "cmd-e" = "menu::SelectNext";
-              "cmd-up" = "menu::SelectPrevious";
-              "cmd-down" = "menu::SelectNext";
-              "cmd-w" = "tab_switcher::CloseSelectedItem";
+              "ctrl-e" = "menu::SelectNext";
+              "ctrl-up" = "menu::SelectPrevious";
+              "ctrl-down" = "menu::SelectNext";
+              "ctrl-w" = "tab_switcher::CloseSelectedItem";
             };
           }
           {
@@ -162,9 +178,18 @@
           {
             context = "Terminal";
             bindings = panelCommons "terminal_panel" // {
-              "cmd-t" = "workspace::NewTerminal";
-              "cmd-[" = "pane::ActivatePreviousItem";
-              "cmd-]" = "pane::ActivateNextItem";
+              "ctrl-w" = [
+                "terminal::SendKeystroke"
+                "ctrl-w"
+              ];
+              "ctrl-e" = [
+                "terminal::SendKeystroke"
+                "ctrl-e"
+              ];
+              "ctrl-[" = "pane::ActivatePreviousItem";
+              "ctrl-]" = "pane::ActivateNextItem";
+              "ctrl-shift-w" = "pane::CloseActiveItem";
+              "ctrl-shift-t" = "workspace::NewTerminal";
             };
           }
         ];
