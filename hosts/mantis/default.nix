@@ -28,4 +28,10 @@
 
   environment.systemPackages = with pkgs; [ usbutils ];
   sops.gnupg.sshKeyPaths = [ ];
+
+  virtualisation = {
+    containers.enable = true;
+    podman.enable = true;
+    oci-containers.backend = "podman";
+  };
 }
