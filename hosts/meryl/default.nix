@@ -31,6 +31,12 @@
     hostName = "meryl";
     networkmanager.enable = true;
   };
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
+
   console.keyMap = "uk"; # Machine has a UK layout
   services.xserver.xkb = {
     layout = "us";
