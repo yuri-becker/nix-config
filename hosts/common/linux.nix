@@ -15,7 +15,15 @@
       ];
 
     services.printing.enable = true;
-
+    services.avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+    services.xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
     services.udev = {
       packages = with pkgs; [ qmk-udev-rules ];
       # Epomaker Alice 66 and Keychron Q11
@@ -60,10 +68,14 @@
         wantedBy = [ "graphical.target" ];
       };
 
-    virtualisation.docker = lib.mkIf config.docker.enable {
+    virtualisation.podman = lib.mkIf config.docker.enable {
       enable = true;
-      rootless.enable = true;
-      rootless.setSocketVariable = true;
+      dockerCompat = true;
+      dockerSocket.enable = true;
+      autoPrune = {
+        enable = true;
+        dates = "weekly";
+      };
     };
     programs.nix-ld = lib.mkIf config.localhost.enable { enable = true; };
     i18n.defaultLocale = "en_GB.UTF-8";

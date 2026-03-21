@@ -54,6 +54,10 @@
         shottr
         the-unarchiver
       ];
+      packages.work = with pkgs; [
+        figma-agent
+        noto-fonts
+      ];
       packages.gaming = with pkgs; [
         chiaki-ng
         gamescope
@@ -96,6 +100,7 @@
         ++ lib.optional (config.localhost.gaming.enable && specialArgs.type == "nixos") packages.gamingNixos
         ++ lib.optionals config.localhost.personal.enable packages.personal
         ++ lib.optionals (config.localhost.personal.enable && pkgs.stdenv.isLinux) packages.personalLinux
+        ++ lib.optionals config.localhost.work.enable packages.work
         ++ lib.optionals (
           config.localhost.personal.enable && (pkgs.stdenv.isx86_64 || pkgs.stdenv.isDarwin)
         ) [ pkgs.fastmail-desktop ]

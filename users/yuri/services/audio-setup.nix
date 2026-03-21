@@ -61,6 +61,6 @@
         Install.WantedBy = [ "graphical-session.target" ];
         Service.ExecStart = lib.getExe pipewire-setup;
       };
-    home.packages = with pkgs; [ helvum ];
+    home.packages = with pkgs; [ crosspipe ];
   };
 }
