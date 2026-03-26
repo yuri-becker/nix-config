@@ -25,7 +25,7 @@
       url = "github:mrnossiom/wakatime-ls";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    apple-silicon.url = "github:nix-community/nixos-apple-silicon/release-25.11";
+    apple-silicon.url = "github:nix-community/nixos-apple-silicon/main";
   };
 
   outputs =

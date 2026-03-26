@@ -17,7 +17,7 @@
     localhost.gnome.enable = mkEnableOption "gnome configuration";
     localhost.gaming.enable = mkEnableOption "games!!";
     localhost.threed-printing.enable = mkEnableOption "prusaslicer and stuff";
-    localhost.moonlight.enable = mkEnableOption "moonlight client";
+    localhost.moonlight.enable = mkEnableOption "moonlight game streaming client";
   };
 
   config =
@@ -37,7 +37,6 @@
         ffmpeg-full
         meslo-lgs-nf
         ncdu
-        nerd-fonts.jetbrains-mono
       ];
       packages.localhostLinux = with pkgs; [
         cameractrls-gtk4
@@ -47,7 +46,9 @@
         uxplay
         wl-clipboard
       ];
-      packages.personal = [ ];
+      packages.personal = with pkgs; [
+        (callPackage ../../packages/fluxer { })
+      ];
       packages.personalLinux = with pkgs; [ krita ] ++ lib.optionals pkgs.stdenv.isx86_64 [ fladder ];
       packages.localhostDarwin = with pkgs; [
         cyberduck
@@ -73,7 +74,6 @@
         proton-ge-bin
         steam
       ];
-      packages.moonlight = with pkgs; [ moonlight-qt ];
     in
     {
       # Home Manager
@@ -101,7 +101,6 @@
         ++ lib.optionals (config.localhost.enable && pkgs.stdenv.isDarwin) packages.localhostDarwin
         ++ lib.optionals (config.localhost.gaming.enable) packages.gaming
         ++ lib.optional (config.localhost.gaming.enable && specialArgs.type == "nixos") packages.gamingNixos
-        ++ lib.optionals config.localhost.moonlight.enable packages.moonlight
         ++ lib.optionals config.localhost.personal.enable packages.personal
         ++ lib.optionals (config.localhost.personal.enable && pkgs.stdenv.isLinux) packages.personalLinux
         ++ lib.optionals config.localhost.work.enable packages.work

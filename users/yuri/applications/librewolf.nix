@@ -68,9 +68,11 @@ in
           "{446900e4-71c2-419f-a6a7-df9c091e268b}" = mkExtension "bitwarden-password-manager" {
             private_browsing = false;
           };
+          "{9bbf6724-d709-492e-a313-bfed0415a224}" = mkExtension "wave-accessibility-tool" { };
           "ATBC@EasonWong" = mkExtension "adaptive-tab-bar-colour" { };
           "addon@darkreader.org" = mkExtension "darkreader" { };
-          "myallychou@gmail.com" = mkExtension "youtube-recommended-videos" { };
+          "deArrow@ajay.app" = mkExtension "dearrow" { };
+          "myallychou@gmail.com" = mkExtension "youtube-recommended-videos" { }; # Unhook
           "sponsorBlocker@ajay.app" = mkExtension "sponsorblock" { };
           "uBlock0@raymondhill.net" = mkExtension "ublock-origin" { default_area = "menupanel"; };
         };

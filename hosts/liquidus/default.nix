@@ -22,10 +22,15 @@
 
   networking = {
     hostName = "liquidus";
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+    };
   };
 
-  hardware.asahi.enable = true;
+  hardware.asahi = {
+    enable = true;
+    peripheralFirmwareDirectory = ./firmware;
+  };
   # hardware.asahi.peripheralFirmwareDirectory = pkgs.requireFile {
   #   name = "asahi";
   #   hashMode = "recursive";
@@ -34,7 +39,7 @@
   #     nix-store --add-fixed sha256 --recursive /boot/asahi
   #   '';
   # };
-  hardware.asahi.extractPeripheralFirmware = false;
+  #hardware.asahi.extractPeripheralFirmware = false;
   nix.settings = {
     extra-substituters = [ "https://nixos-apple-silicon.cachix.org" ];
     extra-trusted-public-keys = [
