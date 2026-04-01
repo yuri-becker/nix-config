@@ -13,7 +13,7 @@
     ./users.nix
     specialArgs.sops-nix.nixosModules.sops
   ];
-  docker.enable = true;
+  podman.enable = true;
   localhost.enable = true;
   localhost.office.enable = true;
 
@@ -33,4 +33,7 @@
   };
   console.keyMap = "uk"; # Machine has a UK layout
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "beeper" ];
+  services.printing.drivers = with pkgs; [
+    gutenprint
+  ];
 }

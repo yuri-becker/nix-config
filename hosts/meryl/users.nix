@@ -27,6 +27,7 @@
     description = "Yuri";
     extraGroups = [
       "networkmanager"
+      "podman"
       "wheel"
     ];
   };

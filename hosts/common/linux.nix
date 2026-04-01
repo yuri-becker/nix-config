@@ -68,15 +68,6 @@
         wantedBy = [ "graphical.target" ];
       };
 
-    virtualisation.podman = lib.mkIf config.docker.enable {
-      enable = true;
-      dockerCompat = true;
-      dockerSocket.enable = true;
-      autoPrune = {
-        enable = true;
-        dates = "weekly";
-      };
-    };
     programs.nix-ld = lib.mkIf config.localhost.enable { enable = true; };
     i18n.defaultLocale = "en_GB.UTF-8";
     i18n.extraLocaleSettings = {

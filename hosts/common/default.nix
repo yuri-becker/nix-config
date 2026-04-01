@@ -7,7 +7,7 @@
 }:
 {
   options = with lib; {
-    docker.enable = mkEnableOption "docker";
+    podman.enable = mkEnableOption "podman";
     yubikey-pam.enable = mkEnableOption "pam module for YubiKey";
     localhost.enable = mkEnableOption "that this host is meant to be locally interacted with";
     localhost.office.enable = mkEnableOption "that this host uses the hardware i use in the office";
@@ -17,8 +17,9 @@
     };
   };
   imports = [
-    # ./pam.nix
-    # ./linux.nix
+    ./pam.nix
+    ./podman.nix
+    ./linux.nix
   ];
   config = {
     nix = {
