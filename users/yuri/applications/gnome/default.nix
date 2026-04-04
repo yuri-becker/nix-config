@@ -11,6 +11,7 @@
       gnome-calculator
       gnome-calendar
       gnome-maps
+      gnome-randr
       gnome-system-monitor
       gnome-tweaks
       nautilus
@@ -48,7 +49,7 @@
         switch-applications = [ ];
         switch-applications-backward = [ ];
         switch-group = [ ];
-        switch-group-backward =[ ];
+        switch-group-backward = [ ];
         switch-input-source = [ ];
         switch-input-source-backward = [ ];
         switch-to-workspace-1 = [ ];

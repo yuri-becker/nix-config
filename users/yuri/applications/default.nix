@@ -13,6 +13,7 @@
     ./nextcloud.nix
     ./onlyoffice.nix
     ./pcsx2.nix
+    ./rpcs3.nix
     ./wakatime.nix
     ./zed.nix
   ];
