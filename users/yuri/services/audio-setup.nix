@@ -15,7 +15,7 @@
         pactl = "${pkgs.pulseaudio}/bin/pactl";
         virtual-speaker = "Virtual-Speaker";
         virtual-mic = "Virtual-Microphone";
-        k5 = "alsa_output.usb-GuangZhou_FiiO_Electronics_Co._Ltd_FiiO_K5_Pro-00.iec958-stereo";
+        k5 = "alsa_output.usb-GuangZhou_FiiO_Electronics_Co._Ltd_FiiO_K5_Pro-00.analog-stereo";
         scarlett.sink = "alsa_output.usb-Focusrite_Scarlett_Solo_USB-00.Direct__Direct__sink";
         scarlett.source = "alsa_input.usb-Focusrite_Scarlett_Solo_USB-00.Direct__Direct__source";
         sc-420 = "alsa_input.usb-USB_MICROPHONE_USB_MICROPHONE_20190809-00.analog-stereo";
@@ -35,8 +35,8 @@
             ${pw-link} ${virtual-speaker}:monitor_FR ${scarlett.sink}:playback_FR
           else
             # Fiio K5
-            ${pw-link} ${virtual-speaker}:monitor_FL '${k5}:playback_FL'
-            ${pw-link} ${virtual-speaker}:monitor_FR '${k5}:playback_FR'
+            ${pw-link} ${virtual-speaker}:monitor_FL ${k5}:playback_FL
+            ${pw-link} ${virtual-speaker}:monitor_FR ${k5}:playback_FR
           fi
 
           # INPUTS

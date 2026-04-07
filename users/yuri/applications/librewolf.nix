@@ -47,6 +47,8 @@ let
     "browser.bookmarks.restore_default_bookmarks" = false;
     "browser.startup.page" = 3;
     "browser.toolbars.bookmarks.visibility" = "never";
+    "extensions.install.requireBuiltInCerts" = false;
+    "extensions.update.requireBuiltInCerts" = false;
     "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
     "privacy.resistFingerprinting" = false;
     "privacy.userContext.enabled" = false;
@@ -58,17 +60,18 @@ in
   config = lib.mkIf config.localhost.enable {
     programs.librewolf = {
       enable = true;
-      package = if (specialArgs.type == "nixos") then pkgs.librewolf else null;
-      languagePacks = lib.optionals (specialArgs.type == "nixos") [
+      languagePacks = [
         "en-GB"
         "de"
       ];
       policies = {
         ExtensionSettings = {
-          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = mkExtension "bitwarden-password-manager" {
-            private_browsing = false;
-          };
+          "{9bbf6724-d709-492e-a313-bfed0415a224}" = mkExtension "wave-accessibility-tool" { };
+          "ATBC@EasonWong" = mkExtension "adaptive-tab-bar-colour" { };
           "addon@darkreader.org" = mkExtension "darkreader" { };
+          "deArrow@ajay.app" = mkExtension "dearrow" { };
+          "myallychou@gmail.com" = mkExtension "youtube-recommended-videos" { }; # Unhook
+          "sponsorBlocker@ajay.app" = mkExtension "sponsorblock" { };
           "uBlock0@raymondhill.net" = mkExtension "ublock-origin" { default_area = "menupanel"; };
         };
       };
