@@ -18,11 +18,6 @@
       programs.kitty = {
         enable = true;
         darwinLaunchOptions = [ "--single-instance" ];
-        font = {
-          name = "MesloLGS Nerd Font";
-          package = pkgs.meslo-lgs-nf;
-          size = if pkgs.stdenv.isDarwin then 20 else 18;
-        };
         settings = {
           # Font
           modify_font = "cell_height +2px";
@@ -114,6 +109,10 @@
           "super+t" = "new_tab_with_cwd";
         };
         extraConfig = theme;
+      };
+      xdg.terminal-exec = {
+        enable = true;
+        settings.default = [ "kitty.desktop" ];
       };
     }
   );

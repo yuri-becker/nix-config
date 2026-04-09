@@ -62,6 +62,12 @@
         toggle-maximized = [ "<Super>backslash" ];
         unmaximize = [ ];
       };
+
+      "org/gnome/desktop/wm/keybindings/custom0" = {
+        name = "Rofi";
+        binding = "<Super>space";
+        command = "rofi -show combi";
+      };
       "org/gnome/desktop/peripherals/touchpad" = {
         natural-scroll = false;
         speed = 0.15384615384615374;

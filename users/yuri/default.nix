@@ -25,10 +25,12 @@
         wget
       ];
       packages.localhost = with pkgs; [
+        aleo-fonts
         bruno
         commitlint-rs
         devenv
         ffmpeg-full
+        google-fonts
         meslo-lgs-nf
         ncdu
         nerd-fonts.jetbrains-mono

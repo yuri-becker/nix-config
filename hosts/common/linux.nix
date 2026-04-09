@@ -69,6 +69,10 @@
       };
 
     programs.nix-ld = lib.mkIf config.localhost.enable { enable = true; };
+    programs.ausweisapp = {
+      enable = true;
+      openFirewall = true;
+    };
     i18n.defaultLocale = "en_GB.UTF-8";
     i18n.extraLocaleSettings = {
       # See https://man.archlinux.org/man/locale.5
