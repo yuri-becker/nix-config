@@ -1,5 +1,5 @@
 keys:
-  - &yuri_at_liquidus age1pqpnq9xg8h5jcemlxacktaeq7cdth60xew02dp08rxg685f4upaqrms5re
+  - &yuri_at_liquidus age1fcvg3mnulfz9wyrgg3df9mjnjajahfs77p6f0tpwsr8u9caaduasl5hm7n
   - &yuri_at_liquid age1z2pt33cpdvat6t498sqw3a6gfnvcdnk8xphk8euf9t4zjzzteuvq7uwxyw
   - &yuri_at_mantis age1y4pplvjn22fdxtmtf2m6t5fpfrgp495q2sumvt8tlx0fwm2qc9hqh5l3ma
   - &yuri_at_meryl age18j3qmwflvj84jrqcp4gw6e2m5qxvyha95vd5fc2c7e0kk9wsyqcs6jahpw
@@ -18,12 +18,14 @@ creation_rules:
   - path_regex: ^hosts/mantis/(.*/)?[^/]*secrets.yaml$ # Host secrets
     key_groups:
       - age:
+          - *yuri_at_liquidus # Deployment host
           - *yuri_at_liquid # Deployment host
           - *yuri_at_meryl # Backup deployment host
           - *mantis
   - path_regex: ^hosts/otacon/(.*/)?[^/]*secrets.yaml$ # Host secrets
     key_groups:
       - age:
+          - *yuri_at_liquidus # Deployment host
           - *yuri_at_liquid # Deployment host
           - *yuri_at_meryl # Backup deployment host
           - *otacon

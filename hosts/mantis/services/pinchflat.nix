@@ -6,7 +6,6 @@
 }:
 let
   domain = "yt.home.arpa";
-  navidromeDomain = "asmr.home.arpa";
   sopsFile = ./pinchflat.secrets.yaml;
   tagAsmrFiles =
     with pkgs;
@@ -43,38 +42,10 @@ in
   services.caddy.virtualHosts."${domain}".extraConfig =
     "reverse_proxy :${toString config.services.pinchflat.port}";
 
-  services.navidrome = {
-    enable = true;
-    openFirewall = false;
-    settings = {
-      EnableInsightsCollector = false;
-      MusicFolder = config.services.pinchflat.mediaDir;
-      BaseUrl = "https://${navidromeDomain}";
-      Agents = "";
-      CoverArtPriority = "embedded";
-      Deezer.Enabled = false;
-      DataFolder = "/var/lib/navidrome/";
-      EnableExternalServices = false;
-      EnableNowPlaying = false;
-      LastFM.Enabled = false;
-      ListenBrainz.Enabled = false;
-      PID.Album = "folder";
-    };
-  };
-
-  services.caddy.virtualHosts."${navidromeDomain}".extraConfig =
-    "reverse_proxy :${toString config.services.navidrome.settings.Port}";
-
   backup-dirs = [
     config.services.pinchflat.mediaDir
-    config.services.navidrome.settings.DataFolder
   ];
   homer.links = [
-    {
-      name = "ASMR";
-      logo = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/navidrome.png";
-      url = "https://asmr.home.arpa";
-    }
     {
       name = "Pinchflat";
       logo = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pinchflat.png";
@@ -83,7 +54,7 @@ in
   ];
 
   systemd.timers."tag-asmr-files" = {
-    enable = true;
+    enable = false; # Temporarily disabled
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnCalendar = "daily";

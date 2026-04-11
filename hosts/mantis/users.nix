@@ -24,7 +24,8 @@ in
     hashedPasswordFile = config.sops.secrets."passwords/yuri".path;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB9o2ZABpuAuvMpfUnGQhmmHBZkn9BZAkw+FJ1EZigdJ" # liquid
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPU5cxsWMG+MW1abpp2xk0sJUip/kxCTnmi6LoEyBMQ4" # solidus
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPU5cxsWMG+MW1abpp2xk0sJUip/kxCTnmi6LoEyBMQ4" # solid
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMBnznKxNhyZ5JqVpP8DkESqCUIdzANBnJm8uWi1/+3y" # liquidus
     ];
   };
 }
