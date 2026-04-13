@@ -41,10 +41,10 @@
       ];
       userSettings = {
         # See https://zed.dev/docs/reference/all-settings
-        active_pane_modifiers.inactive_opacity = 0.7;
+        active_pane_modifiers.inactive_opacity = 0.8;
         autosave.after_delay.milliseconds = 1000;
         base_keymap = "JetBrains";
-        buffer_font_family = "JetBrainsMono Nerd Font";
+        buffer_font_family = config.localhost.font.mono.name;
         buffer_font_size = 21;
         collaboration_panel.button = false;
         cursor_shape = "bar";
@@ -83,7 +83,7 @@
         };
         terminal.shell.program = "${lib.getExe pkgs.fish}";
         theme = "Tokyo Night";
-        ui_font_family = ".SystemUIFont";
+        ui_font_family = config.localhost.font.system.name;
         ui_font_size = 18.0;
         which_key.enabled = true;
 

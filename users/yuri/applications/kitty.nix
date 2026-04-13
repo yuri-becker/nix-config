@@ -108,6 +108,10 @@
           "super+shift+[" = "previous_tab";
           "super+t" = "new_tab_with_cwd";
         };
+        font = {
+          name = "family='${config.localhost.font.mono.name}'";
+          size = if pkgs.stdenv.isDarwin then 20 else 18;
+        };
         extraConfig = theme;
       };
       xdg.terminal-exec = {

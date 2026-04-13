@@ -10,13 +10,10 @@
     home.packages = with pkgs; [
       gnome-calculator
       gnome-calendar
-      gnome-maps
       gnome-randr
       gnome-system-monitor
       gnome-tweaks
       nautilus
-      papers
-      simple-scan
     ];
 
     programs.gnome-shell = {
@@ -25,7 +22,6 @@
         { package = alphabetical-app-grid; }
         { package = app-hider; }
         { package = clipboard-history; }
-        { package = color-picker; }
         { package = dash-to-dock; }
         { package = grand-theft-focus; }
         { package = next-up; }
@@ -89,6 +85,7 @@
               "linphone.desktop"
               "org.gnome.Calendar.desktop"
               "dev.zed.Zed.desktop"
+              "org.zealdocs.zeal.desktop"
             ]
           else if config.localhost.gaming.enable then
             [

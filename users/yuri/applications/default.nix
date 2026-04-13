@@ -2,6 +2,7 @@
 {
   imports = [
     ./beeper.nix
+    ./dialect.nix
     ./dolphin.nix
     ./duckstation.nix
     ./feishin.nix
@@ -15,6 +16,7 @@
     ./pcsx2.nix
     ./rpcs3.nix
     ./wakatime.nix
+    ./zeal.nix
     ./zed.nix
   ];
 }

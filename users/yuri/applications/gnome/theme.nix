@@ -13,11 +13,6 @@ let
   };
   themeName = config.gtk.theme.name;
   iconTheme = config.gtk.iconTheme.name;
-  fonts = {
-    interface = "Aleo";
-    document = "Aleo";
-    monospace = "Geist Mono";
-  };
 in
 {
   config = lib.mkIf config.localhost.gnome.enable {
@@ -31,9 +26,6 @@ in
       name = themeName;
       package = themePkg;
     };
-    home.file.".local/share/themes/Nightfox-custom/gnome-shell/gnome-shell.css".text = ''
-      @import url(${themePkg}/share/themes/${themeName}/gnome-shell/gnome-shell.css);
-    '';
     home.file.".icons/default".source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors-light";
 
     gtk = {
@@ -57,21 +49,15 @@ in
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
         accent-color = "purple";
-        document-font-name = "${fonts.interface} 12";
-        font-name = "${fonts.interface} 12";
+        document-font-name = "${config.localhost.font.system.name} 12";
+        font-name = "${config.localhost.font.system.name} 12";
         gtk-theme = themeName;
         cursor-size = 32;
         cursor-theme = "phinger-cursors-light";
         icon-theme = iconTheme;
-        monospace-font-name = "${fonts.monospace} 12";
+        monospace-font-name = "${config.localhost.font.mono.name} 12";
       };
     };
-
     home.sessionVariables.GTK_THEME = themeName;
-
-    programs.kitty.font = {
-      name = "family='${fonts.monospace}' variable_name=GeistMono wght=517";
-      size = if pkgs.stdenv.isDarwin then 20 else 18;
-    };
   };
 }

@@ -6,14 +6,12 @@
   ...
 }:
 {
-  options = with lib; {
-    localhost.enable = mkEnableOption "that this host is meant to be locally interacted with";
-    localhost.personal.enable = mkEnableOption "toolchain for personal workloads";
-    localhost.work.enable = mkEnableOption "toolchain for wage-labour-related workloads";
-    localhost.gnome.enable = mkEnableOption "gnome configuration";
-    localhost.gaming.enable = mkEnableOption "games!!";
-  };
-
+  imports = [
+    ./applications
+    ./cli
+    ./services
+    ./options.nix
+  ];
   config =
     let
       packages.common = with pkgs; [
@@ -25,26 +23,34 @@
         wget
       ];
       packages.localhost = with pkgs; [
-        aleo-fonts
+        config.localhost.font.system.package
+        config.localhost.font.mono.package
         bruno
         commitlint-rs
+        curtail
         devenv
         ffmpeg-full
+        gnome-maps
         google-fonts
-        meslo-lgs-nf
         ncdu
-        nerd-fonts.jetbrains-mono
       ];
       packages.localhostLinux = with pkgs; [
+        apostrophe
         cameractrls-gtk4
+        dialect
         diebahn
+        eyedropper
+        forge-sparks
+        gradia
         gthumb
+        krita
         papers
+        simple-scan
+        textpieces
         uxplay
         wl-clipboard
       ];
-      packages.personal = [ ];
-      packages.personalLinux = with pkgs; [ krita ] ++ lib.optionals pkgs.stdenv.isx86_64 [ fladder ];
+      packages.personal = with pkgs; [ fladder ];
       packages.localhostDarwin = with pkgs; [
         cyberduck
         iina
@@ -71,6 +77,17 @@
       ];
     in
     {
+      localhost.font = {
+        system = lib.mkDefault {
+          name = "Aleo";
+          package = pkgs.aleo-fonts;
+        };
+        mono = lib.mkDefault {
+          name = "GeistMono Nerd Font";
+          package = pkgs.nerd-fonts.geist-mono;
+        };
+      };
+
       # Home Manager
       programs.home-manager.enable = true;
       news.display = "silent";
@@ -97,7 +114,6 @@
         ++ lib.optionals (config.localhost.gaming.enable) packages.gaming
         ++ lib.optional (config.localhost.gaming.enable && specialArgs.type == "nixos") packages.gamingNixos
         ++ lib.optionals config.localhost.personal.enable packages.personal
-        ++ lib.optionals (config.localhost.personal.enable && pkgs.stdenv.isLinux) packages.personalLinux
         ++ lib.optionals config.localhost.work.enable packages.work
         ++ lib.optionals (
           config.localhost.personal.enable && (pkgs.stdenv.isx86_64 || pkgs.stdenv.isDarwin)
@@ -107,9 +123,4 @@
         ];
     };
 
-  imports = [
-    ./applications
-    ./cli
-    ./services
-  ];
 }
