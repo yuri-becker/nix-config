@@ -12,6 +12,7 @@
     ./nix-search-tv.nix
     ./shell.nix
     ./ssh.nix
+    ./streamrip.nix
     ./tldr.nix
     ./yt-dlp.nix
     ./yubikey-manager.nix
