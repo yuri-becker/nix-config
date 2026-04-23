@@ -66,6 +66,10 @@
           user = "yuri";
           identityFile = "${config.home.homeDirectory}/.ssh/id_wagner";
         };
+        "monitoring.devcoop.de" = {
+          identityFile = "${config.home.homeDirectory}/.ssh/id_hetzner_1244700";
+          port = 53066;
+        };
         "*" = {
           identitiesOnly = true;
           addKeysToAgent = lib.mkIf pkgs.stdenv.isDarwin "yes";

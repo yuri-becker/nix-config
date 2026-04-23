@@ -41,6 +41,14 @@
     );
     functions = {
       otp = "${pkgs.yubikey-manager}/bin/ykman oath accounts code -s $argv | wl-copy";
+      create-ssh-key = ''
+        ssh-keygen -t ed25519 -f  ~/.ssh/id_$argv -C "$(whoami)@$(hostname) id_$argv $(date)" -N ""
+        ${pkgs.coreutils}/bin/cat ~/.ssh/id_$argv | wl-copy
+        echo "✅ id_$argv.pub copied to clipboard!"
+      '';
+      which-package = ''
+        readlink -f $(which $argv) | sed 's#^/nix/store/[[:alnum:]]\+-##'
+      '';
     };
     shellInit = lib.mkIf pkgs.stdenv.isDarwin "fish_add_path /opt/homebrew/bin";
   };

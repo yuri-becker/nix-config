@@ -36,4 +36,9 @@
   services.printing.drivers = with pkgs; [
     gutenprint
   ];
+
+  environment.systemPackages = with pkgs; [
+    qemu
+    quickemu
+  ];
 }
