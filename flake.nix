@@ -26,7 +26,7 @@
       (mkHost { hostname = "meryl"; })
       (mkHost { hostname = "solid"; type = "home-manager"; })
       (mkHost { hostname = "liquid"; type = "darwin"; system = "aarch64-darwin"; })
-      (mkHost { hostname = "liquidus"; type = "nixos"; system = "aarch64-linux"; })
+      (mkHost { hostname = "liquidus"; type = "home-manager"; system = "aarch64-linux"; })
       (mkHost { hostname = "otacon"; type = "image"; system = "aarch64-linux"; })
       (mkHive [
         (mkHost { hostname = "mantis"; type = "colmena"; })

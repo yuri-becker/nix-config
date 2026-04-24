@@ -14,10 +14,15 @@ in
     localhost.personal.enable = mkEnableOption "toolchain for personal workloads";
     localhost.work.enable = mkEnableOption "toolchain for wage-labour-related workloads";
     localhost.gnome.enable = mkEnableOption "gnome configuration";
+    localhost.cosmic.enable = mkEnableOption "cosmic config";
     localhost.gaming.enable = mkEnableOption "games!!";
     localhost.font = {
       system = mkFontOption { };
       mono = mkFontOption { };
+    };
+    localhost.kitty.enable = mkOption {
+      type = types.bool;
+      default = true;
     };
   };
 }

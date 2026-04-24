@@ -51,21 +51,26 @@
     enableInteractive = true;
     settings = {
       cmake.symbol = " ";
+      container.symbol = " ";
+      deno.symbol = " ";
       directory.read_only = " 󰌾";
       git_branch.symbol = " ";
       git_commit.tag_symbol = "  ";
       hostname.ssh_symbol = " ";
       java.symbol = " ";
-      nodejs.symbol = " ";
+      nix_shell.symbol = "󱄅 ";
+      nodejs.symbol = " ";
       os.disabled = false;
       os.symbols = {
         CachyOS = " ";
         Debian = " ";
+        Fedora = " ";
         Macos = " ";
         NixOS = " ";
       };
       package.symbol = "󰏗 ";
       python.symbol = " ";
+      typst.symbol = " ";
       rust.symbol = "󱘗 ";
     };
   };

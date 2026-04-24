@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.localhost.enable (
+  config = lib.mkIf (config.localhost.enable && config.localhost.kitty.enable) (
     let
       theme = builtins.readFile (
         builtins.fetchurl {

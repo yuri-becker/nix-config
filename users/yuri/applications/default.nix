@@ -2,6 +2,7 @@
 {
   imports = [
     ./beeper.nix
+    ./cosmic
     ./dialect.nix
     ./dolphin.nix
     ./duckstation.nix

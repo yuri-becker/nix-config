@@ -19,7 +19,7 @@ rebuild action="switch":
     if [[ "$osname" == "NixOS" ]]; then
         {{ if action == "switch" { "sudo " } else { "" } }}nixos-rebuild {{ action }} --flake . --impure
     else
-        nix run home-manager/master -- {{ action }} --flake .
+        NIX_CONF_DIR=$(pwd)/ nix run home-manager/master -- {{ action }} --flake .
     fi
 
 alias r := rebuild
@@ -38,7 +38,7 @@ build-sd node:
 
 [doc("Updates the flake (does not update the system - rebuild to do that)")]
 update:
-  nix flake update
+  NIX_CONF_DIR=$(pwd)/ nix flake update
 
 [doc("Updates the flake and rebuilds")]
 update-and-switch:
