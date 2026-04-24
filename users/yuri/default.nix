@@ -16,7 +16,9 @@
     let
       packages.common = with pkgs; [
         age
+        arp-scan
         fzf
+        nmap
         openssl
         rsync
         taplo
@@ -40,7 +42,7 @@
         dialect
         diebahn
         eyedropper
-        forge-sparks
+        fragments
         gradia
         gthumb
         krita
@@ -118,7 +120,7 @@
         ++ lib.optionals (
           config.localhost.personal.enable && (pkgs.stdenv.isx86_64 || pkgs.stdenv.isDarwin)
         ) [ pkgs.fastmail-desktop ]
-        ++ lib.optionals (config.localhost.personal.enable && pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) [
+        ++ lib.optionals (config.localhost.enable && pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) [
           pkgs.teamspeak6-client
         ];
     };

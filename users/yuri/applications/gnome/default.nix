@@ -73,6 +73,7 @@
         disable-extension-version-validation = true;
         favorite-apps = [
           "librewolf.desktop"
+          "re.sonny.Tangram.desktop"
           "kitty.desktop"
           "feishin.desktop"
           "org.gnome.Nautilus.desktop"
