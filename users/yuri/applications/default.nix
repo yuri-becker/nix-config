@@ -2,7 +2,6 @@
 {
   imports = [
     ./beeper.nix
-    ./cosmic
     ./dialect.nix
     ./dolphin.nix
     ./duckstation.nix
@@ -15,6 +14,7 @@
     ./linphone.nix
     ./mattermost.nix
     ./nextcloud.nix
+    ./nocturne.nix
     ./onlyoffice.nix
     ./pcsx2.nix
     ./rpcs3.nix

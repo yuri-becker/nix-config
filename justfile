@@ -4,6 +4,9 @@ set quiet
 default:
   just --list
 
+repl:
+  NIX_CONF_DIR=$(pwd)/ nix repl .
+
 [doc("Rebuilds system")]
 [positional-arguments]
 [macos]
@@ -14,7 +17,8 @@ rebuild action="switch":
 [linux]
 rebuild action="switch":
     #!/usr/bin/env bash
-    set -euxo pipefail
+    set -euo pipefail
+    export NIX_CONF_DIR=$(pwd)/
     osname=`awk -F= '$1=="NAME" { print $2 ;}' /etc/os-release`
     if [[ "$osname" == "NixOS" ]]; then
         {{ if action == "switch" { "sudo " } else { "" } }}nixos-rebuild {{ action }} --flake . --impure
@@ -27,13 +31,18 @@ alias r := rebuild
 [doc("Builds and deployes a remote target.")]
 [positional-arguments]
 colmena node:
-    nix run .#colmena -- build --impure --on {{ node }} --show-trace --verbose
+    #!/usr/bin/env bash
+    set -euo pipefail
+    export NIX_CONF_DIR=$(pwd)/
     nix run .#colmena -- apply --impure --on {{ node }}
 alias c := colmena
 
 [doc("Builds an image for flashing to an SD card.")]
 [positional-arguments]
 build-sd node:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    export NIX_CONF_DIR=$(pwd)/
     nix build .#nixosConfigurations.{{ node }}.config.system.build.sdImage
 
 [doc("Updates the flake (does not update the system - rebuild to do that)")]
@@ -43,6 +52,9 @@ update:
 [doc("Updates the flake and rebuilds")]
 update-and-switch:
   #!/usr/bin/env bash
+  set -euo pipefail
+  export NIX_CONF_DIR=$(pwd)/
+
   just update
   if [[ "$(git status -s | grep -F "flake.lock" | wc --lines)" -eq 0 ]]; then
     echo -e "\033[1;32mNo updates available.\033[0;m"

@@ -7,6 +7,7 @@
 }:
 {
   imports = [
+    "${specialArgs.nix-flatpak}/modules/home-manager.nix"
     ./applications
     ./cli
     ./services
@@ -97,6 +98,12 @@
       home.stateVersion = "25.05";
       home.username = "yuri";
       xdg.autostart.enable = (config.localhost.enable && pkgs.stdenv.isLinux);
+
+      # flatpak
+      services.flatpak = lib.mkIf config.localhost.enable {
+        enable = true;
+        update.auto.enable = true;
+      };
 
       # SOPS
       sops.defaultSopsFormat = "yaml";

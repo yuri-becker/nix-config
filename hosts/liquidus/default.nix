@@ -1,6 +1,10 @@
 { ... }:
 {
-  localhost.enable = true;
-  localhost.personal.enable = true;
-  localhost.kitty.enable = false;
+  localhost = {
+    enable = true;
+    personal.enable = true;
+    kitty.enable = true;
+    gnome.enable = true;
+    # cosmic.enable = true;
+  };
 }

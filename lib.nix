@@ -5,7 +5,7 @@ in
 {
   inherit deepMerge;
   mkHost =
-    { nix-darwin, home-manager, ... }:
+    { nix-darwin, home-manager, ... }@entrypoints:
     extraSpecialArgs:
     {
       hostname,

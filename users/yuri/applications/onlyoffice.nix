@@ -5,9 +5,10 @@
   ...
 }:
 {
-  config = lib.mkIf (config.localhost.enable && pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) {
-    programs.onlyoffice = {
-      enable = true;
+  config = lib.mkIf (config.localhost.enable && pkgs.stdenv.isLinux) {
+    services.flatpak = {
+      enable = lib.mkDefault true;
+      packages = [ "org.onlyoffice.desktopeditors" ];
     };
   };
 }
