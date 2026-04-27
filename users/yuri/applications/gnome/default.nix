@@ -38,6 +38,7 @@
         clock-show-weekday = true;
       };
       "org/gnome/desktop/wm/keybindings" = {
+        close = [ "<Super>q" ];
         minimize = [ ];
         move-to-workspace-1 = [ ];
         move-to-workspace-last = [ ];
@@ -59,11 +60,6 @@
         unmaximize = [ ];
       };
 
-      "org/gnome/desktop/wm/keybindings/custom0" = {
-        name = "Rofi";
-        binding = "<Super>space";
-        command = "rofi -show combi";
-      };
       "org/gnome/desktop/peripherals/touchpad" = {
         natural-scroll = false;
         speed = 0.15384615384615374;
@@ -74,15 +70,13 @@
         favorite-apps = [
           "librewolf.desktop"
           "re.sonny.Tangram.desktop"
+          "com.jeffser.Nocturne.desktop"
           "kitty.desktop"
-          "feishin.desktop"
-          "org.gnome.Nautilus.desktop"
         ]
         ++ (
           if config.localhost.work.enable then
             [
               "Mattermost.desktop"
-              "beepertexts.desktop"
               "linphone.desktop"
               "org.gnome.Calendar.desktop"
               "dev.zed.Zed.desktop"
@@ -90,17 +84,11 @@
             ]
           else if config.localhost.gaming.enable then
             [
-              "fastmail.desktop"
-              "vesktop.desktop"
-              "beepertexts.desktop"
               "TeamSpeak.desktop"
               "steam.desktop"
             ]
           else if config.localhost.personal.enable then
             [
-              "fastmail.desktop"
-              "vesktop.desktop"
-              "beepertexts.desktop"
               "TeamSpeak.desktop"
               "dev.zed.Zed.desktop"
             ]
