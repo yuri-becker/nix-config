@@ -8,6 +8,7 @@
     ./feishin.nix
     ./foliate.nix
     ./forge-sparks.nix
+    ./freecad.nix
     ./gnome
     ./kitty.nix
     ./librewolf.nix
