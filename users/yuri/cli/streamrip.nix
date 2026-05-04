@@ -23,8 +23,7 @@ in
     });
 
     home.file."${targetFile}.orig" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.sops.templates.${template}.path}";
-      recursive = true;
+      source = config.lib.file.mkOutOfStoreSymlink config.sops.templates.${template}.path;
       onChange = ''
         cp $HOME/${targetFile}.orig $HOME/${targetFile}
         chmod 600 $HOME/${targetFile}

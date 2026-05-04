@@ -43,9 +43,7 @@
       "${pkgs.zed-editor}/Applications/Zed.app"
       "${pkgs.kitty}/Applications/kitty.app"
       { spacer.small = true; }
-      "${pkgs.fastmail-desktop}/Applications/Fastmail.app"
       "/System/Applications/Calendar.app"
-      "/Applications/Beeper Desktop.app"
       "/Applications/Teamspeak.app"
       { spacer.small = true; }
     ];

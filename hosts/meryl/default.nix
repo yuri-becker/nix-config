@@ -32,10 +32,7 @@
     networkmanager.enable = true;
   };
   console.keyMap = "uk"; # Machine has a UK layout
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "beeper" ];
-  services.printing.drivers = with pkgs; [
-    gutenprint
-  ];
+  services.printing.drivers = with pkgs; [ gutenprint ];
 
   environment.systemPackages = with pkgs; [
     qemu

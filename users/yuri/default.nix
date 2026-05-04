@@ -38,7 +38,6 @@
         ncdu
       ];
       packages.localhostLinux = with pkgs; [
-        apostrophe
         cameractrls-gtk4
         dialect
         diebahn
@@ -47,6 +46,7 @@
         gradia
         gthumb
         krita
+        mpv
         papers
         simple-scan
         textpieces
@@ -124,9 +124,6 @@
         ++ lib.optional (config.localhost.gaming.enable && specialArgs.type == "nixos") packages.gamingNixos
         ++ lib.optionals config.localhost.personal.enable packages.personal
         ++ lib.optionals config.localhost.work.enable packages.work
-        ++ lib.optionals (
-          config.localhost.personal.enable && (pkgs.stdenv.isx86_64 || pkgs.stdenv.isDarwin)
-        ) [ pkgs.fastmail-desktop ]
         ++ lib.optionals (config.localhost.enable && pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) [
           pkgs.teamspeak6-client
         ];

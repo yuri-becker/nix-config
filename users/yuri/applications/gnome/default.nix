@@ -69,7 +69,6 @@
         disable-extension-version-validation = true;
         favorite-apps = [
           "librewolf.desktop"
-          "re.sonny.Tangram.desktop"
           "com.jeffser.Nocturne.desktop"
           "kitty.desktop"
         ]

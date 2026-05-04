@@ -12,7 +12,6 @@
     ];
     casks = [
       "affinity"
-      "beeper" # nixpkgs doesnt have darwin
       "freecad" # nixpkgs doenst have darwin
       "nextcloud" # nixpkgs doesnt have darwin
       "obsidian" # Wanna get rid of anyway
