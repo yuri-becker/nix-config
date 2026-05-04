@@ -3,7 +3,7 @@ let
   domain = "spools.home.arpa";
 in
 {
-  services.spoolman.enable = true;
+  # services.spoolman.enable = true;
 
   services.caddy.virtualHosts."${domain}".extraConfig =
     "reverse_proxy :${toString config.services.spoolman.port}";
