@@ -50,7 +50,6 @@
         papers
         simple-scan
         textpieces
-        uxplay
         wl-clipboard
       ];
       packages.personal = with pkgs; [ fladder ];

@@ -28,7 +28,6 @@
         { package = notification-counter; }
         { package = quick-settings-tweaker; }
         { package = tophat; }
-        { package = uxplay-control; }
       ];
     };
 
