@@ -18,12 +18,12 @@ rebuild action="switch":
 rebuild action="switch":
     #!/usr/bin/env bash
     set -euo pipefail
-    export NIX_CONF_DIR=$(pwd)/
+    export NIX_CONFIG=$(cat $(pwd)/nix.conf)
     osname=`awk -F= '$1=="NAME" { print $2 ;}' /etc/os-release`
     if [[ "$osname" == "NixOS" ]]; then
         {{ if action == "switch" { "sudo " } else { "" } }}nixos-rebuild {{ action }} --flake . --impure
     else
-        NIX_CONF_DIR=$(pwd)/ nix run home-manager/master -- {{ action }} --flake .
+        nix run home-manager/master -- {{ action }} --flake .
     fi
 
 alias r := rebuild

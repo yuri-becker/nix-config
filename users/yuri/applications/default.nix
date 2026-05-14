@@ -1,9 +1,11 @@
 { ... }:
 {
   imports = [
+    ./apostrophe.nix
     ./dialect.nix
     ./dolphin.nix
     ./duckstation.nix
+    ./eden.nix
     ./foliate.nix
     ./forge-sparks.nix
     ./freecad.nix
