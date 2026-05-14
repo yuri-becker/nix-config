@@ -16,6 +16,7 @@
     ./nocturne.nix
     ./onlyoffice.nix
     ./pcsx2.nix
+    ./rawtherapee.nix
     ./rpcs3.nix
     ./wakatime.nix
     ./zeal.nix
