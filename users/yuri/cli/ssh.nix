@@ -70,6 +70,14 @@
           identityFile = "${config.home.homeDirectory}/.ssh/id_hetzner_1244700";
           port = 53066;
         };
+        "*.host.genosse.eu" = {
+          user = "yuri";
+          identityFile = "${config.home.homeDirectory}/.ssh/id_sun-tama-tama";
+        };
+        "git.genosse.eu" = {
+          user = "git";
+          identityFile = "${config.home.homeDirectory}/.ssh/id_git-genosse-eu";
+        };
         "*" = {
           identitiesOnly = true;
           addKeysToAgent = lib.mkIf pkgs.stdenv.isDarwin "yes";

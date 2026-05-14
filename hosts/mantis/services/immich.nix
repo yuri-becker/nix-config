@@ -36,6 +36,7 @@ in
       passwordLogin.enabled = false;
       newVersionCheck.enabled = false;
       backup.database.enabled = false; # Is backed up via Borgmatic
+      image.extractEmbedded = true;
       oauth = {
         enabled = true;
         autoLaunch = false;

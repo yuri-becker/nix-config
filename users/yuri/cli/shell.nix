@@ -43,7 +43,7 @@
       otp = "${pkgs.yubikey-manager}/bin/ykman oath accounts code -s $argv | wl-copy";
       create-ssh-key = ''
         ssh-keygen -t ed25519 -f  ~/.ssh/id_$argv -C "$(whoami)@$(hostname) id_$argv $(date)" -N ""
-        ${pkgs.coreutils}/bin/cat ~/.ssh/id_$argv | wl-copy
+        ${pkgs.coreutils}/bin/cat ~/.ssh/id_$argv.pub | wl-copy
         echo "✅ id_$argv.pub copied to clipboard!"
       '';
       which-package = ''

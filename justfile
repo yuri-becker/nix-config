@@ -30,11 +30,11 @@ alias r := rebuild
 
 [doc("Builds and deployes a remote target.")]
 [positional-arguments]
-colmena node:
+colmena node goal="switch":
     #!/usr/bin/env bash
     set -euo pipefail
     export NIX_CONF_DIR=$(pwd)/
-    nix run .#colmena -- apply --impure --on {{ node }}
+    nix run .#colmena -- apply --impure --on {{ node }} {{ goal }}
 alias c := colmena
 
 [doc("Builds an image for flashing to an SD card.")]
