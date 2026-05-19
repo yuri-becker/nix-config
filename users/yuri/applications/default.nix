@@ -8,11 +8,11 @@
     ./eden.nix
     ./foliate.nix
     ./forge-sparks.nix
+    ./fractal.nix
     ./freecad.nix
     ./gnome
     ./kitty.nix
     ./librewolf.nix
-    ./linphone.nix
     ./mattermost.nix
     ./nextcloud.nix
     ./nocturne.nix

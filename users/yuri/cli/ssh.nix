@@ -78,6 +78,9 @@
           user = "git";
           identityFile = "${config.home.homeDirectory}/.ssh/id_git-genosse-eu";
         };
+        "testfoss.devcoop.de" = {
+          identityFile = "${config.home.homeDirectory}/.ssh/id_middelfoss";
+        };
         "*" = {
           identitiesOnly = true;
           addKeysToAgent = lib.mkIf pkgs.stdenv.isDarwin "yes";

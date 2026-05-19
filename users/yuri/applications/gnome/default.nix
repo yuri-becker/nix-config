@@ -69,13 +69,13 @@
         favorite-apps = [
           "librewolf.desktop"
           "com.jeffser.Nocturne.desktop"
+          "org.gnome.Fractal.desktop"
           "kitty.desktop"
         ]
         ++ (
           if config.localhost.work.enable then
             [
               "Mattermost.desktop"
-              "linphone.desktop"
               "org.gnome.Calendar.desktop"
               "dev.zed.Zed.desktop"
               "org.zealdocs.zeal.desktop"
