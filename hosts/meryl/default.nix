@@ -1,9 +1,4 @@
-{
-  lib,
-  specialArgs,
-  pkgs,
-  ...
-}:
+{ specialArgs, pkgs, ... }:
 {
   imports = [
     ./audio.nix
@@ -12,6 +7,7 @@
     ./pam.nix
     ./users.nix
     specialArgs.sops-nix.nixosModules.sops
+    specialArgs.nix-flatpak.nixosModules.nix-flatpak
   ];
   podman.enable = true;
   localhost.enable = true;
@@ -38,4 +34,6 @@
     qemu
     quickemu
   ];
+
+  services.flatpak.enable = true;
 }

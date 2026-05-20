@@ -15,10 +15,7 @@
         }
       );
       home-manager.sharedModules = [ specialArgs.sops-nix.homeManagerModule ];
-      home-manager.extraSpecialArgs = {
-        hostname = "meryl";
-      }
-      // specialArgs;
+      home-manager.extraSpecialArgs = specialArgs;
     }
   ];
 
