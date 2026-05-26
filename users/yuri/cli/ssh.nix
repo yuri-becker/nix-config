@@ -9,7 +9,7 @@
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks = {
+      settings = {
         "catboy-house" = {
           hostname = "46.4.241.139";
           user = "yuri";

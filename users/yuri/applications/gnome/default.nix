@@ -24,7 +24,6 @@
         { package = clipboard-history; }
         { package = dash-to-dock; }
         { package = grand-theft-focus; }
-        { package = next-up; }
         { package = notification-counter; }
         { package = quick-settings-tweaker; }
         { package = tophat; }
