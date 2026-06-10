@@ -10,7 +10,6 @@ in
       home-manager.useUserPackages = true;
       home-manager.users.yuri = import ../../users/yuri;
       home-manager.sharedModules = [ specialArgs.sops-nix.homeManagerModule ];
-      home-manager.extraSpecialArgs.nix-flatpak = specialArgs.nix-flatpak;
     }
   ];
 

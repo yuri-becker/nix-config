@@ -84,9 +84,7 @@
         "*" = {
           identitiesOnly = true;
           addKeysToAgent = lib.mkIf pkgs.stdenv.isDarwin "yes";
-          extraOptions = {
-            UseKeychain = lib.mkIf pkgs.stdenv.isDarwin "yes";
-          };
+          UseKeychain = lib.mkIf pkgs.stdenv.isDarwin "yes";
         };
       };
     };

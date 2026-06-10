@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.localhost.enable {
+  config = lib.mkIf (config.localhost.enable && pkgs.stdenv.isLinux) {
     home.packages = [ pkgs.apostrophe ];
     dconf.settings."org/gnome/gitlab/somas/Apostrophe" = {
       hemingway-mode = false;

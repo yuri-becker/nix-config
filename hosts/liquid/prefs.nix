@@ -38,13 +38,12 @@
 
     persistent-apps = [
       "/Applications/Orion.app"
-      "${pkgs.feishin}/Applications/feishin.app"
-      { spacer.small = true; }
-      "${pkgs.zed-editor}/Applications/Zed.app"
+      "Applications/Cadence.app"
+      "/Applications/Beeper Desktop.app"
       "${pkgs.kitty}/Applications/kitty.app"
-      { spacer.small = true; }
-      "/System/Applications/Calendar.app"
       "/Applications/Teamspeak.app"
+      "${pkgs.zed-editor}/Applications/Zed.app"
+      "/System/Applications/Launchpad.app"
       { spacer.small = true; }
     ];
   };

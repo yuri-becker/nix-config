@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   mkExtension =
     id:
@@ -51,7 +56,7 @@ let
   };
 in
 {
-  config = lib.mkIf config.localhost.enable {
+  config = lib.mkIf (config.localhost.enable && !pkgs.stdenv.isDarwin) {
     programs.librewolf = {
       enable = true;
       languagePacks = [

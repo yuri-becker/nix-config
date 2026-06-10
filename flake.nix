@@ -26,7 +26,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     apple-silicon.url = "github:nix-community/nixos-apple-silicon/release-2025-11-18";
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
   outputs =
@@ -47,7 +46,6 @@
           sops-nix
           wakatime-ls
           apple-silicon
-          nix-flatpak
           ;
       };
       lib = import ./lib.nix { inherit (inputs) nixpkgs; };

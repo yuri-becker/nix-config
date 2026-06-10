@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.localhost.enable {
+  config = lib.mkIf (config.localhost.enable && pkgs.stdenv.isLinux) {
     home.packages = with pkgs; [ zeal ];
 
     xdg.configFile."Zeal/Zeal.conf".text = lib.generators.toINI { } {

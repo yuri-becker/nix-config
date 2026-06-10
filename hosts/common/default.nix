@@ -17,9 +17,9 @@
     };
   };
   imports = [
-    ./pam.nix
-    ./podman.nix
-    ./linux.nix
+    # ./pam.nix
+    # ./podman.nix
+    # ./linux.nix
   ];
   config = {
     nix = {

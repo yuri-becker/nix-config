@@ -5,5 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.localhost.personal.enable { home.packages = [ pkgs.rawtherapee ]; };
+  config = lib.mkIf config.localhost.personal.enable {
+    home.packages = lib.mkIf pkgs.stdenv.isLinux [ pkgs.rawtherapee ];
+  };
 }

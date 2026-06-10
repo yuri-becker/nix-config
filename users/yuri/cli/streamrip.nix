@@ -13,7 +13,11 @@ let
     qobuz.secrets = "streamrip/qobuz/secrets";
   };
   template = "streamrip.toml";
-  targetFile = ".config/streamrip/config.toml";
+  targetFile =
+    if pkgs.stdenv.isLinux then
+      ".config/streamrip/config.toml"
+    else
+      "Library/Application Support/streamrip/config.toml";
 in
 {
   config = lib.mkIf config.localhost.enable {
@@ -25,8 +29,8 @@ in
     home.file."${targetFile}.orig" = {
       source = config.lib.file.mkOutOfStoreSymlink config.sops.templates.${template}.path;
       onChange = ''
-        cp $HOME/${targetFile}.orig $HOME/${targetFile}
-        chmod 600 $HOME/${targetFile}
+        cp "$HOME/${targetFile}.orig" "$HOME/${targetFile}"
+        chmod 600 "$HOME/${targetFile}"
       ''; # Streamrip wants a writable file
     };
 
